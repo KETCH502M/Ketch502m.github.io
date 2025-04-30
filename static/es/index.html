@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-2MGMW54B4X"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-2MGMW54B4X");
+    </script>
+    <meta charset="UTF-8" />
+    <audio id="successSound" src="/assets/audio/success.mp3"></audio>
+    <audio id="successSound" src="/assets/audio/error.mp3"></audio>
+    <audio id="successSound" src="/assets/audio/error2.mp3"></audio>
+    <link rel="stylesheet" href="./css/s.search.css" />
+    <script src="./js/js.delay.js"></script>
+    <!--<link rel="stylesheet" href="https://cdn.healtpix.tk/css/home.style.css" />-->
+    <link rel="stylesheet" href="./css/home.style.css" />
+    <link rel="stylesheet" href="./css/all.min.css" />
+    <link rel="stylesheet" href="./css/es-s.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Healtpix - Inicio</title>
+    <div id="popup" class="popup">
+      <h2>Bienvenido a HEALTPIX</h2>
+      <p>¡Echale un vistazo a lo que eh hecho!</p>
+      <button class="btn" onclick="closePopup()">Cerrar</button>
+    </div>
+
+    <div id="overlay" class="overlay"></div>
+  </head>
+  <body class="bg-img">
+    <header>
+      <div class="navigation">
+        <ul>
+          <li class="list active">
+            <a href="#" onclick="redirigirDespuesDeRetraso('/')">
+              <span class="icon">
+                <ion-icon name="home-outline"></ion-icon>
+              </span>
+              <span class="text">Inicio</span>
+            </a>
+          </li>
+          <li class="list">
+            <a href="#" onclick="redirigirDespuesDeRetraso('descargas')">
+              <span class="icon">
+                <ion-icon name="download-outline"></ion-icon>
+              </span>
+              <span class="text">Descargas</span>
+            </a>
+          </li>
+          <li id="wgam" class="list">
+            <a href="#" onclick="redirigirDespuesDeRetraso('juegos')">
+              <span class="icon">
+                <ion-icon name="game-controller-outline"></ion-icon>
+              </span>
+              <span class="text">Juegos</span>
+            </a>
+          </li>
+          <div class="indicator"></div>
+        </ul>
+      </div>
+    </header>
+    <script src="./js/js.movement.js"></script>
+    <div class="countdown">
+      <p class="timeout">Tiempo navideño en:</p>
+      <section>
+        <p>
+          <span id="days"></span> días <span id="hours"></span> horas
+          <span id="minutes"></span> minutos <span id="seconds"></span> segundos
+        </p>
+      </section>
+      <script src="./js/date_time.js"></script>
+    </div>
+    <br />
+    <br />
+    <div id="dwapp" class="dwapp">
+      <a
+        id="dw-1"
+        href="#"
+        onclick="redirigirDespuesDeRetraso('/assets/app/app.apk')"
+        >Descarga la versión para Android</a
+      >
+    </div>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+    <footer>
+      <form id="codeForm">
+        <label for="codeInput"
+          >Introduce un
+          <span class="tooltip"
+            >código<span class="tooltiptext">¡Solo código numerico!</span></span
+          >
+          de 6 dígitos:</label
+        >
+        <input
+          type="text"
+          id="codeInput"
+          name="codeInput"
+          placeholder="000-000"
+          maxlength="7"
+          required
+          title="Por favor, ingresa un codigo de 6 dígitos."
+        />
+        <!--<button type="submit">Enviar</button>-->
+      </form>
+
+      <div class="toast" id="toast"></div>
+      <br />
+      <a
+        href="info.html"
+        style="color: #7196c0; text-decoration: none; font-weight: bold"
+        >Información de la página</a
+      >
+      <script src="./js/code-s.js"></script>
+      <ul class="language">
+        <br />
+        <li><a href="../es/">Español</a></li>
+        <li><a href="../en/">Inglés</a></li>
+        <li><a href="../ja/">Japonés</a></li>
+        <li><a href="../pt/">Portugués</a></li>
+      </ul>
+    </footer>
+    <script>
+      // Función para solicitar permiso de notificación
+      function requestNotificationPermission() {
+        Notification.requestPermission().then(function (result) {
+          if (result === "granted") {
+            // El permiso fue concedido
+            localStorage.setItem("notificationPermission", "granted");
+          } else if (result === "denied") {
+            // El permiso fue denegado
+            localStorage.setItem("notificationPermission", "denied");
+          }
+        });
+      }
+
+      // Solicitar el permiso automáticamente al cargar la página
+      requestNotificationPermission();
+
+      // Verificar si ya se ha mostrado el popup
+      if (!localStorage.getItem("popupShow")) {
+        document.getElementById("popup").style.display = "block";
+        document.getElementById("overlay").style.display = "block";
+
+        // Marcar que el popup ha sido mostrado
+        localStorage.setItem("popupShow", "true");
+      }
+
+      function closePopup() {
+        document.getElementById("popup").style.display = "none";
+        document.getElementById("overlay").style.display = "none";
+      }
+      // Función para mostrar una notificación con un mensaje aleatorio y una imagen
+      function showRandomNotification() {
+        // Mensajes aleatorios para la notificación
+        const messages = [
+          "¡Recuerda que hay una sección de descargas!",
+          "¡Esta es una página sencilla pero se estará mejorando progresivamente, pulsa para más info!",
+          "¡OPPSS, se me escapó un código oculto!",
+        ];
+
+        // Mensajes para la notificación
+        const messageNoti = [
+          "¡Recordatorio!",
+          "¡Gracias por entrar a la página!",
+          "111111",
+        ];
+
+        // Ruta de las imágenes para la notificación
+        const imagePath = [
+          "https://th.bing.com/th/id/OIG2.lteBzI0g2i_zhEJeVE8f?w=1024&h=1024&rs=1&pid=ImgDetMain",
+          "https://th.bing.com/th/id/OIG1.1AMIFgJk8uAeFKd54MfM?w=1024&h=1024&rs=1&pid=ImgDetMain",
+          "https://th.bing.com/th/id/OIG3.KXlj0QoGkd7fR_B_nce6?w=1024&h=1024&rs=1&pid=ImgDetMain",
+        ];
+
+        // Destinos de redirección para la notificación
+        const redirectDestinations = ["descargas", "info", "/"];
+
+        // Obtener un índice aleatorio
+        const randomIndex = Math.floor(Math.random() * messages.length);
+
+        // Seleccionar el mensaje, la imagen y el destino de redirección correspondientes al índice aleatorio
+        const randomMessage = messages[randomIndex];
+        const randomMessageNoti = messageNoti[randomIndex];
+        const randomImagePath = imagePath[randomIndex];
+        const randomDestination = redirectDestinations[randomIndex];
+
+        // Crear la notificación
+        const notification = new Notification(randomMessageNoti, {
+          body: randomMessage,
+          icon: randomImagePath,
+        });
+
+        // Redirigir a un destino específico al hacer clic en la notificación
+        notification.onclick = function () {
+          // Redireccionar al destino aleatorio
+          window.location.href = randomDestination;
+        };
+      }
+
+      // Verificar si se ha dado permiso para las notificaciones
+      if (localStorage.getItem("notificationPermission") === "granted") {
+        // Generar un delay aleatorio entre 5 y 30 segundos (en milisegundos)
+        const delay = Math.floor(Math.random() * (30000 - 5000 + 1)) + 5000;
+
+        // Esperar el tiempo aleatorio y luego mostrar la notificación
+        setTimeout(showRandomNotification, delay);
+      }
+
+      // Función para obtener el valor de una cookie
+      function getCookie(name) {
+        const cookieValue = document.cookie.match(
+          "(^|;)\\s*" + name + "\\s*=\\s*([^;]+)"
+        );
+        return cookieValue ? cookieValue.pop() : "";
+      }
+
+      // Mostrar la notificación cada 5 o 10 minutos
+      setInterval(
+        showRandomNotification,
+        Math.random() >= 0.5 ? 300000 : 600000
+      );
+    </script>
+  </body>
+</html>

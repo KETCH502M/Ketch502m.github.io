@@ -1,0 +1,235 @@
+@import url("https://fonts.googleapis.com/css2?family=Foldit");
+@import url("https://fonts.googleapis.com/css2?family=Pacifico");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+.flag-es {
+  background-position: left 4.2229%;
+}
+
+.flag {
+  width: 18px;
+  height: 11px;
+  background-image: url(/assets/img/freakflags.png);
+  background-repeat: no-repeat;
+  background-size: 100% 49494%;
+  display: inline-block;
+  overflow: hidden;
+  position: relative;
+  vertical-align: middle;
+  box-sizing: content-box;
+  box-shadow: 0 0 0 1px #f0f0f0;
+}
+
+:root {
+  --crl: #222327;
+}
+
+header {
+  font-family: "Foldit";
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 23vh;
+}
+
+.navigation {
+  position: relative;
+  width: 2400px;
+  height: 70px;
+  background: rgb(130, 173, 173);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+}
+
+.navigation ul {
+  display: flex;
+}
+
+.navigation ul li {
+  position: relative;
+  list-style: none;
+  width: 70px;
+  height: 70px;
+  z-index: 1;
+}
+
+.navigation ul li a {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  text-align: center;
+  font-weight: 500;
+}
+
+.navigation ul li a .icon {
+  position: relative;
+  display: block;
+  line-height: 75px;
+  font-size: 1.5em;
+  text-align: center;
+  transition: 0.5s;
+  color: var(--crl);
+}
+
+.navigation ul li.active a .icon {
+  transform: translateY(-32px);
+}
+
+.navigation ul li a .text {
+  position: absolute;
+  color: var(--crl);
+  font-weight: 400;
+  font-size: 0.75em;
+  letter-spacing: 0.05em;
+  transition: 0.5s;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.navigation ul li.active a .text {
+  opacity: 1;
+  transform: translateY(10px);
+}
+
+.indicator {
+  position: absolute;
+  top: -50%;
+  width: 70px;
+  height: 70px;
+  background: rgb(136, 252, 227);
+  border-radius: 50%;
+  border: 6px solid var(--crl);
+  transition: 0.5s;
+}
+
+.indicator::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -22px;
+  width: 20px;
+  height: 20px;
+  background: transparent;
+  border-top-right-radius: 20px;
+}
+
+.indicator::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: -22px;
+  width: 20px;
+  height: 20px;
+  background: transparent;
+  border-top-left-radius: 20px;
+}
+
+.navigation ul li:nth-child(1).active ~ .indicator {
+  transform: translateX(calc(70px * 0));
+}
+
+.navigation ul li:nth-child(2).active ~ .indicator {
+  transform: translateX(calc(70px * 1));
+}
+
+.navigation ul li:nth-child(3).active ~ .indicator {
+  transform: translateX(calc(70px * 2));
+}
+
+.navigation ul li:nth-child(4).active ~ .indicator {
+  transform: translateX(calc(70px * 3));
+}
+
+.navigation ul li:nth-child(5).active ~ .indicator {
+  transform: translateX(calc(70px * 4));
+}
+
+.navigation ul li:nth-child(5).active ~ .indicator {
+  transform: translateX(calc(70px * 5));
+}
+
+.navigation ul li:nth-child(5).active ~ .indicator {
+  transform: translateX(calc(70px * 6));
+}
+
+body {
+  background: var(--crl);
+  color: gray;
+}
+
+.countdown {
+  text-align: center;
+  background-color: #dfdfdf;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  margin: 0 auto; 
+}
+
+.countdown p.timeout {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.countdown section p {
+  font-size: 1.5em;
+  margin: 0;
+}
+
+.countdown span {
+  font-size: 0.7em;
+  font-weight: bold;
+  padding: 2px;
+  background-color: #3498db;
+  color: #fff;
+  border-radius: 5px;
+}
+
+.footer-css footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 8px;
+}
+
+#dwapp {
+  cursor: pointer;
+  text-align: center;
+  background-color: #dfdfdf;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  margin: 0 auto; 
+}
+
+#dwapp a{
+  color: rgb(140, 0, 255);
+  text-decoration: none;
+  font-size: 20px;
+}
+
+@media (max-width: 767px) {
+  .countdown {
+    max-width: 90%; 
+  }
+  p{
+    color: rgb(127, 161, 170);
+  }
+}

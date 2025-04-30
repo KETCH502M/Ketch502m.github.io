@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <!-- Meta Data -->
+    <title>JavaScript Deobfuscator</title>
+    <meta charset="utf-8" />
+    <meta
+      name="description"
+      content="A simple but powerful deobfuscator to remove common JavaScript
+    obfuscation techniques"
+    />
+    <meta
+      name="keywords"
+      content="deobfuscate, deobfuscator, obfuscate, JavaScript"
+    />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Links-->
+    <link rel="stylesheet" href="../sett-ofu/css/main.css" />
+    <link rel="stylesheet" href="../sett-ofu/css/codemirror.css" />
+    <link rel="icon" href="../img/favicon.ico" />
+    <audio preload="metadata" autoplay>
+      <source src="../music/background2.mp3" type="audio/mpeg" />
+    </audio>
+    <script src="../sett-ofu/datadog-rum-v4.js" type="text/javascript"></script>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Header -->
+      <header>
+        <div class="flex-container">
+          <div class="left">
+            <h1 class="heading">Desofucador de JavaScript</h1>
+            <h2>
+              <p>
+                Waos, encontraste esta opcion que estaba algo oculta entre
+                millones de comillas xd.
+              </p>
+              <br />
+              Un desofuscador simple pero poderoso para eliminar las técnicas
+              comunes de ofuscación de JavaScript
+            </h2>
+          </div>
+
+          <div class="right">
+            <a href="/">
+              <img
+                src="../img/github-logo.png"
+                alt="GitHub Logo"
+                draggable="false"
+              />
+            </a>
+          </div>
+        </div>
+      </header>
+
+      <!-- Input & Output -->
+      <section id="main">
+        <div class="flex-container">
+          <div class="left">
+            <h3 class="textarea-heading">Entrada</h3>
+            <textarea id="input" placeholder="Enter Your JavaScript"></textarea>
+            <button class="textarea-button" id="deobfuscateButton">
+              Desofucar
+            </button>
+            <span id="errorMessage">Hubo un error al desofuscar el código</span>
+          </div>
+
+          <div class="right">
+            <h3 class="textarea-heading">Salida</h3>
+            <textarea disabled id="output"></textarea>
+            <div class="tooltip">
+              <button class="textarea-button" id="copyButton">
+                Copiar Resultado
+                <span class="tooltiptext" id="tooltip"
+                  >Copiar al portapapeles</span
+                >
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Configurations -->
+      <section id="configurations">
+        <h1 class="heading">Configuraciones</h1>
+
+        <div class="flex-container">
+          <!-- Arrays -->
+          <div class="flex-item">
+            <span class="heading">Arreglos</span>
+
+            <div class="checkbox-container">
+              <label class="b-contain">
+                <span>Desempaquetar Arrays</span>
+                <input type="checkbox" id="unpackArrays" checked="true" />
+                <div class="b-input" id="arrayCheckbox1"></div>
+              </label>
+
+              <label class="b-contain">
+                <span>Remover Desempaquetado de Arrays</span>
+                <input type="checkbox" id="removeArrays" checked="true" />
+                <div class="b-input" id="arrayCheckbox2"></div>
+              </label>
+            </div>
+          </div>
+
+          <!-- Proxy Functions -->
+          <div class="flex-item">
+            <span class="heading">Funciones Proxy</span>
+
+            <div class="checkbox-container">
+              <label class="b-contain">
+                <span>Reemplazar funciones de proxy</span>
+                <input
+                  type="checkbox"
+                  id="replaceProxyFunctions"
+                  checked="true"
+                />
+                <div class="b-input" id="proxyFunctionsCheckbox1"></div>
+              </label>
+
+              <label class="b-contain">
+                <span>Eliminar funciones de proxy</span>
+                <input
+                  type="checkbox"
+                  id="removeProxyFunctions"
+                  checked="true"
+                />
+                <div class="b-input" id="proxyFunctionsCheckbox2"></div>
+              </label>
+            </div>
+          </div>
+
+          <!-- Expressions -->
+          <div class="flex-item">
+            <span class="heading">Expresiones</span>
+
+            <div class="checkbox-container">
+              <label class="b-contain">
+                <span>Expresión simplificada</span>
+                <input
+                  type="checkbox"
+                  id="simplifyExpressions"
+                  checked="true"
+                />
+                <div class="b-input" id="expressionsCheckbox1"></div>
+              </label>
+
+              <label class="b-contain">
+                <span>Remover Dead Branches</span>
+                <input type="checkbox" id="removeDeadBranches" checked="true" />
+                <div class="b-input" id="expressionsCheckbox2"></div>
+              </label>
+            </div>
+          </div>
+
+          <!-- Miscellaneous  -->
+          <div class="flex-item">
+            <span class="heading">Otro</span>
+
+            <div class="checkbox-container">
+              <label class="b-contain">
+                <span>Mejorar</span>
+                <input type="checkbox" id="beautify" checked="true" />
+                <div class="b-input" id="miscellaneousCheckbox2"></div>
+              </label>
+
+              <label class="b-contain">
+                <span>Simplificar Propiedades</span>
+                <input type="checkbox" id="simplifyProperties" checked="true" />
+                <div class="b-input" id="miscellaneousCheckbox1"></div>
+              </label>
+
+              <label class="b-contain">
+                <span>Renombrar identificadores Hex</span>
+                <input type="checkbox" id="renameHexIdentifiers" />
+                <div class="b-input" id="miscellaneousCheckbox1"></div>
+              </label>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <script src="../ofu/codemirror.js"></script>
+    <script src="../ofu/javascript.js"></script>
+    <script src="../ofu/placeholder.js"></script>
+    <script src="../ofu/main.js" async></script>
+    <script src="../ofu/gen3.js"></script>
+    <script src="../ofu/gen2.js"></script>
+    <script src="../ofu/gen.js"></script>
+
+    <div id="disqus_thread"></div>
+    <script src="../js/loader.js"></script>
+  </body>
+  <script
+    id="dsq-count-scr"
+    src="//healtpixi.disqus.com/count.js"
+    async
+  ></script>
+</html>

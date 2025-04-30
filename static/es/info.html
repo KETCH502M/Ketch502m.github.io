@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="./css/info.c.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Informacion</title>
+  </head>
+  <body>
+    <header>
+      <h1>QUE ES HEALTPIX</h1>
+    </header>
+    <div class="content">
+      <p>
+        Esta página está diseñada para ofrecerte diversas funcionalidades,
+        incluyendo:
+      </p>
+      <ul>
+        <li>
+          Información sobre el tiempo o los días restantes para diciembre.
+        </li>
+        <li>Una zona de descargas.</li>
+        <li>
+          Una zona de juegos sencillos en línea como Pacman, Flappy Bird, etc.
+        </li>
+        <li>Una versión para Android.</li>
+        <li>
+          Opciones ocultas que pueden ser encontradas mediante un
+          <span class="tooltip"
+            >código<span class="tooltiptext">Por ejemplo: 202034</span></span
+          >.
+        </li>
+      </ul>
+      <p>¡Explora y disfruta de todas nuestras funciones!</p>
+      <p id="ipCliente"></p>
+      <button style="color: black; background: rgb(47, 126, 47); border-radius: 20px; height: 200px; width: 200px">
+        𝕃𝕠𝕤 𝕣𝕖𝕒𝕝𝕖𝕤✨🥀 A Realm Reborn
+      </button>
+    </div>
+    <div class="foot1">
+      <footer>
+        <a href="https://docs.healtpix.tk/docs">Read documentation</a>
+      </footer>
+    </div>
+
+    <script>
+      // Hacer una solicitud a api.ipify.org para obtener la IP del cliente
+      fetch("https://api.ipify.org?format=json")
+        .then((response) => response.json())
+        .then((data) => {
+          document.getElementById("ipCliente").textContent =
+            "Tu dirección IP " +
+            data.ip +
+            " se recopilara para evitar ataques u abusos de esta pagina.";
+        })
+        .catch((error) => {
+          console.error("Hubo un problema al obtener la dirección IP:", error);
+          document.getElementById("ipCliente").textContent =
+            "No se pudo obtener la dirección IP.";
+        });
+    </script>
+  </body>
+</html>

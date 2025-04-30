@@ -1,0 +1,109 @@
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #333; /* Color de fondo del footer */
+    color: white; /* Color del texto en el footer */
+    text-align: center; /* Centrar el contenido del footer */
+    padding: 10px; /* Espaciado interno del footer */
+}
+
+#codeInput {
+    border: 1px solid #ccc;
+    padding: 10px;
+    font-size: 1.2em;
+    text-align: center;
+    width: 150px;
+  }
+
+  #codeForm {
+    text-align: center; /* Centra todo el contenido del formulario */
+  }
+
+  label {
+    display: block; /* Muestra el label como bloque para centrarlo */
+    margin-bottom: 10px; /* Añade un espacio entre el label y el input */
+  }
+  #codeInput::-webkit-inner-spin-button,
+  #codeInput::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  #codeInput[type="number"] {
+    -moz-appearance: textfield;
+  }
+
+  #codeInput:focus {
+    outline: none;
+    border-color: #007bff;
+}
+
+
+.toast {
+    visibility: hidden;
+    position: fixed;
+    left: 50%;
+    bottom: 30px;
+    transform: translateX(-50%);
+    background-color: #333;
+    color: #fff;
+    padding: 15px 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.hidden {
+    display: none;
+}
+
+.visible {
+    display: block;
+}
+
+
+.show {
+    visibility: visible;
+    animation: fadeIn 0.5s, fadeOut 0.5s 2.5s;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted rgb(255, 255, 255); /* underline style */
+  cursor: help; /* cursor style */
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: transparent;
+  color: #ffffff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 1s;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}

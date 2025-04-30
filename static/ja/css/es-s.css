@@ -1,0 +1,30 @@
+/* styles.css */
+footer {
+    padding: 20px;
+    text-align: center;
+  }
+  
+  footer ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  footer ul li {
+    display: inline;
+    margin-right: 10px;
+  }
+  
+  footer ul li a {
+    color: #7196c0;
+    text-decoration: none;
+  }
+  
+  footer ul li a:hover {
+    color: #5a5a5a;
+  }
+  
+  .logo {
+    width: 50px; /* ajustar el tamaño según sea necesario */
+    height: auto;
+    margin-right: 10px;
+  }

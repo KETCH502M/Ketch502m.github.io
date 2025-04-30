@@ -1,0 +1,142 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins');
+* {
+    box-sizing: border-box;
+    font-family: 'Poppins', 'Comic Sans MC', sans-serif
+}
+
+.contenedor {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh; 
+  }
+  /*
+  .box-download {
+    background-color: gray;
+    padding: 5px;
+    border-radius: 10%;
+    width: 300px;
+    height: 300px;
+  }
+    
+.box-download .links{
+    color: rgb(223, 255, 41);
+}
+
+.box-download a{
+    padding: 1em;
+    color: black;
+    text-decoration: none;
+    font-size: 1.3em;
+}
+
+.box-download h3{
+    padding: 1em;
+    text-decoration: none;
+    font-size: 1.3em;
+    text-align: justify;
+    margin-left: 40px;
+}
+.box-download p{
+  max-height: 200px; 
+  overflow: auto;
+}
+
+.box-download p::-webkit-scrollbar {
+  width: 8px;
+}
+.box-download p::-webkit-scrollbar-thumb {
+  background-color: rgb(0, 110, 255);
+  border-radius: 10px;
+}
+.box-download p::-webkit-scrollbar-track {
+  background-color: #f2f2f2;
+  border-radius: 10px;
+}
+
+.footer-css footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%; 
+  background-color: #333; 
+  color: #fff; 
+  text-align: center; 
+  padding: 8px; 
+}
+
+*/
+
+.box-download {
+  background-color: #f5f5f5;
+  padding: 5px;
+  border-radius: 10px;
+  width: 300px;
+  max-width: 90%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.box-download h3 {
+  font-size: 1.2em;
+  text-align: center;
+}
+
+.box-download p {
+  font-size: 1.3em;
+  line-height: 1.1;
+  max-height: 230px;
+  overflow: auto;
+}
+
+.box-download a {
+  display: block;
+  padding: 10px;
+  background-color: #3498db;
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+  margin-bottom: -10px;
+  border-radius: 5px;
+  transition: background-color 0.2s;
+}
+
+.box-download a:hover {
+  background-color: #2980b9;
+}
+
+/* Estilos para el footer */
+.footer-css footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 8px;
+}
+
+.search-container {
+  margin: 20px auto;
+  max-width: 400px;
+  text-align: center;
+}
+
+#searchInput {
+  padding: 8px;
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+#resultsList {
+  list-style: none;
+  padding: 0;
+}
+
+#resultsList li {
+  transition: opacity 0.9s ease-in-out;
+}
