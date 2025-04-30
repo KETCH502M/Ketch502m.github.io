@@ -1,7 +1,11 @@
 [
+      {
+    "nombre": "Minecraft 1.21.72",
+    "enlace": "https://www.mediafire.com/file/1tiuxrbyeifsj68/MCPE_1.21.70/file"
+  },
     {
-    "nombre": "Minecraft 1.x.x",
-    "enlace": "while"
+    "nombre": "Minecraft 1.21.70",
+    "enlace": "https://www.mediafire.com/file/1tiuxrbyeifsj68/MCPE_1.21.70/file"
   },
   {
     "nombre": "Minecraft 1.20.32",
@@ -30,6 +34,10 @@
   {
     "nombre": "Minecraft 1.19.50",
     "enlace": "https://www.mediafire.com/file/mxyz6hcyym329ic/MCPE_1.19.50.apk/file"
+  },
+      {
+    "nombre": "Minecraft 1.16",
+    "enlace": "https://www.mediafire.com/file/ndzn2t9hxuf1jdh/MCPE_1.16.apk/file"
   },
   {
     "nombre": "Minecraft 1.14.30",
