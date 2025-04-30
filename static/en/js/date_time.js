@@ -2,7 +2,7 @@
 /* mes / dia / año : horas:minutos PM/AM */
 /* 12 /  01 / 0000 : 01:01 PM */
 var time = [
-  "12/25/2026 12:00 AM",
+  "12/25/2025 12:00 AM",
   "span#days",
   "querySelector",
   "span#hours",
