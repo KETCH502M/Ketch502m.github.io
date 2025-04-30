@@ -89,7 +89,7 @@ header {
   top: -50%;
   width: 70px;
   height: 70px;
-  background: rgb(136, 252, 227);
+  background: rgb(64, 224, 208);
   border-radius: 50%;
   border: 6px solid var(--crl);
   transition: 0.5s;
