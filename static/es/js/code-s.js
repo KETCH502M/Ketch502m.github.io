@@ -34,7 +34,7 @@ document
       // Verifica si el código ingresado está en la lista
       if (codes[code]) {
         var toast = document.getElementById("toast");
-        toast.innerText = "¡Lo lograste!";
+        toast.innerText = "¡Muy bien!";
         toast.classList.add("show");
 
         // Reproduce el sonido de éxito
