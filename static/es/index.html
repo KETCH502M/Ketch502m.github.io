@@ -310,7 +310,7 @@
   // Mostrar notificación después de delay aleatorio (5 a 30 seg)
   function maybeShowInitialNotification() {
     if (localStorage.getItem('notificationPermission') === 'granted') {
-      const delay = Math.floor(Math.random() * (30000 - 5000 + 1)) + 5000;
+      const delay = Math.floor(Math.random() * (30000 - 5000 + 1)) + 1000;
       setTimeout(showRandomNotification, delay);
     }
   }
