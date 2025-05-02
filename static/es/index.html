@@ -133,7 +133,7 @@
         <li><a href="../pt/">Portugués</a></li>
       </ul> -->
     </footer>
-    <script>
+   <!-- <script>
       // Función para solicitar permiso de notificación
       function requestNotificationPermission() {
         Notification.requestPermission().then(function (result) {
@@ -233,6 +233,109 @@
         showRandomNotification,
         Math.random() >= 0.5 ? 300000 : 600000
       );
-    </script>
+    </script>-->
+    <script>
+  // Solicitar permiso de notificación si aún no se ha hecho
+  function requestNotificationPermission() {
+    if ('Notification' in window) {
+      Notification.requestPermission().then((permission) => {
+        localStorage.setItem('notificationPermission', permission);
+      });
+    }
+  }
+
+  // Mostrar popup si no se ha mostrado antes
+  function showPopupOnce() {
+    if (!localStorage.getItem('popupShow')) {
+      const popup = document.getElementById('popup');
+      const overlay = document.getElementById('overlay');
+      if (popup && overlay) {
+        popup.style.display = 'block';
+        overlay.style.display = 'block';
+        localStorage.setItem('popupShow', 'true');
+      }
+    }
+  }
+
+  // Cerrar el popup
+  function closePopup() {
+    const popup = document.getElementById('popup');
+    const overlay = document.getElementById('overlay');
+    if (popup && overlay) {
+      popup.style.display = 'none';
+      overlay.style.display = 'none';
+    }
+  }
+
+  // Mostrar una notificación aleatoria
+  function showRandomNotification() {
+    if (!('Notification' in window)) return;
+
+    const messages = [
+      "¡Recuerda que hay una sección de descargas!",
+      "¡Esta es una página sencilla pero se estará mejorando progresivamente, pulsa para más info!",
+      "¡OPPSS, se me escapó un código oculto!",
+    ];
+
+    const titles = [
+      "¡Recordatorio!",
+      "¡Gracias por entrar a la página!",
+      "111111",
+    ];
+
+    const icons = [
+      "https://i.imgur.com/Ii0lsEv.png",
+      "https://i.imgur.com/Ii0lsEv.png",
+      "https://i.imgur.com/Ii0lsEv.png",
+    ];
+
+    const links = ["descargas", "info", "/"];
+
+    const i = Math.floor(Math.random() * messages.length);
+
+    try {
+      const notification = new Notification(titles[i], {
+        body: messages[i],
+        icon: icons[i],
+      });
+
+      notification.onclick = () => {
+        window.location.href = links[i];
+      };
+    } catch (error) {
+      console.error('Error al mostrar la notificación:', error);
+    }
+  }
+
+  // Mostrar notificación después de delay aleatorio (5 a 30 seg)
+  function maybeShowInitialNotification() {
+    if (localStorage.getItem('notificationPermission') === 'granted') {
+      const delay = Math.floor(Math.random() * (30000 - 5000 + 1)) + 5000;
+      setTimeout(showRandomNotification, delay);
+    }
+  }
+
+  // Notificación cada 5 o 10 minutos
+  function startNotificationInterval() {
+    setInterval(
+      showRandomNotification,
+      Math.random() >= 0.5 ? 300000 : 600000
+    );
+  }
+
+  // Obtener valor de cookie
+  function getCookie(name) {
+    const match = document.cookie.match("(^|;)\\s*" + name + "\\s*=\\s*([^;]+)");
+    return match ? match.pop() : "";
+  }
+
+  // Ejecutar funciones al cargar
+  document.addEventListener("DOMContentLoaded", () => {
+    requestNotificationPermission();
+    showPopupOnce();
+    maybeShowInitialNotification();
+    startNotificationInterval();
+  });
+</script>
   </body>
 </html>
