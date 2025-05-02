@@ -26,7 +26,7 @@ document
         202403: "juegos",
         202402: "/old_version/",
         202034: "afinador",
-        101004: "/desofuscador",
+        101004: "desofuscador",
         100000: "/gatito",
         // Agrega más códigos y URLs según tus necesidades
       };
