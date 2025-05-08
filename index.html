@@ -38,7 +38,7 @@
 <meta name="twitter:title" content="¡Descarga y Juega Ya! + Contador para Navidad" />
 <meta name="twitter:description" content="Descarga versiones de Minecraft, juega mini juegos en línea y cuenta los días para Navidad con nuestro contador especial. Página simple, ligera y sin enredos." />
 <meta name="twitter:image" content="https://www.healtpix.tk/assets/img/healtpix.jpg" />
-    <style>
+    <!--<style>
       * {
         margin: 0;
         padding: 0;
@@ -60,7 +60,7 @@
         color: white;
       }
 
-      .container {
+     / .container {
         position: relative;
         width: 100%;
         display: flex;
@@ -164,7 +164,175 @@
         bottom: -80px;
         letter-spacing: 0.15em;
       }
-    </style>
+    </style> -->
+    <style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: black;
+  }
+
+  p {
+    background-color: transparent;
+    text-align: center;
+    font-size: 20px;
+    color: white;
+  }
+
+  .container {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .container .ring {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    margin: -30px;
+    border-radius: 50%;
+    border: 4px solid transparent;
+    border-top: 4px solid #ff007f;
+    animation: animate 4s linear infinite, pulseColor1 3s ease-in-out infinite;
+  }
+
+  .container .ring::before {
+    content: "";
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    border-radius: 50%;
+    width: 15px;
+    height: 15px;
+    background: #ff007f;
+    animation: pulseGlow1 2s ease-in-out infinite;
+  }
+
+  .container .ring:nth-child(2) {
+    animation: animate2 4s linear infinite, pulseColor2 3s ease-in-out infinite;
+    animation-delay: -1s;
+    border-top: 4px solid transparent;
+    border-left: 4px solid #00ff9f;
+  }
+
+  .container .ring:nth-child(2)::before {
+    content: "";
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    border-radius: 50%;
+    width: 15px;
+    height: 15px;
+    background: #00ff9f;
+    animation: pulseGlow2 2s ease-in-out infinite;
+  }
+
+  .container .ring:nth-child(3) {
+    animation: animate2 4s linear infinite, pulseColor3 3s ease-in-out infinite;
+    animation-delay: -3s;
+    position: absolute;
+    top: -66.66px;
+    border-top: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-left: 4px solid #ffe600;
+  }
+
+  .container .ring:nth-child(3)::before {
+    content: "";
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    border-radius: 50%;
+    width: 15px;
+    height: 15px;
+    background: #ffe600;
+    animation: pulseGlow3 2s ease-in-out infinite;
+  }
+
+  @keyframes animate {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes animate2 {
+    0% {
+      transform: rotate(360deg);
+    }
+    100% {
+      transform: rotate(0deg);
+    }
+  }
+
+  /* Cambios de color */
+  @keyframes pulseColor1 {
+    0%, 100% { border-top-color: #ff007f; }
+    50% { border-top-color: #ff4fff; }
+  }
+
+  @keyframes pulseColor2 {
+    0%, 100% { border-left-color: #00ff9f; }
+    50% { border-left-color: #00ffd0; }
+  }
+
+  @keyframes pulseColor3 {
+    0%, 100% { border-left-color: #ffe600; }
+    50% { border-left-color: #fff94d; }
+  }
+
+  /* Brillo pulsante */
+  @keyframes pulseGlow1 {
+    0%, 100% {
+      box-shadow: 0 0 0 5px #ff007f33, 0 0 0 10px #ff007f22,
+                  0 0 0 20px #ff007f11, 0 0 20px #ff007f, 0 0 50px #ff007f;
+    }
+    50% {
+      box-shadow: 0 0 10px 10px #ff4fff66;
+    }
+  }
+
+  @keyframes pulseGlow2 {
+    0%, 100% {
+      box-shadow: 0 0 0 5px #00ff9f33, 0 0 0 10px #00ff9f22,
+                  0 0 0 20px #00ff9f11, 0 0 20px #00ff9f, 0 0 50px #00ff9f;
+    }
+    50% {
+      box-shadow: 0 0 10px 10px #00ffd066;
+    }
+  }
+
+  @keyframes pulseGlow3 {
+    0%, 100% {
+      box-shadow: 0 0 0 5px #ffe60033, 0 0 0 10px #ffe60022,
+                  0 0 0 20px #ffe60011, 0 0 20px #ffe600, 0 0 50px #ffe600;
+    }
+    50% {
+      box-shadow: 0 0 10px 10px #fff94d66;
+    }
+  }
+
+  .container p {
+    position: absolute;
+    color: #fff;
+    font-size: 1.5em;
+    font-family: consolas;
+    bottom: -80px;
+    letter-spacing: 0.15em;
+  }
+</style>
     <script>
     
   document.addEventListener("DOMContentLoaded", function () {
