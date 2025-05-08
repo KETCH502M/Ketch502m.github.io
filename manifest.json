@@ -1,8 +1,9 @@
 {
   "name": "Healtpix",
   "short_name": "HPIX",
-  "start_url": "/",
+  "start_url": "/static/es/index.html",
   "display": "standalone",
+  "scope": "/static/",
   "background_color": "#000000",
   "theme_color": "#24ecff",
   "icons": [
