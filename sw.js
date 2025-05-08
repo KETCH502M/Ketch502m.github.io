@@ -28,7 +28,7 @@ self.addEventListener('fetch', event => {
             return response;
           })
           .catch(() => {
-            // Opcional: puedes devolver un fallback (offline.html, imagen, etc.)
+            // Opcional: puedes devolver un fallback (offline.html, etc.)
             return caches.match('/offline.html');
           });
       })
