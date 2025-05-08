@@ -4,7 +4,8 @@ function mostrarToast(mensaje, tipo = 'info') {
   toast.textContent = mensaje;
 
   // Estilo del toast según el tipo
-  toast.style.backgroundColor = tipo === 'error' ? 'red' : 'black';
+  toast.style.backgroundColor = tipo === 'error' ? 'red' : (tipo === 'success' ? 'green' : 'black');
+  /*toast.style.backgroundColor = tipo === 'error' ? 'red' : 'black';*/
   toast.style.color = 'white';
   toast.style.padding = '10px';
   toast.style.borderRadius = '5px';
@@ -85,7 +86,7 @@ document.addEventListener("DOMContentLoaded", function () {
   
   async function sendIPAndBrowserToServer(ip, userAgent, browser, os, token) {
   console.log("FSimulation_beta: conexión exitosa");
-  mostrarToast("Conexión establecida con éxito");
+  mostrarToast("Conexión establecida con éxito", 'success');
   return Promise.resolve(); // Para que el .then() siguiente se ejecute
 }
 
