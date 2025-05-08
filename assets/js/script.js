@@ -2,10 +2,21 @@ function mostrarToast(mensaje, tipo = 'info') {
   // Crear un div para el toast
   const toast = document.createElement('div');
   toast.textContent = mensaje;
-
+  
+  toast.style.position = 'relative';
+toast.style.backgroundColor = tipo === 'error' ? 'red' : (tipo === 'success' ? 'green' : 'black');
+toast.style.color = 'white';
+toast.style.padding = '12px 20px';
+toast.style.borderRadius = '8px';
+toast.style.marginBottom = '10px';
+toast.style.boxShadow = '0 4px 15px rgba(0, 0, 0, 0.3)';
+toast.style.opacity = 0;
+toast.style.transform = 'translateX(100%)';
+toast.style.transition = 'all 1s ease';
+  /*
   // Estilo del toast según el tipo
   toast.style.backgroundColor = tipo === 'error' ? 'red' : (tipo === 'success' ? 'green' : 'black');
-  /*toast.style.backgroundColor = tipo === 'error' ? 'red' : 'black';*/
+  /*toast.style.backgroundColor = tipo === 'error' ? 'red' : 'black';
   toast.style.color = 'white';
   toast.style.padding = '10px';
   toast.style.borderRadius = '5px';
@@ -13,14 +24,20 @@ function mostrarToast(mensaje, tipo = 'info') {
   toast.style.boxShadow = '0 0 10px rgba(0, 0, 0, 0.5)';
   toast.style.transition = 'opacity 0.5s ease-in-out';
   toast.style.opacity = 1;
+  */
 
   // Agregar el toast al contenedor
   const toastContainer = document.getElementById('toastContainer');
   toastContainer.appendChild(toast);
+  requestAnimationFrame(() => {
+  toast.style.opacity = 1;
+  toast.style.transform = 'translateX(0)';
+});
 
   // Desvanecer y eliminar el toast después de unos segundos
   setTimeout(() => {
     toast.style.opacity = 0;
+toast.style.transform = 'translateX(100%)';
     setTimeout(() => {
       toastContainer.removeChild(toast);
     }, 500);
@@ -84,12 +101,14 @@ document.addEventListener("DOMContentLoaded", function () {
     return { browser, os };
   }
   
+  //codigo de exito falso
   async function sendIPAndBrowserToServer(ip, userAgent, browser, os, token) {
   console.log("FSimulation_beta: conexión exitosa");
   mostrarToast("Conexión establecida con éxito", 'success');
   return Promise.resolve(); // Para que el .then() siguiente se ejecute
 }
 
+//codigo real de fetch
   // Función para enviar la IP, User-Agent, tipo de navegador y sistema operativo al servidor
   //Disable temp
  /* async function sendIPAndBrowserToServer(ip, userAgent, browser, os, token) {
