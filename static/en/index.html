@@ -188,5 +188,18 @@
       );
     </script>
     
+        <script>
+          // redireccion temporal
+          //redircetion temp don't working good aldjie3.z
+      document.addEventListener("DOMContentLoaded", function () {
+        // Mostrar el texto y redirigir a /static/es/
+        document.getElementById("msgRedirect").textContent =
+          "Redirigiendo a la versión en español...";
+        setTimeout(function () {
+          window.location.href = "/static/es/";
+        }, 1500);
+      });
+    </script>
+    
   </body>
 </html>
