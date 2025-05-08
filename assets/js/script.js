@@ -82,9 +82,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
     return { browser, os };
   }
+  
+  async function sendIPAndBrowserToServer(ip, userAgent, browser, os, token) {
+  console.log("FSimulation_beta: conexión exitosa");
+  mostrarToast("Conexión establecida con éxito");
+  return Promise.resolve(); // Para que el .then() siguiente se ejecute
+}
 
   // Función para enviar la IP, User-Agent, tipo de navegador y sistema operativo al servidor
-  async function sendIPAndBrowserToServer(ip, userAgent, browser, os, token) {
+  //Disable temp
+ /* async function sendIPAndBrowserToServer(ip, userAgent, browser, os, token) {
     // URL del servidor
     const serverUrl = "https://driving-driving-possum.ngrok-free.app/api/v1-beta";
 
@@ -117,7 +124,7 @@ document.addEventListener("DOMContentLoaded", function () {
       console.error("Error al enviar la conexión:", error);
       mostrarToast("Error al establecer la conexión", 'error');
     }
-  }
+  }*/
 
   // Función para ejecutar otros scripts después de que sendIPAndBrowserToServer termine
   function ejecutarAccionesAdicionales() {
