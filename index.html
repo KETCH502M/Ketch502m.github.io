@@ -16,6 +16,10 @@
     </script>
     <link rel="preconnect" href="https://www.healtpix.tk/" crossorigin="" />
     <meta charset="UTF-8" />
+     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="manifest" href="/manifest.json" />
+<!-- Fallback icon for older browsers -->
+<link rel="icon" href="/assets/img/icons/icon-192x192.png" sizes="192x192" />
     <!-- Primary Meta Tags -->
 <title>¡Descarga y Juega Ya! + Contador para Navidad</title>
 <meta name="title" content="¡Descarga y Juega Ya! + Contador para Navidad" />
@@ -34,7 +38,7 @@
 <meta name="twitter:title" content="¡Descarga y Juega Ya! + Contador para Navidad" />
 <meta name="twitter:description" content="Descarga versiones de Minecraft, juega mini juegos en línea y cuenta los días para Navidad con nuestro contador especial. Página simple, ligera y sin enredos." />
 <meta name="twitter:image" content="https://www.healtpix.tk/assets/img/healtpix.jpg" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ 
     
     <style>
       * {
@@ -211,6 +215,13 @@
       <p id="msgLoad" class="msgLoad"></p>
     </div>
     <script>
+        if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/sw.js')
+        .then(reg => console.log('ServiceWorker registrado:', reg.scope))
+        .catch(err => console.error('Error SW:', err));
+    });
+  }
       document.addEventListener("DOMContentLoaded", function () {
         setTimeout(function () {
           const userLanguage = navigator.language || navigator.userLanguage;
