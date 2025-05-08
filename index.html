@@ -166,47 +166,8 @@
         bottom: -80px;
         letter-spacing: 0.15em;
       }
-      #installPrompt { display:none; position:fixed; bottom:20px; left:50%; transform:translateX(-50%); background:#24ecff; color:#000; padding:1em 2em; border-radius:8px; font-family:Consolas,monospace; z-index:1000; }
-    #installPrompt button { margin:0 .5em; padding:.5em 1em; border:none; background:#000; color:#24ecff; cursor:pointer; border-radius:4px; }
     </style>
     <script>
-      // Registro Service Worker
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/sw.js')
-          .then(reg => console.log('SW registrado:', reg.scope))
-          .catch(err => console.error('SW error:', err));
-      });
-    }
-
-    // Detecta PWA
-    function isStandalone() {
-      return window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
-    }
-
-    // PWA Install Prompt
-    let deferredPrompt;
-    const installUI = document.getElementById('installPrompt');
-    window.addEventListener('beforeinstallprompt', e => {
-      e.preventDefault();
-      deferredPrompt = e;
-      if (!isStandalone()) installUI.style.display = 'block';
-    });
-    document.getElementById('btnYes').addEventListener('click', () => {
-      installUI.style.display = 'none';
-      deferredPrompt.prompt();
-      deferredPrompt.userChoice.then(choice => {
-        if (choice.outcome !== 'accepted') {
-          redirigirSegunIdioma();
-        }
-        deferredPrompt = null;
-      });
-    });
-    document.getElementById('btnNo').addEventListener('click', () => {
-      installUI.style.display = 'none';
-      redirigirSegunIdioma();
-    });
-    setTimeout(() => { if (!deferredPrompt) redirigirSegunIdioma(); }, 3000);
     
   document.addEventListener("DOMContentLoaded", function () {
     document.title = "Redirigiendo";
@@ -254,12 +215,6 @@
       <div class="ring"></div>
       <p id="msgLoad" class="msgLoad"></p>
     </div>
-      <!-- Prompt instalación PWA -->
-  <div id="installPrompt">
-    <span>¿Deseas instalar HealtPix como app?</span>
-    <button id="btnYes">Sí</button>
-    <button id="btnNo">No</button>
-  </div>
     <script>
       document.addEventListener("DOMContentLoaded", function () {
         setTimeout(function () {
