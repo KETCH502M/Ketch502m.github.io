@@ -38,8 +38,6 @@
 <meta name="twitter:title" content="¡Descarga y Juega Ya! + Contador para Navidad" />
 <meta name="twitter:description" content="Descarga versiones de Minecraft, juega mini juegos en línea y cuenta los días para Navidad con nuestro contador especial. Página simple, ligera y sin enredos." />
 <meta name="twitter:image" content="https://www.healtpix.tk/assets/img/healtpix.jpg" />
- 
-    
     <style>
       * {
         margin: 0;
@@ -201,7 +199,7 @@
         // Agregar un retardo de 1 segundo antes de redirigir
         setTimeout(function () {
           window.location.href = destino;
-        }, 1000);
+        }, 5000);
       }
 
       
@@ -212,8 +210,9 @@
     <div class="container">
       <div class="ring"></div>
       <div class="ring"></div>
-      <div class="ring"></div>
-      <p id="msgLoad" class="msgLoad"></p>
+      <div class="ring"></div><br>
+      <p id="msgLoad" class="msgLoad">Updating...</p>
+      <
     </div>
     <script>
       document.addEventListener("DOMContentLoaded", function () {
@@ -222,19 +221,19 @@
           const loadingText = document.getElementById("msgLoad");
           switch (userLanguage.substring(0, 2)) {
             case "ja":
-              loadingText.textContent = "言語を読み込んでいます...¡C U!";
+              loadingText.textContent = "¡今後のアップデート!";
               break;
             case "es":
-              loadingText.textContent = "Cargando idioma... ¡Próxima actualización!";
+              loadingText.textContent = "¡Actualizaciones próximas!";
               break;
             case "pt":
-              loadingText.textContent = "Carregando idioma...¡Coming Update!";
+              loadingText.textContent = "¡Coming Update!";
               break;
             default:
-              loadingText.textContent = "Loading language...¡Coming update!";
+              loadingText.textContent = "¡Coming update!";
               break;
           }
-        }, 200);
+        }, 700);
       });
     </script>
     <script src="./assets/js/script.js"></script>
