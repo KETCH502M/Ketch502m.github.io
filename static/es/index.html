@@ -16,6 +16,8 @@
       gtag("config", "G-2MGMW54B4X");
     </script>
     <meta charset="UTF-8" />
+    <link rel="manifest" href="/manifest.json" />
+<meta name="theme-color" content="#24ecff">
     <audio id="successSound" src="/assets/audio/success.mp3"></audio>
     <audio id="successSound" src="/assets/audio/error.mp3"></audio>
     <audio id="successSound" src="/assets/audio/error2.mp3"></audio>
@@ -335,6 +337,52 @@
     showPopupOnce();
     maybeShowInitialNotification();
     startNotificationInterval();
+  });
+</script>
+<div id="installPrompt" style="display:none; position:fixed; bottom:20px; left:50%; transform:translateX(-50%); background:#24ecff; padding:1em; border-radius:8px;">
+  <span>¿Instalar HealtPix?</span>
+  <button id="btnYes">Sí</button>
+  <button id="btnNo">No</button>
+</div>
+
+<script>
+  // Registro Service Worker
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/sw.js')
+      .then(reg => console.log('SW scope:', reg.scope))
+      .catch(err => console.error(err));
+  }
+
+  // Detecta si corre en PWA
+  function isStandalone() {
+    return window.matchMedia('(display-mode: standalone)').matches
+        || window.navigator.standalone === true;
+  }
+
+  // Manejo del beforeinstallprompt
+  let deferredPrompt;
+  window.addEventListener('beforeinstallprompt', e => {
+    e.preventDefault();
+    deferredPrompt = e;
+    if (!isStandalone()) {
+      // Muestra tu prompt o botón de instalación
+      document.getElementById('installPrompt').style.display = 'block';
+    }
+  });
+
+  // Botones Sí/No
+  document.getElementById('btnYes').addEventListener('click', () => {
+    deferredPrompt.prompt();
+    deferredPrompt.userChoice.then(choice => {
+      if (choice.outcome !== 'accepted') {
+        // Si rechaza, sigue en la misma página
+      }
+      deferredPrompt = null;
+    });
+  });
+  document.getElementById('btnNo').addEventListener('click', () => {
+    // Si rechaza, sigue en la misma página
+    document.getElementById('installPrompt').style.display = 'none';
   });
 </script>
   </body>
