@@ -237,12 +237,16 @@
         Math.random() >= 0.5 ? 300000 : 600000
       );
     </script>-->
-    <script>
+<script>
   // Solicitar permiso de notificación si aún no se ha hecho
   function requestNotificationPermission() {
     if ('Notification' in window) {
       Notification.requestPermission().then((permission) => {
         localStorage.setItem('notificationPermission', permission);
+        if (permission === 'granted') {
+          maybeShowInitialNotification(); // Ahora sí se ejecuta tras permiso
+          startNotificationInterval();    // También se inicia aquí
+        }
       });
     }
   }
@@ -310,34 +314,24 @@
     }
   }
 
-  // Mostrar notificación después de delay aleatorio (5 a 30 seg)
+  // Mostrar notificación después de delay aleatorio (1 a 30 seg)
   function maybeShowInitialNotification() {
-    if (localStorage.getItem('notificationPermission') === 'granted') {
-      const delay = Math.floor(Math.random() * (30000 - 5000 + 1)) + 1000;
-      setTimeout(showRandomNotification, delay);
-    }
+    const delay = Math.floor(Math.random() * (30000 - 1000 + 1)) + 1000;
+    console.log("Notificación inicial en " + delay + " ms");
+    setTimeout(showRandomNotification, delay);
   }
 
   // Notificación cada 5 o 10 minutos
   function startNotificationInterval() {
-    setInterval(
-      showRandomNotification,
-      Math.random() >= 0.5 ? 300000 : 600000
-    );
-  }
-
-  // Obtener valor de cookie
-  function getCookie(name) {
-    const match = document.cookie.match("(^|;)\\s*" + name + "\\s*=\\s*([^;]+)");
-    return match ? match.pop() : "";
+    const interval = Math.random() >= 0.5 ? 300000 : 600000;
+    console.log("Notificaciones recurrentes cada " + interval + " ms");
+    setInterval(showRandomNotification, interval);
   }
 
   // Ejecutar funciones al cargar
   document.addEventListener("DOMContentLoaded", () => {
     requestNotificationPermission();
     showPopupOnce();
-    maybeShowInitialNotification();
-    startNotificationInterval();
   });
 </script>
   </body>
