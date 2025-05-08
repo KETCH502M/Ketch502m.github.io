@@ -1,7 +1,7 @@
 {
   "name": "Healtpix",
   "short_name": "HPIX",
-  "start_url": "/static/es/index.html",
+  "start_url": "/static/es/",
   "display": "standalone",
   "scope": "/static/",
   "background_color": "#000000",
