@@ -332,8 +332,11 @@
     ></script>
     <script>
   document.addEventListener("DOMContentLoaded", function () {
-    document.title = "Redirigiendo";
+    setTimeout(function () {
+      document.title = "Redirigiendo";
+    }, 2000); // 2000 ms = 2 segundos
   });
+  
       // Función para obtener el idioma del navegador del usuario
       function obtenerIdiomaUsuario() {
         return navigator.language || navigator.userLanguage;
