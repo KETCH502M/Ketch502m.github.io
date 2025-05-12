@@ -9,11 +9,10 @@ const offlineFallbackPage = "/static/es/offline.html"; // Ruta correcta para el 
 
 // Archivos que deseas precachear (agrega aquí más archivos como imágenes, estilos, etc.)
 const resourcesToCache = [
-    "/static/es/",
     "/static/es/index.html",
     offlineFallbackPage, // Asegúrate de que la ruta sea correcta
-    "/static/es/css/styles.css", // Si tienes un archivo de estilos
-    "/static/es/script.js", // Si tienes un archivo de JavaScript
+    "/static/es/css/", // Si tienes un archivo de estilos
+    "/static/es/js/", // Si tienes un archivo de JavaScript
     "/static/es/icons/icon-192x192.png", // Asegúrate de que estos iconos existan
     "/static/es/icons/icon-512x512.png", // Asegúrate de que estos iconos existan
 ];
