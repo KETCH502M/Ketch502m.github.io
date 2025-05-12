@@ -105,12 +105,10 @@
         >Descarga la versión para Android</a
       >
     </div>--->
-        <div id="dwapp" class="dwapp" style="display: none">
-            <button id="dw-1" style="display: none">Instalar app web</button>
-            <p id="installed-msg" style="display: none">
-                Ya tienes la app instalada
-            </p>
-        </div>
+        <div id="dwapp" class="dwapp" style="display: none;">
+  <button id="dw-1" style="display: none;">Instalar app web</button>
+  <p id="installed-msg" style="display: none;">Ya tienes la app instalada</p>
+</div>
         <script
             type="module"
             src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
@@ -159,48 +157,51 @@
       </ul> -->
         </footer>
         <script>
-            let deferredPrompt;
+  let deferredPrompt;
+  const installDiv = document.getElementById('dwapp');
+  const installButton = document.getElementById('dw-1');
+  const installedMsg = document.getElementById('installed-msg');
 
-            const installDiv = document.getElementById("dwapp");
-            const installButton = document.getElementById("dw-1");
-            const installedMsg = document.getElementById("installed-msg");
+  const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
 
-            // Mostrar mensaje si ya está instalada
-            if (window.matchMedia("(display-mode: standalone)").matches) {
-                installDiv.style.display = "block";
-                installedMsg.style.display = "block";
-            }
+  // Si no está en modo app y ya fue instalado antes
+  if (!isStandalone && localStorage.getItem('pwa_installed') === 'true') {
+    installDiv.style.display = 'block';
+    installedMsg.style.display = 'block';
+  }
 
-            // Mostrar botón si se puede instalar
-            window.addEventListener("beforeinstallprompt", e => {
-                e.preventDefault();
-                deferredPrompt = e;
+  // Si se puede instalar
+  window.addEventListener('beforeinstallprompt', (e) => {
+    if (isStandalone) return; // Si está en modo app, no hagas nada
 
-                installDiv.style.display = "block";
-                installButton.style.display = "block";
+    e.preventDefault();
+    deferredPrompt = e;
 
-                installButton.addEventListener("click", () => {
-                    deferredPrompt.prompt();
-                    deferredPrompt.userChoice.then(choiceResult => {
-                        if (choiceResult.outcome === "accepted") {
-                            console.log("Usuario aceptó la instalación");
-                        } else {
-                            console.log("Usuario rechazó la instalación");
-                        }
-                        deferredPrompt = null;
-                        installButton.style.display = "none";
-                        installedMsg.style.display = "block";
-                    });
-                });
-            });
+    installDiv.style.display = 'block';
+    installButton.style.display = 'block';
 
-            // Evento cuando ya fue instalada
-            window.addEventListener("appinstalled", () => {
-                installButton.style.display = "none";
-                installedMsg.style.display = "block";
-                console.log("La app ha sido instalada.");
-            });
-        </script>
+    installButton.addEventListener('click', () => {
+      deferredPrompt.prompt();
+      deferredPrompt.userChoice.then((choiceResult) => {
+        if (choiceResult.outcome === 'accepted') {
+          console.log('Usuario aceptó la instalación');
+          localStorage.setItem('pwa_installed', 'true');
+          installButton.style.display = 'none';
+          installedMsg.style.display = 'block';
+        } else {
+          console.log('Usuario rechazó la instalación');
+        }
+        deferredPrompt = null;
+      });
+    });
+  });
+
+  // Si se instaló desde otro camino (por ejemplo desde el navegador directamente)
+  window.addEventListener('appinstalled', () => {
+    console.log('App instalada desde otro camino');
+    localStorage.setItem('pwa_installed', 'true');
+  });
+</script>
         <script>
             if ("serviceWorker" in navigator) {
                 navigator.serviceWorker
