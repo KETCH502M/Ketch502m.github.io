@@ -41,7 +41,6 @@
     <div id="overlay" class="overlay"></div>
   </head>
   <body class="bg-img">
-    <button id="install-button" style="display: none;">Instalar Healtpix</button>
     <header>
       <div class="navigation">
         <ul>
@@ -94,6 +93,9 @@
         >Descarga la versión para Android</a
       >
     </div>--->
+    <div id="dwapp" class="dwapp">
+      <button id="dw-1" style="display: none;">Instalar app web</button>
+    </div>
     <script
       type="module"
       src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
@@ -250,7 +252,7 @@ window.addEventListener('beforeinstallprompt', (e) => {
   deferredPrompt = e;
 
   // Muestra el botón de instalación
-  const installButton = document.getElementById('install-button');
+  const installButton = document.getElementById('dw-1');
   installButton.style.display = 'block';
 
   installButton.addEventListener('click', () => {
