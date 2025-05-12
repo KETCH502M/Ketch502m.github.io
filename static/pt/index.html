@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>No disponible temporalmente</title>
+  <style>
+    body {
+      background-color: #121212;
+      color: #fff;
+      font-family: sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      padding: 2rem;
+      text-align: center;
+    }
+    .box {
+      max-width: 600px;
+    }
+    h1 {
+      color: #ff5555;
+      font-size: 2em;
+      margin-bottom: 1rem;
+    }
+    p {
+      font-size: 1.2em;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h1 id="title">No disponible</h1>
+    <p id="message">Esta sección no está disponible temporalmente. Por favor, vuelve más tarde.</p>
+  </div>
+
+  <script>
+    const lang = navigator.language || navigator.userLanguage;
+
+    const mensajes = {
+      en: {
+        title: "Not Available",
+        msg: "This section is temporarily unavailable. Please check back later."
+      },
+      pt: {
+        title: "Indisponível",
+        msg: "Esta seção está temporariamente indisponível. Por favor, volte mais tarde."
+      },
+      ja: {
+        title: "一時的に利用できません",
+        msg: "このセクションは一時的にご利用いただけません。後でもう一度お試しください。"
+      },
+      default: {
+        title: "No disponible",
+        msg: "Esta sección no está disponible temporalmente. Por favor, vuelve más tarde."
+      }
+    };
+
+    const langKey = lang.startsWith('en') ? 'en' :
+                    lang.startsWith('pt') ? 'pt' :
+                    lang.startsWith('ja') ? 'ja' : 'default';
+
+    document.getElementById("title").textContent = mensajes[langKey].title;
+    document.getElementById("message").textContent = mensajes[langKey].msg;
+  </script>
+</body>
+</html>
