@@ -1,0 +1,19 @@
+{
+  "name": "Healtpix | App",
+  "theme_color": "#39beef",
+  "background_color": "#497889",
+  "short_name": "Healtpix",
+  "description": "Healtpix version app",
+  "id": "/?es=1",
+  "shortcuts": [
+    {
+      "name": "Descargas",
+      "url": "https://www.healtpix.tk/static/es/descargas",
+      "description": "Zone of downloads"
+    }
+  ],
+  "categories": [
+    "entertainment",
+    "games"
+  ]
+}
