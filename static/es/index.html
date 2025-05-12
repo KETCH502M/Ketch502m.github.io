@@ -3,6 +3,8 @@
   <head>
      <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#39beef">
     <!-- Google tag (gtag.js) -->
     <script
       async
@@ -361,6 +363,13 @@ window.addEventListener('beforeinstallprompt', (e) => {
     requestNotificationPermission();
     showPopupOnce();
   });
+</script>
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('sw.js')
+      .then(reg => console.log('SW registrado:', reg))
+      .catch(err => console.error('SW error:', err));
+  }
 </script>
   </body>
 </html>
