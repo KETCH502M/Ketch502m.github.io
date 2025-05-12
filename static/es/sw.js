@@ -11,11 +11,11 @@ const offlineFallbackPage = "offline.html";
 const resourcesToCache = [
     "/static/es/",
     "static/es/index.html",
+    "offline.html",
     "/static/es/css/styles.css", // Si tienes un archivo de estilos
     "/script.js", // Si tienes un archivo de JavaScript
     "/icons/icon-192x192.png", // Asegúrate de que estos iconos existan
     "/icons/icon-512x512.png", // Asegúrate de que estos iconos existan
-    offlineFallbackPage
 ];
 
 self.addEventListener("message", event => {
