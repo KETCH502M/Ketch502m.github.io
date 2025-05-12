@@ -95,6 +95,7 @@
     </div>--->
     <div id="dwapp" class="dwapp">
       <button id="dw-1" style="display: none;">Instalar versión PWA</button>
+       <p id="installed-msg" style="display: none;">PWA installed!</p>
     </div>
     <script
       type="module"
@@ -243,21 +244,27 @@
       );
     </script>-->
     <script>
-  let deferredPrompt; 
+  let deferredPrompt;
 
+  const installDiv = document.getElementById('dwapp');
+  const installButton = document.getElementById('dw-1');
+  const installedMsg = document.getElementById('installed-msg');
+
+  // Mostrar mensaje si ya está instalada
+  if (window.matchMedia('(display-mode: standalone)').matches) {
+    installDiv.style.display = 'block';
+    installedMsg.style.display = 'block';
+  }
+
+  // Mostrar botón si se puede instalar
   window.addEventListener('beforeinstallprompt', (e) => {
-    // Previene que el evento sea disparado automáticamente
     e.preventDefault();
-    // Guarda el evento para más tarde
     deferredPrompt = e;
 
-    // Muestra el botón de instalación
-    const installButton = document.getElementById('dw-1');
-    const installDiv = document.getElementById('dwapp');
-    installDiv.style.display = 'block';  // Asegura que el div sea visible antes de la instalación
+    installDiv.style.display = 'block';
+    installButton.style.display = 'block';
 
     installButton.addEventListener('click', () => {
-      // Muestra el diálogo de instalación
       deferredPrompt.prompt();
       deferredPrompt.userChoice.then((choiceResult) => {
         if (choiceResult.outcome === 'accepted') {
@@ -265,27 +272,19 @@
         } else {
           console.log('Usuario rechazó la instalación');
         }
-        deferredPrompt = null; // Resetea el evento
-        // Oculta el div completo una vez que la instalación ha sido aceptada o rechazada
-        installDiv.style.display = 'none';
+        deferredPrompt = null;
+        installButton.style.display = 'none';
+        installedMsg.style.display = 'block';
       });
     });
   });
 
-  // Verifica si la app ya está instalada
+  // Evento cuando ya fue instalada
   window.addEventListener('appinstalled', () => {
-    // Oculta el div completo una vez que la app está instalada
-    const installDiv = document.getElementById('dwapp');
-    installDiv.style.display = 'none';
+    installButton.style.display = 'none';
+    installedMsg.style.display = 'block';
     console.log('La app ha sido instalada.');
   });
-
-  // Verifica si la PWA ya está instalada al cargar la página
-  if (window.matchMedia('(display-mode: standalone)').matches) {
-    // Si está en modo independiente (instalada), oculta el div completo
-    const installDiv = document.getElementById('dwapp');
-    installDiv.style.display = 'none';
-  }
 </script>
 <script>
   // Solicitar permiso de notificación si aún no se ha hecho
