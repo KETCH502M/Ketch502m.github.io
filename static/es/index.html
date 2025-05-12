@@ -157,49 +157,41 @@
       </ul> -->
         </footer>
         <script>
-  let deferredPrompt;
-  const installDiv = document.getElementById('dwapp');
-  const installButton = document.getElementById('dw-1');
-  const installedMsg = document.getElementById('installed-msg');
+  document.addEventListener('DOMContentLoaded', () => {
+    const dwappDiv = document.getElementById('dwapp');
+    const installButton = document.getElementById('dw-1');
 
-  const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+    // Verifica si está en modo standalone (ya instalada)
+    const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
 
-  // Si no está en modo app y ya fue instalado antes
-  if (!isStandalone && localStorage.getItem('pwa_installed') === 'true') {
-    installDiv.style.display = 'block';
-    installedMsg.style.display = 'block';
-  }
+    if (isStandalone) {
+      // Si ya está instalada, oculta completamente el div
+      if (dwappDiv) dwappDiv.remove();
+      return;
+    }
 
-  // Si se puede instalar
-  window.addEventListener('beforeinstallprompt', (e) => {
-    if (isStandalone) return; // Si está en modo app, no hagas nada
+    // Evento para mostrar el botón de instalación
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      const deferredPrompt = e;
 
-    e.preventDefault();
-    deferredPrompt = e;
+      // Mostrar el botón y contenedor
+      if (dwappDiv) dwappDiv.style.display = 'block';
+      if (installButton) installButton.style.display = 'inline-block';
 
-    installDiv.style.display = 'block';
-    installButton.style.display = 'block';
-
-    installButton.addEventListener('click', () => {
-      deferredPrompt.prompt();
-      deferredPrompt.userChoice.then((choiceResult) => {
-        if (choiceResult.outcome === 'accepted') {
-          console.log('Usuario aceptó la instalación');
-          localStorage.setItem('pwa_installed', 'true');
-          installButton.style.display = 'none';
-          installedMsg.style.display = 'block';
-        } else {
-          console.log('Usuario rechazó la instalación');
-        }
-        deferredPrompt = null;
+      installButton.addEventListener('click', () => {
+        deferredPrompt.prompt();
+        deferredPrompt.userChoice.then((choiceResult) => {
+          if (choiceResult.outcome === 'accepted') {
+            console.log('App instalada');
+          } else {
+            console.log('Instalación cancelada');
+          }
+          // Oculta el div después de la acción
+          if (dwappDiv) dwappDiv.remove();
+        });
       });
     });
-  });
-
-  // Si se instaló desde otro camino (por ejemplo desde el navegador directamente)
-  window.addEventListener('appinstalled', () => {
-    console.log('App instalada desde otro camino');
-    localStorage.setItem('pwa_installed', 'true');
   });
 </script>
         <script>
