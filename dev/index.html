@@ -3,32 +3,63 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Prueba de Notificación</title>
+  <title>Inicio de Sesión</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: grid;
+      place-items: center;
+      height: 100vh;
+      margin: 0;
+      background: #f2f2f2;
+    }
+    .login {
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    input {
+      width: 100%;
+      margin: 0.5rem 0;
+      padding: 0.5rem;
+      font-size: 1rem;
+    }
+    button {
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      margin-top: 1rem;
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
-  <h1>Permitir notificaciones</h1>
-  <button onclick="pedirPermiso()">Activar Notificación</button>
+  <div class="login">
+    <h2>Inicia sesión</h2>
+    <input type="password" id="password" placeholder="Contraseña">
+    <button onclick="iniciarSesion()">Entrar</button>
+    <p id="mensaje" style="color:red;"></p>
+  </div>
 
   <script>
-    function pedirPermiso() {
-      if (!('Notification' in window)) {
-        alert('Este navegador no soporta notificaciones.');
-        return;
-      }
+  const passwordCorrecta = "dev";
 
-      Notification.requestPermission().then(function (permiso) {
-        if (permiso === 'granted') {
-          setTimeout(() => {
-            new Notification('Hola Ponso', {
-              body: 'Esta es tu notificación de prueba.',
-              icon: 'icon.png' // opcional, pon un ícono si tienes
-            });
-          }, 5000); // 5 segundos
-        } else {
-          alert('No diste permiso para notificaciones.');
-        }
-      });
+  function iniciarSesion() {
+    const passIngresada = document.getElementById("password").value;
+    const mensaje = document.getElementById("mensaje");
+
+    if (passIngresada === passwordCorrecta) {
+      localStorage.setItem("autenticado", "true"); // Guarda estado
+      mensaje.style.color = "green";
+      mensaje.textContent = "Acceso concedido. Redirigiendo...";
+      setTimeout(() => {
+        window.location.href = "list.html"; // o tu página principal
+      }, 1500);
+    } else {
+      mensaje.style.color = "red";
+      mensaje.textContent = "Contraseña incorrecta.";
     }
-  </script>
+  }
+</script>
 </body>
 </html>

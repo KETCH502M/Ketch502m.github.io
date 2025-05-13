@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <script>
+  if (localStorage.getItem("autenticado") !== "true") {
+    window.location.href = "index.html"; // Redirige si no ha iniciado sesión
+  }
+</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prueba de Notificación</title>
+</head>
+<body>
+  <h1>Permitir notificaciones</h1>
+  <button onclick="pedirPermiso()">Activar Notificación</button>
+
+  <script>
+    function pedirPermiso() {
+      if (!('Notification' in window)) {
+        alert('Este navegador no soporta notificaciones.');
+        return;
+      }
+
+      Notification.requestPermission().then(function (permiso) {
+        if (permiso === 'granted') {
+          setTimeout(() => {
+            new Notification('Hola Ponso', {
+              body: 'Esta es tu notificación de prueba.',
+              icon: 'icon.png' // opcional, pon un ícono si tienes
+            });
+          }, 5000); // 5 segundos
+        } else {
+          alert('No diste permiso para notificaciones.');
+        }
+      });
+    }
+  </script>
+</body>
+</html>
