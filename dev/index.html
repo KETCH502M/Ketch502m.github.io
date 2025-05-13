@@ -37,7 +37,7 @@
   <div class="login">
     <h2>Inicia sesión</h2>
     <input type="password" id="password" placeholder="Contraseña">
-    <button onclick="iniciarSesion()">Entrar</button>
+    <button onclick="iniciarSesion()">Veamos</button>
     <p id="mensaje" style="color:red;"></p>
   </div>
 
@@ -51,13 +51,13 @@
     if (passIngresada === passwordCorrecta) {
       localStorage.setItem("autenticado", "true"); // Guarda estado
       mensaje.style.color = "green";
-      mensaje.textContent = "Acceso concedido. Redirigiendo...";
+      mensaje.textContent = "Muy bien. Redirigiendo...";
       setTimeout(() => {
         window.location.href = "list.html"; // o tu página principal
       }, 1500);
     } else {
       mensaje.style.color = "red";
-      mensaje.textContent = "Contraseña incorrecta.";
+      mensaje.textContent = "Contraseña incorrecta. Otra vez?";
     }
   }
 </script>
