@@ -1,67 +1,65 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Notificaciones de prueba</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-        }
-        button {
-            padding: 10px 15px;
-            font-size: 16px;
-            margin-top: 10px;
-            cursor: pointer;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inicio de Sesión</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: grid;
+      place-items: center;
+      height: 100vh;
+      margin: 0;
+      background: #f2f2f2;
+    }
+    .login {
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    input {
+      width: 100%;
+      margin: 0.5rem 0;
+      padding: 0.5rem;
+      font-size: 1rem;
+    }
+    button {
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      margin-top: 1rem;
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
-    <h1>Prueba de Notificación</h1>
-    <button id="showNotificationBtn">Mostrar Notificación</button>
-    <button id="requestPermissionBtn">Pedir Permiso</button>
+  <div class="login">
+    <h2>Inicia sesión</h2>
+    <input type="password" id="password" placeholder="Contraseña">
+    <button onclick="iniciarSesion()">Entrar</button>
+    <p id="mensaje" style="color:red;"></p>
+  </div>
 
-    <script>
-        // Comprobar si el navegador soporta la API de notificaciones
-        if (!("Notification" in window)) {
-            alert("Este navegador no soporta notificaciones.");
-            console.log("Este navegador no soporta notificaciones.");
-        } else {
-            console.log("Este navegador soporta notificaciones.");
-        }
+  <script>
+  const passwordCorrecta = "dev";
 
-        // Función para pedir permiso de notificaciones
-        function requestNotificationPermission() {
-            console.log("Solicitando permiso...");
-            Notification.requestPermission().then(function(permission) {
-                console.log("Permiso concedido: " + permission);
-                if (permission === "granted") {
-                    alert("Permiso de notificación concedido.");
-                } else {
-                    alert("Permiso de notificación denegado.");
-                }
-            }).catch(function(error) {
-                console.log("Error al solicitar permiso de notificación: ", error);
-            });
-        }
+  function iniciarSesion() {
+    const passIngresada = document.getElementById("password").value;
+    const mensaje = document.getElementById("mensaje");
 
-        // Función para mostrar una notificación
-        function showNotification() {
-            if (Notification.permission === "granted") {
-                console.log("Mostrando notificación...");
-                new Notification("Esta es una notificación de prueba.");
-            } else {
-                console.log("No se puede mostrar la notificación, el permiso no ha sido concedido.");
-                alert("Primero necesitas dar permiso para recibir notificaciones.");
-            }
-        }
-
-        // Asociar el evento de clic en el botón "Pedir Permiso"
-        document.getElementById("requestPermissionBtn").addEventListener("click", requestNotificationPermission);
-
-        // Asociar el evento de clic en el botón "Mostrar Notificación"
-        document.getElementById("showNotificationBtn").addEventListener("click", showNotification);
-    </script>
+    if (passIngresada === passwordCorrecta) {
+      localStorage.setItem("autenticado", "true"); // Guarda estado
+      mensaje.style.color = "green";
+      mensaje.textContent = "Acceso concedido. Redirigiendo...";
+      setTimeout(() => {
+        window.location.href = "list.html"; // o tu página principal
+      }, 1500);
+    } else {
+      mensaje.style.color = "red";
+      mensaje.textContent = "Contraseña incorrecta.";
+    }
+  }
+</script>
 </body>
 </html>
