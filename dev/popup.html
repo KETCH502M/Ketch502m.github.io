@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Lista con Popups</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #f0f0f0;
+      padding: 2rem;
+    }
+    h1 {
+      color: #333;
+    }
+    ul {
+      background: white;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      max-width: 400px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    li {
+      margin: 0.5rem 0;
+    }
+    button {
+      background: none;
+      border: none;
+      color: #0077cc;
+      font-size: 1rem;
+      cursor: pointer;
+      padding: 0;
+    }
+    button:hover {
+      text-decoration: underline;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.5);
+      justify-content: center;
+      align-items: center;
+    }
+    .modal-content {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 0.5rem;
+      width: 90%;
+      max-width: 500px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    }
+    .close {
+      float: right;
+      font-size: 1.2rem;
+      font-weight: bold;
+      cursor: pointer;
+      color: #888;
+    }
+    .close:hover {
+      color: #000;
+    }
+  </style>
+</head>
+<body>
+  <h1>Contenido dinámico</h1>
+  <ul>
+    <li><button onclick="mostrar('popupBuscar')">Buscar</button></li>
+    <li><button onclick="mostrar('popupConfig')">Configuración</button></li>
+    <li><button onclick="mostrar('popupTools')">Herramientas</button></li>
+    <li><button onclick="mostrar('popupStats')">Estadísticas</button></li>
+  </ul>
+
+  <button onclick="cerrarSesion()">Cerrar sesión</button>
+
+  <!-- Popups -->
+  <div id="popupBuscar" class="modal" onclick="cerrarPopup(event)">
+    <div class="modal-content">
+      <span class="close" onclick="cerrar('popupBuscar')">&times;</span>
+      <h2>Búsqueda</h2>
+      <p>Aquí puedes hacer búsquedas sin cambiar de página.</p>
+    </div>
+  </div>
+
+  <div id="popupConfig" class="modal" onclick="cerrarPopup(event)">
+    <div class="modal-content">
+      <span class="close" onclick="cerrar('popupConfig')">&times;</span>
+      <h2>Configuración</h2>
+      <p>Opciones de configuración para tu perfil.</p>
+    </div>
+  </div>
+
+  <div id="popupTools" class="modal" onclick="cerrarPopup(event)">
+    <div class="modal-content">
+      <span class="close" onclick="cerrar('popupTools')">&times;</span>
+      <h2>Herramientas</h2>
+      <p>Herramientas rápidas disponibles.</p>
+    </div>
+  </div>
+
+  <div id="popupStats" class="modal" onclick="cerrarPopup(event)">
+    <div class="modal-content">
+      <span class="close" onclick="cerrar('popupStats')">&times;</span>
+      <h2>Estadísticas</h2>
+      <p>Estadísticas de uso y rendimiento.</p>
+    </div>
+  </div>
+
+  <script>
+    if (localStorage.getItem("autenticado") !== "true") {
+      window.location.href = "index.html";
+    }
+
+    function cerrarSesion() {
+      localStorage.removeItem("autenticado");
+      window.location.href = "index.html";
+    }
+
+    function mostrar(id) {
+      document.getElementById(id).style.display = "flex";
+    }
+
+    function cerrar(id) {
+      document.getElementById(id).style.display = "none";
+    }
+
+    function cerrarPopup(e) {
+      if (e.target.classList.contains("modal")) {
+        e.target.style.display = "none";
+      }
+    }
+  </script>
+</body>
+</html>
