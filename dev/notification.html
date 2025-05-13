@@ -6,33 +6,47 @@
     window.location.href = "index.html"; // Redirige si no ha iniciado sesión
   }
 </script>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Prueba de Notificación</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Notificaciones Directas</title>
 </head>
 <body>
-  <h1>Permitir notificaciones</h1>
-  <button onclick="pedirPermiso()">Activar Notificación</button>
+  <h1>Notificaciones Web</h1>
+
+  <button onclick="pedirPermiso()">Pedir permiso</button>
+  <button onclick="mostrarNotificacion1()">Notificación 1</button>
+  <button onclick="mostrarNotificacion2()">Notificación 2</button>
 
   <script>
     function pedirPermiso() {
-      if (!('Notification' in window)) {
-        alert('Este navegador no soporta notificaciones.');
-        return;
-      }
-
-      Notification.requestPermission().then(function (permiso) {
-        if (permiso === 'granted') {
-          setTimeout(() => {
-            new Notification('Hola Ponso', {
-              body: 'Esta es tu notificación de prueba.',
-              icon: 'icon.png' // opcional, pon un ícono si tienes
-            });
-          }, 5000); // 5 segundos
+      Notification.requestPermission().then(permiso => {
+        if (permiso === "granted") {
+          console.log("[notif] Permiso concedido.");
+          setTimeout(() => mostrarNotificacion1(), 5000);
         } else {
-          alert('No diste permiso para notificaciones.');
+          console.log("[notif] Permiso denegado.");
         }
       });
+    }
+
+    function mostrarNotificacion1() {
+      if (Notification.permission === "granted") {
+        new Notification("Notificación 1", {
+          body: "Esta es la primera notificación",
+          icon: "https://cdn-icons-png.flaticon.com/512/1827/1827279.png",
+          vibrate: [200, 100, 200]
+        });
+      }
+    }
+
+    function mostrarNotificacion2() {
+      if (Notification.permission === "granted") {
+        new Notification("Notificación 2", {
+          body: "Esta es otra notificación más",
+          icon: "https://cdn-icons-png.flaticon.com/512/1828/1828778.png",
+          vibrate: [100, 50, 100]
+        });
+      }
     }
   </script>
 </body>
