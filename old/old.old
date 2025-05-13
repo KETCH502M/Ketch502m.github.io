@@ -1,3 +1,12 @@
+           <!--- <div id="dwapp" class="dwapp">
+      <a
+        id="dw-1"
+        href="#"
+        onclick="redirigirDespuesDeRetraso('/assets/app/app.apk')"
+        >Descarga la versión para Android</a
+      >
+    </div>--->
+   
     <!--<style>
       * {
         margin: 0;
