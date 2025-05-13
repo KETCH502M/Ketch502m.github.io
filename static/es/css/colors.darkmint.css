@@ -1,0 +1,78 @@
+body {
+  background-color: #121212;
+  color: #e0e0e0;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+a {
+  color: #00d1b2;
+  text-decoration: none;
+}
+
+.navigation {
+  background-color: #1f1f1f;
+  box-shadow: 0 0 10px #00d1b2;
+}
+
+.navigation ul {
+  background-color: #1f1f1f;
+}
+
+.navigation ul li a {
+  color: #e0e0e0;
+}
+
+.navigation ul li.active a,
+.navigation ul li:hover a {
+  color: #00d1b2;
+}
+
+.navigation .indicator {
+  background-color: #39beef;
+}
+
+.btn,
+button {
+  background-color: #00d1b2;
+  color: #121212;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.btn:hover,
+button:hover {
+  background-color: #39beef;
+  color: #121212;
+}
+
+#popup {
+  background-color: #1f1f1f;
+  border: 1px solid #00d1b2;
+  color: #e0e0e0;
+}
+
+.overlay {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+footer {
+  background-color: #1a1a1a;
+  color: #ccc;
+  border-top: 1px solid #333;
+}
+
+input[type="text"] {
+  background-color: #1f1f1f;
+  border: 1px solid #00d1b2;
+  color: #e0e0e0;
+  padding: 6px;
+  border-radius: 4px;
+}
+
+.toast {
+  background-color: #333;
+  color: #00d1b2;
+  border-left: 4px solid #39beef;
+}
