@@ -29,7 +29,6 @@ header {
   justify-content: center;
   align-items: center;
   border-radius: 10px;
-  box-shadow: 0 0 10px #39beef, 0 0 20px #39beef;
 }
 
 .navigation ul {
@@ -154,10 +153,10 @@ body {
 .countdown {
   font-family: 'Pacifico', cursive;
   text-align: center;
-  background-color: #dfdfdf;
+  background-color: #2d2d2d;
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  /*box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);*/
   max-width: 400px;
   margin: 0 auto; 
 }
@@ -214,6 +213,6 @@ body {
     max-width: 90%; 
   }
   p{
-    color: rgb(127, 161, 170);
+    color: #008b8b;
   }
 }
