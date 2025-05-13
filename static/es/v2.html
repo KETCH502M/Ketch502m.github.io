@@ -1,226 +1,155 @@
-<!doctype html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="manifest" href="manifest.json" />
-        <meta name="theme-color" content="#39beef" />
-        
-        <!-- Google Analytics -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-2MGMW54B4X"></script>
-        <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag() {
-                dataLayer.push(arguments);
-            }
-            gtag("js", new Date());
-            gtag("config", "G-2MGMW54B4X");
-        </script>
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="#39beef" />
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2MGMW54B4X"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-2MGMW54B4X");
+    </script>
 
-        <meta name="theme-color" content="#24ecff" />
-        
-        <!-- Audio -->
-        <audio id="successSound" src="/assets/audio/success.mp3"></audio>
-        <audio id="errorSound" src="/assets/audio/error.mp3"></audio>
-        <audio id="errorSound2" src="/assets/audio/error2.mp3"></audio>
+    <audio id="successSound" src="/assets/audio/success.mp3"></audio>
+    <audio id="errorSound" src="/assets/audio/error.mp3"></audio>
+    <audio id="error2Sound" src="/assets/audio/error2.mp3"></audio>
+    
+    <link rel="stylesheet" href="./css/s.search.css" />
+    <link rel="stylesheet" href="./css/home.style.css" />
+    <link rel="stylesheet" href="./css/all.min.css" />
+    <link rel="stylesheet" href="./css/es-s.css" />
+    
+    <title>Healtpix - Inicio</title>
+    
+    <div id="popup" class="popup">
+      <h2>Bienvenido</h2>
+      <p>¡Ve que te encuentras, como una versión buena de Minecraft, jeje!</p>
+      <button class="btn" onclick="closePopup()">Cerrar</button>
+    </div>
 
-        <!-- Stylesheets -->
-        <link rel="stylesheet" href="./css/s.search.css" />
-        <link rel="stylesheet" href="./css/home.style.css" />
-        <link rel="stylesheet" href="./css/all.min.css" />
-        <link rel="stylesheet" href="./css/es-s.css" />
-        
-        <title>Healtpix - Inicio</title>
+    <div id="overlay" class="overlay"></div>
+  </head>
+  <body class="bg-img">
+    <header>
+      <div class="navigation">
+        <ul>
+          <li class="list active">
+            <a href="#" onclick="redirigirDespuesDeRetraso('/')">
+              <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
+              <span class="text">Inicio</span>
+            </a>
+          </li>
+          <li class="list">
+            <a href="#" onclick="redirigirDespuesDeRetraso('descargas')">
+              <span class="icon"><ion-icon name="download-outline"></ion-icon></span>
+              <span class="text">Descargas</span>
+            </a>
+          </li>
+          <li id="wgam" class="list">
+            <a href="#" onclick="redirigirDespuesDeRetraso('juegos')">
+              <span class="icon"><ion-icon name="game-controller-outline"></ion-icon></span>
+              <span class="text">Juegos</span>
+            </a>
+          </li>
+          <div class="indicator"></div>
+        </ul>
+      </div>
+    </header>
 
-        <!-- Popup -->
-        <div id="popup" class="popup">
-            <h2>Bienvenido</h2>
-            <p>¡Ve que te encuentras, como una versión buena de Minecraft, jeje!</p>
-            <button class="btn" onclick="closePopup()">Cerrar</button>
-        </div>
-        <div id="overlay" class="overlay"></div>
+    <script src="./js/js.movement.js"></script>
 
-        <style>
-            /* General styles */
-            body {
-                font-family: Arial, sans-serif;
-                margin: 0;
-                padding: 0;
-                background-color: #f0f0f0;
-                color: #333;
-            }
+    <div class="countdown">
+      <p class="timeout">Noche buena en:</p>
+      <section>
+        <p>
+          <span id="days"></span> días <span id="hours"></span> horas
+          <span id="minutes"></span> minutos <span id="seconds"></span> segundos
+        </p>
+      </section>
+      <script src="./js/date_time.js"></script>
+    </div>
 
-            header {
-                background-color: #333;
-                color: white;
-                padding: 10px;
-                text-align: center;
-            }
+    <div id="dwapp" class="dwapp" style="display: none;">
+      <button id="dw-1" style="display: none;">Instalar app web</button>
+      <p id="installed-msg" style="display: none;">Ya tienes la app instalada</p>
+    </div>
 
-            .navigation ul {
-                display: flex;
-                justify-content: space-around;
-                padding: 0;
-                margin: 0;
-                list-style-type: none;
-            }
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
-            .navigation li {
-                text-align: center;
-            }
+    <footer>
+      <form id="codeForm">
+        <label for="codeInput">Introduce un código de 6 dígitos:</label>
+        <input
+          type="text"
+          id="codeInput"
+          name="codeInput"
+          placeholder="000-000"
+          maxlength="7"
+          required
+          title="Por favor, ingresa un código de 6 dígitos."
+        />
+      </form>
 
-            .navigation a {
-                color: white;
-                text-decoration: none;
-                padding: 10px;
-            }
+      <div class="toast" id="toast"></div>
 
-            .navigation .active {
-                background-color: #24ecff;
-            }
+      <br />
+      <a href="info.html" style="color: #7196c0; text-decoration: none; font-weight: bold">Información de la página</a>
+      <script src="./js/code-s.js"></script>
+    </footer>
 
-            .indicator {
-                height: 2px;
-                background-color: #24ecff;
-                width: 100%;
-                margin-top: 10px;
-            }
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const dwappDiv = document.getElementById('dwapp');
+        const installButton = document.getElementById('dw-1');
 
-            .countdown {
-                text-align: center;
-                margin-top: 30px;
-                background-color: white;
-                padding: 20px;
-                border-radius: 8px;
-                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            }
+        // Verifica si está en modo standalone (ya instalada)
+        const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
 
-            /* Mobile responsive styles */
-            @media (max-width: 768px) {
-                .navigation ul {
-                    flex-direction: column;
-                }
+        if (isStandalone) {
+          // Si ya está instalada, oculta completamente el div
+          dwappDiv && dwappDiv.remove();
+          return;
+        }
 
-                .navigation li {
-                    margin: 10px 0;
-                }
+        // Evento para mostrar el botón de instalación
+        window.addEventListener('beforeinstallprompt', (e) => {
+          e.preventDefault();
+          const deferredPrompt = e;
 
-                .countdown p {
-                    font-size: 1.2rem;
-                }
-            }
+          // Mostrar el botón y contenedor
+          dwappDiv && (dwappDiv.style.display = 'block');
+          installButton && (installButton.style.display = 'inline-block');
 
-            @media (max-width: 480px) {
-                header {
-                    font-size: 1.2rem;
-                    padding: 8px;
-                }
+          installButton.addEventListener('click', () => {
+            deferredPrompt.prompt();
+            deferredPrompt.userChoice.then((choiceResult) => {
+              if (choiceResult.outcome === 'accepted') {
+                console.log('App instalada');
+              } else {
+                console.log('Instalación cancelada');
+              }
+              dwappDiv && dwappDiv.remove();
+            });
+          });
+        });
+      });
+    </script>
 
-                .navigation li {
-                    font-size: 0.9rem;
-                }
-
-                .countdown p {
-                    font-size: 1rem;
-                }
-            }
-
-            footer {
-                padding: 20px;
-                text-align: center;
-                background-color: #333;
-                color: white;
-            }
-
-            footer a {
-                color: #24ecff;
-                text-decoration: none;
-                font-weight: bold;
-            }
-
-            footer a:hover {
-                text-decoration: underline;
-            }
-
-            .dwapp {
-                display: none;
-                text-align: center;
-            }
-
-            .dwapp button {
-                background-color: #24ecff;
-                color: white;
-                border: none;
-                padding: 10px 20px;
-                cursor: pointer;
-            }
-
-            .dwapp button:hover {
-                background-color: #1a9cc2;
-            }
-        </style>
-    </head>
-    <body class="bg-img">
-        <header>
-            <div class="navigation">
-                <ul>
-                    <li class="list active">
-                        <a href="#" onclick="redirigirDespuesDeRetraso('/')">
-                            <span class="icon">
-                                <ion-icon name="home-outline"></ion-icon>
-                            </span>
-                            <span class="text">Inicio</span>
-                        </a>
-                    </li>
-                    <li class="list">
-                        <a href="#" onclick="redirigirDespuesDeRetraso('descargas')">
-                            <span class="icon">
-                                <ion-icon name="download-outline"></ion-icon>
-                            </span>
-                            <span class="text">Descargas</span>
-                        </a>
-                    </li>
-                    <li id="wgam" class="list">
-                        <a href="#" onclick="redirigirDespuesDeRetraso('juegos')">
-                            <span class="icon">
-                                <ion-icon name="game-controller-outline"></ion-icon>
-                            </span>
-                            <span class="text">Juegos</span>
-                        </a>
-                    </li>
-                    <div class="indicator"></div>
-                </ul>
-            </div>
-        </header>
-        <script src="./js/js.movement.js"></script>
-        <div class="countdown">
-            <p class="timeout">Noche buena en:</p>
-            <section>
-                <p>
-                    <span id="days"></span> días <span id="hours"></span> horas
-                    <span id="minutes"></span> minutos
-                    <span id="seconds"></span> segundos
-                </p>
-            </section>
-            <script src="./js/date_time.js"></script>
-        </div>
-        <br />
-        <div id="dwapp" class="dwapp" style="display: none;">
-            <button id="dw-1" style="display: none;">Instalar app web</button>
-            <p id="installed-msg" style="display: none;">Ya tienes la app instalada</p>
-        </div>
-        <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-        <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-        
-        <footer>
-            <form id="codeForm">
-                <label for="codeInput">Introduce un código de 6 dígitos:</label>
-                <input type="text" id="codeInput" name="codeInput" placeholder="000-000" maxlength="7" required title="Por favor, ingresa un codigo de 6 dígitos." />
-            </form>
-            <div class="toast" id="toast"></div>
-            <br />
-            <a href="info.html" style="color: #7196c0; text-decoration: none; font-weight: bold">Información de la página</a>
-            <script src="./js/code-s.js"></script>
-        </footer>
-    </body>
+    <script>
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker
+          .register("sw.js")
+          .then(reg => console.log("SW registrado:", reg))
+          .catch(err => console.error("SW error:", err));
+      }
+    </script>
+  </body>
 </html>
