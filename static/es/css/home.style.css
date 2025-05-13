@@ -152,6 +152,7 @@ body {
 }
 
 .countdown {
+  font-family: 'Pacifico', cursive;
   text-align: center;
   background-color: #dfdfdf;
   padding: 20px;
@@ -172,12 +173,12 @@ body {
 }
 
 .countdown span {
+  background: rgba(0, 0, 0, 0.3);
   font-size: 0.7em;
   font-weight: bold;
   padding: 2px;
-  background-color: #1a008d;
-  color: #fff;
-  border-radius: 5px;
+  border-radius: 8px;
+  color: white;
 }
 
 .footer-css footer {
