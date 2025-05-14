@@ -5,64 +5,68 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <style>
-      body {
-        background-color: #fff;
-        /*   background: radial-gradient(at 50% -20%, #908392, #0d060e) fixed; */
-      }
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
+    font-family: sans-serif;
+  }
 
-      #handboy {
-        animation: swing ease-in-out 1.3s infinite alternate;
-        transform-origin: 98% 98%;
-        transform-box: fill-box;
-      }
+  .ccenter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 1rem;
+    box-sizing: border-box;
+  }
 
-      #girllight {
-        animation: swing ease-in-out 1.3s infinite alternate;
-        transform-origin: 0% 97%;
-        transform-box: fill-box;
-      }
+  #container {
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+  }
 
-      #hairgirl {
-        animation: swinghair ease-in-out 1.3s infinite alternate;
-        transform-origin: 60% 0%;
-        transform-box: fill-box;
-      }
+  svg {
+    width: 100%;
+    height: auto;
+  }
 
-      #zero {
-        transform-origin: bottom;
-        transform-box: fill-box;
-      }
-      .ccenter {
-        position: relative;
+  @keyframes swing {
+    0% {
+      transform: rotate(10deg);
+    }
+    100% {
+      transform: rotate(-10deg);
+    }
+  }
 
-      }
+  @keyframes swinghair {
+    0% {
+      transform: rotate(6deg);
+    }
+    100% {
+      transform: rotate(-6deg);
+    }
+  }
 
-      #container {
-        width: 1000px;
-        position: absolute;
-        text-align: center;
-      }
+  #handboy, #girllight {
+    animation: swing ease-in-out 1.3s infinite alternate;
+    transform-origin: 98% 98%;
+    transform-box: fill-box;
+  }
 
-      /*************swing************/
-      @keyframes swing {
-        0% {
-          transform: rotate(10deg);
-        }
-        100% {
-          transform: rotate(-10deg);
-        }
-      }
+  #hairgirl {
+    animation: swinghair ease-in-out 1.3s infinite alternate;
+    transform-origin: 60% 0%;
+    transform-box: fill-box;
+  }
 
-      /*************swing hair************/
-      @keyframes swinghair {
-        0% {
-          transform: rotate(6deg);
-        }
-        100% {
-          transform: rotate(-6deg);
-        }
-      }
-    </style>
+  #zero {
+    transform-origin: bottom;
+    transform-box: fill-box;
+  }
+</style>
     <title>Error 404 - Página no encontrada</title>
   </head>
   <body>
