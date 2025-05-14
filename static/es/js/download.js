@@ -8,7 +8,7 @@ function DownloadFromUrl(fileURL, fileName) {
   }  
 
   var textosCambiantes = [
-    "¡Vale!",
+    "¡1.21.80 disponible!",
     "¡Ultima version!",
     "Una pequeña lista de versiones.",
     "Selecciona tu version favorita."
