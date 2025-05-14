@@ -20,14 +20,10 @@ document
       // Aquí puedes definir tus códigos y las URLs a las que redirigir
       var codes = {
         202412: "/game/pacman",
-        202413: "/game/flappybird",
         111111: "/",
         101010: "activador",
         202403: "juegos",
-        202402: "/old_version/",
         202034: "afinador",
-        101004: "desofuscador",
-        100000: "/gatito",
         // Agrega más códigos y URLs según tus necesidades
       };
 
@@ -50,7 +46,8 @@ document
           window.location.href = codes[code];
         }, 2000); // Redirige después de 2 segundos
       } else {
-        var toast = document.getElementById("toast");
+        //2025changes.var toast >> const toast
+        const toast = document.getElementById("toast");
         toast.innerText = "Código incorrecto";
         toast.classList.add("show");
 
