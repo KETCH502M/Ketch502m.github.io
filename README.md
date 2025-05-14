@@ -19,3 +19,5 @@ Puedes visitar la página en: [www.healtpix.tk](https://www.healtpix.tk/)
 - HTML5 y CSS para la estructura y el estilo.
 - JavaScript para interactividad y funcionalidades adicionales.
 - GitHub Pages como plataforma de alojamiento.
+
+##Se alejan cositas...
