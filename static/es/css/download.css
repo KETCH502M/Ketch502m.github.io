@@ -118,6 +118,18 @@
     padding: 2px;
 }
 
+.footer-css a {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.2s ease-in-out;
+}
+
+.footer-css a:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+
 .search-container {
     margin: 20px auto;
     max-width: 400px;
