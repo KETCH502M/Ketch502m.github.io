@@ -31,7 +31,7 @@ body.bg-img {
   position: sticky;
   top: 0;
   z-index: 1000;
-  border-radius: 0 0 70px 70px;
+  border-radius: 0 0 70px 0px;
 }
 
 .navigation ul {
@@ -236,124 +236,10 @@ footer a:hover {
     <audio id="successSound" src="/assets/audio/success.mp3"></audio>
     <audio id="errorSound" src="/assets/audio/error.mp3"></audio>
     <audio id="errorSound" src="/assets/audio/error2.mp3"></audio>
-    
+    <script src="./js/lang.list.js"></script>
     <script src="./js/js.delay.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title data-text="menuHome">HP</title>
-    <script>
-  // Diccionario con textos por país
-  const textosPorPais = {
-    es: {
-      menuHome: "Inicio",
-      menuDownloads: "Descargas",
-      menuGames: "Juegos",
-      countdownText: "Tiempo para Navidad:",
-      daysText: "días",
-      hoursText: "horas",
-      minutesText: "minutos",
-      secondsText: "segundos",
-      footerInfo: "Información de la página",
-      footerInfoCode: "Introduce un código de 6 dígitos",
-    },
-    en: {
-      menuHome: "Home",
-      menuDownloads: "Downloads",
-      menuGames: "Games",
-      countdownText: "Christmas time in:",
-      daysText: "days",
-      hoursText: "hours",
-      minutesText: "minutes",
-      secondsText: "seconds",
-      footerInfo: "Page Information",
-      footerInfoCode: "Enter a 6-digit code",
-    },
-    pt: {
-      menuHome: "Início",
-      menuDownloads: "Downloads",
-      menuGames: "Jogos",
-      countdownText: "Tempo até o Natal:",
-      daysText: "dias",
-      hoursText: "horas",
-      minutesText: "minutos",
-      secondsText: "segundos",
-      footerInfo: "Informações da página",
-      footerInfoCode: "Digite um código de 6 dígitos",
-    },
-    ja: {
-      menuHome: "ホーム",
-      menuDownloads: "ダウンロード",
-      menuGames: "ゲーム",
-      countdownText: "クリスマスまでの時間：",
-      daysText: "日",
-      hoursText: "時間",
-      minutesText: "分",
-      secondsText: "秒",
-      footerInfo: "ページ情報",
-      footerInfoCode: "6桁のコードを入力してください",
-    },
-  };
-
-  // Diccionario de rutas por clave y por idioma
-  const rutasPorIdioma = {
-    menuHome: {
-      es: "/static/es/v2",
-      en: "/static/es/v2",
-      pt: "/static/es/v2",
-      ja: "/static/es/v2",
-    },
-    menuDownloads: {
-      es: "/static/es/descargas",
-      en: "/static/es/downloads",
-      pt: "/static/es/downloads",
-      ja: "/static/es/downloads",
-    },
-    menuGames: {
-      es: "/static/es/juegos",
-      en: "/static/es/games",
-      pt: "/static/es/jogo",
-      ja: "/static/es/games",
-    },
-  };
-
-  // Función para cambiar los textos según país
-  function cambiarTextos(pais) {
-    const textos = textosPorPais[pais] || textosPorPais.en; // fallback en inglés
-    document.querySelectorAll("[data-text]").forEach(el => {
-      const clave = el.getAttribute("data-text");
-      if (clave && textos[clave]) {
-        el.textContent = textos[clave];
-      }
-    });
-  }
-
-  // Función para redirigir usando el data-text y el idioma seleccionado
-  function redirigirDespuesDeRetraso(elemento) {
-    const clave = elemento.querySelector(".text").getAttribute("data-text");
-    const idioma = localStorage.getItem("paisSeleccionado") || "en";
-
-    if (rutasPorIdioma[clave] && rutasPorIdioma[clave][idioma]) {
-      setTimeout(() => {
-        window.location.href = rutasPorIdioma[clave][idioma];
-      }, 1000); // 1s de retraso
-    } else {
-      console.error(`No hay ruta definida para "${clave}" en "${idioma}"`);
-    }
-  }
-
-  // Espera a que el DOM cargue
-  document.addEventListener("DOMContentLoaded", () => {
-    const selectPais = document.getElementById("selectPais");
-    const paisGuardado = localStorage.getItem("paisSeleccionado") || "en";
-    selectPais.value = paisGuardado;
-    cambiarTextos(paisGuardado);
-
-    selectPais.addEventListener("change", e => {
-      const pais = e.target.value;
-      cambiarTextos(pais);
-      localStorage.setItem("paisSeleccionado", pais);
-    });
-  });
-</script>
     <style>
       /* Selector flotante */
       #selectPais {

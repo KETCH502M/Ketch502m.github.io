@@ -1,4 +1,19 @@
 test
+            <!--<ul class="language">
+        <br/>
+        <li><a href="../es/">Español</a></li>
+        <li><a href="../en/">Inglés</a></li>
+        <li><a href="../ja/">Japonés</a></li>
+        <li><a href="../pt/">Portugués</a></li>
+      </ul> -->
+      
+
+      <!--  <div id="dwapp" class="dwapp" style="display: none;">
+  <button id="dw-1" style="display: none;">instalar app web</button>
+  <p id="installed-msg" style="display: none;">Ya tienes la app instalada</p>
+</div> -->
+
+
            <!--- <div id="dwapp" class="dwapp">
       <a
         id="dw-1"

@@ -21,85 +21,52 @@
         </script>
 
         <meta name="theme-color" content="#24ecff" />
+                <!--AUDIO-->
         <audio id="successSound" src="/assets/audio/success.mp3"></audio>
         <audio id="successSound" src="/assets/audio/error.mp3"></audio>
         <audio id="successSound" src="/assets/audio/error2.mp3"></audio>
-        <link rel="stylesheet" href="./css/s.search.css" />
+                <!--JS-->
         <script src="./js/js.delay.js"></script>
-        <!--<link rel="stylesheet" href="https://cdn.healtpix.tk/css/home.style.css" />-->
+        <script src="./js/lang.list.js"></script>
+                <!--CSS-->
+         <link rel="stylesheet" href="./css/s.search.css" />
         <link rel="stylesheet" href="./css/home.style.css" />
         <link rel="stylesheet" href="./css/all.min.css" />
         <link rel="stylesheet" href="./css/es-s.css" />
-        <style>
-          #v2-web {
-  background: linear-gradient(135deg, #00c6ff, #0072ff);
-  color: white;
-  padding: 10px 18px;
-  border: none;
-  border-radius: 12px;
-  font-size: 16px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-}
-
-#v2-web:hover {
-  transform: scale(1.05);
-  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
-}
-
-#v2-web:active {
-  transform: scale(0.98);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-}
-        </style>
-        <title>Healtpix - Inicio</title>
-        <div id="popup" class="popup">
-            <h2>Hola</h2>
-            <p>
-                ¡Ve que te encuentras, como una version buena de Minecraft,
-                jeje!
-            </p>
-            <button class="btn" onclick="closePopup()">Cerrar</button>
-        </div>
-
+        <link rel="stylesheet" href="./css/btn.v2.css" />
+        <title data-text="titleText">HP - Inicio</title>
         <div id="overlay" class="overlay"></div>
     </head>
-    <body class="bg-img">
+    <body>
         <header>
             <div class="navigation">
                 <ul>
                     <li class="list active">
-                        <a href="#" onclick="redirigirDespuesDeRetraso('/')">
+                        <a href="#" onclick="redirigirDespuesDeRetraso(this)">
                             <span class="icon">
                                 <ion-icon name="home-outline"></ion-icon>
                             </span>
-                            <span class="text">Inicio</span>
+                            <span class="text" data-text="menuHome">Inicio</span>
                         </a>
                     </li>
                     <li class="list">
-                        <a
-                            href="#"
-                            onclick="redirigirDespuesDeRetraso('descargas')"
-                        >
-                            <span class="icon">
-                                <ion-icon name="download-outline"></ion-icon>
+                        <a href="#" onclick="redirigirDespuesDeRetraso(this)">
+                            <span class="icon"><ion-icon name="download-outline"></ion-icon>
                             </span>
-                            <span class="text">Descargas</span>
+                            <span class="text" data-text="menuDownloads">Descargas</span>
                         </a>
                     </li>
                     <li id="wgam" class="list">
                         <a
                             href="#"
-                            onclick="redirigirDespuesDeRetraso('juegos')"
+                            onclick="redirigirDespuesDeRetraso(this)"
                         >
                             <span class="icon">
                                 <ion-icon
                                     name="game-controller-outline"
                                 ></ion-icon>
                             </span>
-                            <span class="text">Juegos</span>
+                            <span class="text" data-text="menuGames">Juegos</span>
                         </a>
                     </li>
                     <div class="indicator"></div>
@@ -108,118 +75,50 @@
         </header>
         <script src="./js/js.movement.js"></script>
         <div class="countdown">
-            <p class="timeout">Navidad en:</p>
+            <p class="timeout" data-text="countdownText">Navidad en:</p>
             <section>
                 <p>
-                    <span id="days"></span> días <span id="hours"></span> horas
-                    <span id="minutes"></span> minutos
-                    <span id="seconds"></span> segundos
+                    <span id="days"></span> <span
+                    data-text="daysText">dias</span>  <span id="hours"></span>
+                    <span data-text="hoursText">hours</span>
+                    <span id="minutes"></span> <span
+                    data-text="minutesText">minutes</span>
+                    <span id="seconds"></span> <span
+                    data-text="secondsText">seconds</span>
                 </p>
             </section>
             <script src="./js/date_time.js"></script>
         </div>
         <br />
         <br />
-
-      <!--  <div id="dwapp" class="dwapp" style="display: none;">
-  <button id="dw-1" style="display: none;">instalar app web</button>
-  <p id="installed-msg" style="display: none;">Ya tienes la app instalada</p>
-</div> -->
       <div id="dwapp" class="dwapp">
-  <button id="v2-web" onclick="location.href='v2'">¡WEB V2 disponible!</button>
+  <button id="v2-web" onclick="location.href='v2'" data-text="textPwa">¡Instala
+  la versión PWA!</button>
 </div>
-        <script
-            type="module"
-            src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
-        ></script>
-        <script
-            nomodule
-            src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
-        ></script>
         <footer>
             <form id="codeForm">
-                <label for="codeInput"
-                    >Introduce un
-                    <span class="tooltip"
-                        >código<span class="tooltiptext"
-                            >¡Solo código numerico!</span
-                        ></span
-                    >
-                    de 6 dígitos:</label
-                >
-                <input
-                    type="text"
-                    id="codeInput"
-                    name="codeInput"
-                    placeholder="000-000"
-                    maxlength="7"
-                    required
-                    title="Por favor, ingresa un codigo de 6 dígitos."
-                />
-                <!--<button type="submit">Enviar</button>-->
+                <label for="codeInput" data-text="footerInfoCode">Introduce un
+                    <span class="tooltip">código<span class="tooltiptext">¡Solo código numerico!</span></span> de 6 dígitos:</label>
+                <input type="text" id="codeInput" name="codeInput"
+                placeholder="000-000" maxlength="7" required title="Por favor,
+                ingresa un codigo de 6 dígitos."/>
             </form>
 
             <div class="toast" id="toast"></div>
-            <br />
-            <a
-                href="info.html"
-                style="color: #7196c0; text-decoration: none; font-weight: bold"
-                >Información de la página</a
-            >
-            <script src="./js/code-s.js"></script>
-            <!--<ul class="language">
-        <br/>
-        <li><a href="../es/">Español</a></li>
-        <li><a href="../en/">Inglés</a></li>
-        <li><a href="../ja/">Japonés</a></li>
-        <li><a href="../pt/">Portugués</a></li>
-      </ul> -->
+            <br>
+            <a href="info.html" style="color: #7196c0; text-decoration: none;
+            font-weight: bold" data-text="footerInfo">Información de la página</a>
+            <select id="selectPais" aria-label="Select country language">
+      <option value="es">ES</option>
+      <option value="en">EN</option>
+      <option value="pt">PT</option>
+      <option value="ja">JA</option>
+    </select>
         </footer>
-        <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const dwappDiv = document.getElementById('dwapp');
-    const installButton = document.getElementById('dw-1');
-
-    // Verifica si está en modo standalone (ya instalada)
-    const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
-
-    if (isStandalone) {
-      // Si ya está instalada, oculta completamente el div
-      if (dwappDiv) dwappDiv.remove();
-      return;
-    }
-
-    // Evento para mostrar el botón de instalación
-    window.addEventListener('beforeinstallprompt', (e) => {
-      e.preventDefault();
-      const deferredPrompt = e;
-
-      // Mostrar el botón y contenedor
-      if (dwappDiv) dwappDiv.style.display = 'block';
-      if (installButton) installButton.style.display = 'inline-block';
-
-      installButton.addEventListener('click', () => {
-        deferredPrompt.prompt();
-        deferredPrompt.userChoice.then((choiceResult) => {
-          if (choiceResult.outcome === 'accepted') {
-            console.log('App instalada');
-          } else {
-            console.log('Instalación cancelada');
-          }
-          // Oculta el div después de la acción
-          if (dwappDiv) dwappDiv.remove();
-        });
-      });
-    });
-  });
-</script>
-        <script>
-            if ("serviceWorker" in navigator) {
-                navigator.serviceWorker
-                    .register("sw.js")
-                    .then(reg => console.log("SW registrado:", reg))
-                    .catch(err => console.error("SW error:", err));
-            }
-        </script>
+        <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+        ></script>
+        <script src="./js/code-s.js"></script>
+        <script src="./js/hide.pwa.js"></script>
+        <script src="./js/log.pwa.js"></script>
     </body>
 </html>

@@ -226,13 +226,13 @@
             destino = "/static/es/"; // Redirigir a la página en español
             break;
           case idioma.startsWith("en"):
-            destino = "/static/en/"; // Redirigir a la página en inglés
+            destino = "/static/es/"; // Redirigir a la página en inglés
             break;
           case idioma.startsWith("ja"):
-            destino = "/static/en/"; // Redirigir a la página en japonés
+            destino = "/static/es/"; // Redirigir a la página en japonés
             break;
           case idioma.startsWith("pt"):
-            destino = "/static/en/"; // Redirigir a la página en portugués
+            destino = "/static/es/"; // Redirigir a la página en portugués
             break;
           default:
             destino = "/static/es/"; // Redirigir a inglés por defecto si no se reconoce el idioma
@@ -253,7 +253,7 @@
       <div class="ring"></div>
       <div class="ring"></div>
       <div class="ring"></div><br>
-      <p id="msgLoad" class="msgLoad">Updating...</p>
+      <p id="msgLoad" class="msgLoad">1 Update...</p>
     </div>
     <script>
       document.addEventListener("DOMContentLoaded", function () {
@@ -265,13 +265,13 @@
               loadingText.textContent = "¡今後のアップデート!";
               break;
             case "es":
-              loadingText.textContent = "¡Preparando!";
+              loadingText.textContent = "¡Cargando!";
               break;
             case "pt":
-              loadingText.textContent = "¡Coming Update! :/";
+              loadingText.textContent = "¡Carregando! :/";
               break;
             default:
-              loadingText.textContent = "¡Coming update!";
+              loadingText.textContent = "¡Loading!";
               break;
           }
         }, 600);
