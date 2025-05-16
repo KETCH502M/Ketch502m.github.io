@@ -1,6 +1,6 @@
   document.addEventListener('DOMContentLoaded', () => {
     const dwappDiv = document.getElementById('dwapp');
-    const installButton = document.getElementById('dw-1');
+    const installButton = document.getElementById('pwa-inst');
 
     // Verifica si está en modo standalone (ya instalada)
     const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;

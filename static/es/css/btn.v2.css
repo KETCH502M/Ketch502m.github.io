@@ -23,6 +23,30 @@
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }
 
+#pwa-inst {
+    background: linear-gradient(135deg, #011c3f, #0071af);
+    color: white;
+    padding: 10px 18px;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition:
+        transform 0.2s,
+        box-shadow 0.2s;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+#pwa-inst:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
+}
+
+#pwa-inst:active {
+    transform: scale(0.98);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
 
 #selectPais {
         position: fixed;
