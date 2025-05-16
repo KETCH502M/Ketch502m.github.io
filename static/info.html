@@ -4,169 +4,57 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Información - Página de Funcionalidades</title>
-    <link rel="stylesheet" href="./css/info.c.css" />
-    <style>
-      body {
-        font-family: 'Arial', sans-serif;
-        line-height: 1.6;
-        margin: 0;
-        padding: 0;
-        background-color: #f4f4f4;
-        color: #333;
-      }
-      header {
-        background-color: #333;
-        color: white;
-        text-align: center;
-        padding: 15px;
-      }
-      header h1 {
-        margin: 0;
-        font-size: 1.8rem;
-      }
-      .content {
-        padding: 20px;
-        max-width: 100%;
-        margin: 0 auto;
-        background-color: white;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        border-radius: 8px;
-      }
-      .content ul {
-        list-style-type: none;
-        padding-left: 0;
-      }
-      .content li {
-        padding: 10px 0;
-        font-size: 1.1em;
-        margin-bottom: 10px;
-      }
-      .tooltip {
-        position: relative;
-        display: inline-block;
-        cursor: pointer;
-        color: #007bff;
-        text-decoration: underline;
-      }
-      .tooltip .tooltiptext {
-        visibility: hidden;
-        width: 160px;
-        background-color: black;
-        color: #fff;
-        text-align: center;
-        border-radius: 5px;
-        padding: 5px;
-        position: absolute;
-        z-index: 1;
-        bottom: 100%;
-        left: 50%;
-        margin-left: -80px;
-        opacity: 0;
-        transition: opacity 0.3s;
-      }
-      .tooltip:hover .tooltiptext {
-        visibility: visible;
-        opacity: 1;
-      }
-      .foot1 {
-        background-color: #333;
-        color: white;
-        text-align: center;
-        padding: 10px;
-        margin-top: 20px;
-      }
-      footer a {
-        color: #fff;
-        text-decoration: none;
-        margin: 0 10px;
-      }
-      footer a:hover {
-        text-decoration: underline;
-      }
-      /* Responsive styles */
-      @media (max-width: 768px) {
-        header h1 {
-          font-size: 1.6rem;
-        }
-        .content {
-          padding: 15px;
-        }
-        .content li {
-          font-size: 1em;
-        }
-        footer a {
-          display: block;
-          margin: 5px 0;
-        }
-      }
-      @media (max-width: 480px) {
-        header h1 {
-          font-size: 1.4rem;
-        }
-        .content {
-          padding: 10px;
-        }
-        .content li {
-          font-size: 0.9em;
-        }
-      }
-    </style>
+    <title data-text="textInfoTitle">Información - Página de Funcionalidades</title>
+    <link rel="stylesheet" href="./css/info.css" />
+    <script src="./js/lang.list.js"></script>
+    <script src="./js/lang.logic.js"></script>
+    
   </head>
   <body>
     <header>
-      <h1>¿Qué Hace Esta Página?</h1>
+      <h1 data-text="textH1">¿Qué Hace Esta Página?</h1>
     </header>
     <div class="content">
-      <p>Esta página está diseñada para ofrecerte algunas funcionalidades, como:</p>
+      <p data-text="intro">Esta página está diseñada para ofrecerte algunas funcionalidades, como:</p>
       <ul>
-        <li>
+        <li data-text="function1">
           Información sobre el tiempo o los días restantes para diciembre.
         </li>
-        <li>Una zona de descargas.</li>
-        <li>
+        <li data-text="function2">Una zona de descargas.</li>
+        <li data-text="function3">
           Juegos sencillos en offline, como Pacman y un juego 2D (solo funcional en PC).
         </li>
         <li>
-          Una versión para Android, 
-          <span class="tooltip">
-            Importante
-            <span class="tooltiptext">App no disponible temporalmente</span>
-          </span>.
-        </li>
+  <span data-text="function4">Una versión para Android,</span>
+  <span class="tooltip">
+    <span data-text="tooltip1">Importante</span>
+    <span class="tooltiptext" data-text="tooltip2">App no disponible temporalmente</span>
+  </span>.
+</li>
         <li>
-          Opciones ocultas que pueden ser encontradas mediante un 
-          <span class="tooltip">
-            código
-            <span class="tooltiptext">Por ejemplo: 202034</span>
-          </span>.
-        </li>
+  <span data-text="function5">
+    Opciones ocultas que pueden ser encontradas mediante un
+  </span>
+  <span class="tooltip">
+    <span data-text="tooltip3">código</span>
+    <span class="tooltiptext" data-text="tooltip4">Por ejemplo: 202034</span>
+  </span>.
+</li>
       </ul>
-      <p>¡Explora y disfruta de todas nuestras funciones!</p>
       <p id="ipCliente"></p>
     </div>
     <div class="foot1">
       <footer>
-        <a href="https://docs.healtpix.tk/docs">Lee la wiki</a> |
-        <a href="/changes">Cambios importantes de la página 2025</a>
+        <a href="https://docs.healtpix.tk/docs" data-text="textWiki">Lee la wiki</a> |
+        <a href="/changes" data-text="textChanges">Cambios importantes de la página 2025</a>
       </footer>
     </div>
-
-    <script>
-      // Obtener la IP del cliente
-      fetch("https://api.ipify.org?format=json")
-        .then((response) => response.json())
-        .then((data) => {
-          document.getElementById("ipCliente").textContent =
-            "Tu dirección IP " +
-            data.ip +
-            " se recopila para evitar ataques. Lo lamento.";
-        })
-        .catch((error) => {
-          console.error("Hubo un problema al obtener la dirección IP:", error);
-          document.getElementById("ipCliente").textContent =
-            "No se pudo obtener la dirección IP.";
-        });
-    </script>
+    <!--<select id="selectPais" aria-label="Select country language">
+      <option value="es">ES</option>
+      <option value="en">EN</option>
+      <option value="pt">PT</option>
+      <option value="ja">JA</option>
+    </select>-->
+    <script src="./js/get.ip.js"></script>
   </body>
 </html>

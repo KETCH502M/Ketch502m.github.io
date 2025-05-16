@@ -1,124 +1,122 @@
-  // Diccionario con textos por país
-  const textosPorPais = {
-    es: {
-      titleText: "HP - Inicio",
-      menuHome: "Inicio",
-      menuDownloads: "Descargas",
-      menuGames: "Juegos",
-      countdownText: "Tiempo para Navidad:",
-      daysTxt: "días",
-      hoursText: "horas",
-      minutesText: "minutos",
-      secondsText: "segundos",
-      textV2Web: "¡WEB V2 disponible!",
-      textPwa: "¡Instala la version PWA!",
-      footerInfo: "Información de la página",
-      footerInfoCode: "Introduce un código de 6 dígitos",
-    },
-    en: {
-      titleText: "HP - Home",
-      menuHome: "Home",
-      menuDownloads: "Downloads",
-      menuGames: "Games",
-      countdownText: "Christmas time in:",
-      daysText: "days",
-      hoursText: "hours",
-      minutesText: "minutes",
-      secondsText: "seconds",
-      footerInfo: "Page Information",
-      textV2Web: "WEB V2 available",
-      textPwa: "Install the PWA version!",
-      footerInfoCode: "Enter a 6-digit code",
-    },
-    pt: {
-      titleText: "HP - Inicio",
-      menuHome: "Início",
-      menuDownloads: "Downloads",
-      menuGames: "Jogos",
-      countdownText: "Tempo até o Natal:",
-      daysText: "dias",
-      hoursText: "horas",
-      minutesText: "minutos",
-      secondsText: "segundos",
-      footerInfo: "Informações da página",
-      textV2Web: "WEB V2 disponível!",
-      textPwa: "Instale a versão PWA!",
-      footerInfoCode: "Digite um código de 6 dígitos",
-    },
-    ja: {
-      titleText: "HP - Home",
-      menuHome: "ホーム",
-      menuDownloads: "ダウンロード",
-      menuGames: "ゲーム",
-      countdownText: "クリスマスまでの時間：",
-      daysText: "日",
-      hoursText: "時間",
-      minutesText: "分",
-      secondsText: "秒",
-      textV2Web:"WEB V2が利用可能です！",
-      textPwa: "PWAバージョンをインストールしよう！",
-      footerInfo: "ページ情報",
-      footerInfoCode: "6桁のコードを入力してください",
-    },
-  };
-
-  // Diccionario de rutas por clave y por idioma
-  const rutasPorIdioma = {
-    menuHome: {
-      es: "/",
-      en: "/",
-      pt: "/",
-      ja: "/",
-    },
-    menuDownloads: {
-      es: "./descargas",
-      en: "./downloads",
-      pt: "./downloads",
-      ja: "./downloads",
-    },
-    menuGames: {
-      es: "./juegos",
-      en: "./games",
-      pt: "./jogo",
-      ja: "./games",
-    },
-  };
-
-  // Función para cambiar los textos según país
-  function cambiarTextos(pais) {
-    const textos = textosPorPais[pais] || textosPorPais.en; // fallback en inglés
-    document.querySelectorAll("[data-text]").forEach(el => {
-      const clave = el.getAttribute("data-text");
-      if (clave && textos[clave]) {
-        el.textContent = textos[clave];
-      }
-    });
+const langList = {
+  en: {
+  helpTitle: "Guide: How to Download Your Version",
+  step1Title: "Step 1: Go to the downloads section",
+  step1Desc: "From the menu or the main button, enter the section where the list of available versions is.",
+  step2Title: "Step 2: Choose your version",
+  step2Desc: "Find the version you want to download. You can filter it by version if needed, in case there are many in the list. Then click it.",
+  step3Title: "Step 3: Mediafire",
+  step3Desc: "After that, you'll be redirected to Mediafire where you'll click download, select where to save, and you're done.",
+  footerText: "If you still don't understand... well, I can't help you any further.",
+  searchPlaceholder: "Search your version...",
+  textHelpLink: "Don't know how?",
+  menuHome: "Home",
+  textSearch: "Search",
+  textDownloadTitle: "Downloads",
+  textInfoTitle: "Information - Features Page",
+  textH1: "What Does This Page Do?",
+  intro: "This page is designed to offer you some features, such as:",
+  function1: "Information about the weather or the remaining days until December.",
+  function2: "A downloads area.",
+  function3: "Simple offline games, like Pacman and a 2D game (only works on PC).",
+  function4: "An Android version,",
+  tooltip1: "Very important",
+  tooltip2: "App temporarily unavailable",
+  function5: "Hidden options that can be found through a",
+  tooltip3: "Example",
+  tooltip4: "For example: 202034",
+  final: "Explore and enjoy all our features!",
+  textWiki: "Read the wiki",
+  textChanges: "Important page changes 2025"
+},
+  es: {
+    helpTitle: "Guía: Cómo Descargar Tu Versión",
+    step1Title: "Paso 1: Estar a la sección de descargas",
+    step1Desc: "Desde el menú o el botón principal, entra a la sección donde está la lista de versiones disponibles.",
+    step2Title: "Paso 2: Elige tu versión",
+    step2Desc: "Busca tu versión que quieres descargar. Puedes filtrarlo por la versión si es necesario, en caso de haber muchas en la lista. Y púlsalo.",
+    step3Title: "Paso 3: Mediafire",
+    step3Desc: "Después de lo anterior, te redireccionará a mediafire donde pulsarás descargar, seleccionas donde guardarlo y listo.",
+    footerText: "En caso de no entender aún... pues ya no te puedo ayudar más.",
+    searchPlaceholder: "Busca tu version...",
+    textHelpLink: "¿No sabes cómo?",
+    menuHome: "Inicio",
+    textSearch: "Buscar",
+    textDownloadTitle: "Descargas",
+    textInfoTitle: "Información - Página de Funcionalidades",
+    textH1: "¿Qué Hace Esta Página?",
+    intro: "Esta página está diseñada para ofrecerte algunas functionalidades, como:",
+    function1: "Información sobre el tiempo o los días restantes para diciembre.",
+    function2: "Una zona de descargas.",
+    function3: "Juegos sencillos en offline, como Pacman y un juego 2D (solo functional en PC).",
+    function4: "Una versión para Android,",
+    tooltip1: "Importantisimo",
+    tooltip2: "App no disponible temporalmente",
+    function5: "Opciones ocultas que pueden ser encontradas mediante un",
+    tooltip3:"Ejemplo",
+    tooltip4: "Por ejemplo: 202034",
+    final: "¡Explora y disfruta de todas nuestras functiones!",
+    textWiki: "Lee la wiki",
+    textChanges: "Cambios importantes de la página 2025"
+  },
+  pt: {
+  helpTitle: "Guia: Como Baixar Sua Versão",
+  step1Title: "Passo 1: Vá para a seção de downloads",
+  step1Desc: "No menu ou no botão principal, entre na seção onde está a lista de versões disponíveis.",
+  step2Title: "Passo 2: Escolha sua versão",
+  step2Desc: "Procure a versão que deseja baixar. Você pode filtrar pela versão, se necessário, caso haja muitas na lista. Depois clique nela.",
+  step3Title: "Passo 3: Mediafire",
+  step3Desc: "Depois disso, você será redirecionado ao Mediafire onde clicará em baixar, seleciona onde salvar e pronto.",
+  footerText: "Se ainda não entender... bem, não posso ajudar mais.",
+  searchPlaceholder: "Procure sua versão...",
+  textHelpLink: "Não sabe como?",
+  menuHome: "Início",
+  textSearch: "Search",
+  textDownloadTitle: "Downloads",
+  textInfoTitle: "Informações - Página de Funcionalidades",
+  textH1: "O que esta página faz?",
+  intro: "Esta página foi criada para te oferecer algumas funcionalidades, como:",
+  function1: "Informações sobre o clima ou os dias restantes até dezembro.",
+  function2: "Uma área de downloads.",
+  function3: "Jogos simples offline, como Pacman e um jogo 2D (funciona apenas em PC).",
+  function4: "Uma versão para Android,",
+  tooltip1: "Muito importante",
+  tooltip2: "App temporariamente indisponível",
+  function5: "Opções ocultas que podem ser encontradas através de um",
+  tooltip3: "Exemplo",
+  tooltip4: "Por exemplo: 202034",
+  final: "Explore e aproveite todas as nossas funções!",
+  textWiki: "Leia a wiki",
+  textChanges: "Mudanças importantes da página 2025"
+},
+  ja: {
+    helpTitle: "ガイド: バージョンのダウンロード方法",
+    step1Title: "ステップ1: ダウンロードセクションに行く",
+    step1Desc: "メニューまたはメインボタンから、利用可能なバージョンのリストがあるセクションに入ります。",
+    step2Title: "ステップ2: バージョンを選択する",
+    step2Desc: "ダウンロードしたいバージョンを探します。リストが多い場合はバージョンで絞り込むこともできます。クリックしてください。",
+    step3Title: "ステップ3: Mediafire",
+    step3Desc: "その後、Mediafireにリダイレクトされ、「ダウンロード」をクリックし、保存場所を選択して完了です。",
+    footerText: "まだわからない場合は…もうお手伝いできません。",
+    searchPlaceholder: "バージョンを検索...",
+    textHelpLink: "やり方がわからない？",
+    menuHome: "ホーム",
+    textSearch: "検索",
+    textDownloadTitle: "ダウンロード",
+    textInfoTitle: "情報 - 機能ページ",
+    textH1: "このページは何をするの？",
+    intro: "このページはいくつかの機能を提供するために設計されています：",
+    function1: "12月までの時間や残り日数に関する情報。",
+    function2: "ダウンロードセクション。",
+    function3: "Pacmanや2Dゲームなどの簡単なオフラインゲーム（PCのみ対応）。",
+    function4: "Android版、",
+    tooltip1: "重要",
+    tooltip2: "アプリは一時的に利用できません",
+    function5: "コードを使って見つけられる隠しオプション。",
+    tooltip3:"例",
+    tooltip4: "例：202034",
+    final: "ぜひすべての機能を楽しんでください！",
+    textWiki: "ウィキを読む",
+    textChanges: "2025年の重要なページ変更"
   }
-
-  // Función para redirigir usando el data-text y el idioma seleccionado
-  function redirigirDespuesDeRetraso(elemento) {
-    const clave = elemento.querySelector(".text").getAttribute("data-text");
-    const idioma = localStorage.getItem("paisSeleccionado") || "en";
-
-    if (rutasPorIdioma[clave] && rutasPorIdioma[clave][idioma]) {
-      setTimeout(() => {
-        window.location.href = rutasPorIdioma[clave][idioma];
-      }, 1000); // 1s de retraso
-    } else {
-      console.error(`No hay ruta definida para "${clave}" en "${idioma}"`);
-    }
-  }
-
-  // Espera a que el DOM cargue
-  document.addEventListener("DOMContentLoaded", () => {
-    const selectPais = document.getElementById("selectPais");
-    const paisGuardado = localStorage.getItem("paisSeleccionado") || "en";
-    selectPais.value = paisGuardado;
-    cambiarTextos(paisGuardado);
-
-    selectPais.addEventListener("change", e => {
-      const pais = e.target.value;
-      cambiarTextos(pais);
-      localStorage.setItem("paisSeleccionado", pais);
-    });
-  });
+};
