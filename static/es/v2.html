@@ -11,7 +11,8 @@
 
 /* Body con imagen fija y tipografía decente */
 body.bg-img {
-  background: url('/assets/images/bg.jpg') no-repeat center center fixed;
+  background: #222327;
+ /* background: url('/assets/images/bg.jpg') no-repeat center center fixed;*/
   background-size: cover;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: #222;
@@ -24,7 +25,7 @@ body.bg-img {
 
 /* Navegación con flex centrado y estilo moderno */
 .navigation {
-  background: rgba(255, 255, 255, 0.95);
+  background: #222327;
   box-shadow: 0 2px 6px rgba(0,0,0,0.12);
   padding: 0.8rem 1rem;
   position: sticky;
@@ -52,11 +53,11 @@ body.bg-img {
   transform: scale(1.1);
 }
 
-.navigation ul li.list.active {
+/*.navigation ul li.list.active {
   background-color: #007bff;
   box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3);
 }
-
+*/
 .navigation ul li.list.active a {
   color: #fff !important;
   font-weight: 700;
@@ -81,17 +82,17 @@ body.bg-img {
 
 .navigation ul li.list:hover a,
 .navigation ul li.list.active a:hover {
-  color: #0056b3;
+  color: #0956b3;
 }
 
 .navigation ul li.list:hover a .icon ion-icon,
 .navigation ul li.list.active a .icon ion-icon {
-  color: #007bff;
+  color: #007b9;
 }
 
 /* Countdown */
 .countdown {
-  background: rgba(255, 255, 255, 0.9);
+  background: gray;
   margin: 2rem auto;
   padding: 1.5rem 2rem;
   border-radius: 16px;
@@ -109,15 +110,21 @@ body.bg-img {
   font-size: 1.4rem;
 }
 
-.countdown section p span {
+/*.countdown section p span {
   margin: 0 0.5rem;
   font-weight: 700;
   font-size: 1.3rem;
+}*/
+.countdown span {
+  font-size: 1.3em;
+  font-weight: 700;
+  padding: -1px;
+  color: white;
 }
 
 /* Footer */
 footer {
-  background: rgba(255, 255, 255, 0.95);
+  background: #222327;
   padding: 1.2rem 2rem;
   text-align: center;
   font-size: 1rem;
@@ -410,7 +417,7 @@ footer a:hover {
     </div>
 
     <footer>
-      <form id="codeForm">
+    <!--  <form id="codeForm">
         <label for="codeInput" data-text="footerInfoCode">Enter a 6-digit code:</label>
         <input
           type="text"
@@ -421,7 +428,7 @@ footer a:hover {
           required
           title="Please enter a 6-digit code."
         />
-      </form>
+      </form> -->
 
       <div class="toast" id="toast" data-text="footerInfoCodeToast"></div>
       <br />
