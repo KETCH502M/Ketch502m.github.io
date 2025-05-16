@@ -223,22 +223,22 @@
         var destino = "";
         switch (true) {
           case idioma.startsWith("es"):
-            destino = "/static/es/"; // Redirigir a la página en español
+            destino = "/static/"; // Redirigir a la página en español
             break;
           case idioma.startsWith("en"):
-            destino = "/static/es/"; // Redirigir a la página en inglés
+            destino = "/static/"; // Redirigir a la página en inglés
             break;
           case idioma.startsWith("ja"):
-            destino = "/static/es/"; // Redirigir a la página en japonés
+            destino = "/static/"; // Redirigir a la página en japonés
             break;
           case idioma.startsWith("pt"):
-            destino = "/static/es/"; // Redirigir a la página en portugués
+            destino = "/static/"; // Redirigir a la página en portugués
             break;
           default:
-            destino = "/static/es/"; // Redirigir a inglés por defecto si no se reconoce el idioma
+            destino = "/static/"; // Redirigir a inglés por defecto si no se reconoce el idioma
         }
 
-        // Agregar un retardo de 5 segundo antes de redirigir
+        // Agregar un retardo de 3 segundo antes de redirigir
         setTimeout(function () {
           window.location.href = destino;
         }, 3000);
