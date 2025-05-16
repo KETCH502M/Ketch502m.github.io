@@ -17,11 +17,12 @@
     }
   });
     // Traducción de placeholders
+    /*
   document.querySelectorAll("[data-placeholder]").forEach(el => {
-    const key = el.getAttribute("data-placeholder");
-    const translation = key && textos[key];
-    if (translation) el.setAttribute("placeholder", translation);
-  });
+    const key2 = el.getAttribute("data-placeholder");
+    const translation2 = key2 && textos[key2];
+    if (translation2) el.setAttribute("placeholder", translation2);
+  }); */
   
 }
   
