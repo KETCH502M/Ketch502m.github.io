@@ -72,15 +72,15 @@
     },
     menuDownloads: {
       es: "./descargas",
-      en: "./downloads",
-      pt: "./downloads",
-      ja: "./downloads",
+      en: "./descargas",
+      pt: "./descargas",
+      ja: "./descargas",
     },
     menuGames: {
       es: "./juegos",
-      en: "./games",
-      pt: "./jogo",
-      ja: "./games",
+      en: "./juegos",
+      pt: "./juegos",
+      ja: "./juegos",
     },
   };
 
