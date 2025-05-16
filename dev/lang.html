@@ -227,16 +227,17 @@ footer a:hover {
     </style>
     <meta charset="UTF-8" />
     <audio id="successSound" src="/assets/audio/success.mp3"></audio>
-    <audio id="errorSound" src="/assets/audio/error.mp3"></audio>
-    <audio id="errorSound" src="/assets/audio/error2.mp3"></audio>
-    
+    <audio id="errorSound1" src="/assets/audio/error.mp3"></audio>
+    <audio id="errorSound2" src="/assets/audio/error2.mp3"></audio>
+    <link rel="stylesheet" href="./css/s.search.css" />
     <script src="./js/js.delay.js"></script>
+    <link rel="stylesheet" href="./css/all.min.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title data-text="menuHome">HP</title>
+    <title>Home</title>
     <script>
       // Diccionario con textos por país
       const textosPorPais = {
-        es: {
+        mx: {
           menuHome: "Inicio",
           menuDownloads: "Descargas",
           menuGames: "Juegos",
@@ -246,7 +247,17 @@ footer a:hover {
           minutesText: "minutos",
           secondsText: "segundos",
           footerInfo: "Información de la página",
-          footerInfoCode: "Introduce un código",
+        },
+        ar: {
+          menuHome: "Inicio",
+          menuDownloads: "Descargas",
+          menuGames: "Juegos",
+          countdownText: "Tiempo para Navidad:",
+          daysText: "días",
+          hoursText: "horas",
+          minutesText: "minutos",
+          secondsText: "segundos",
+          footerInfo: "Información de la página",
         },
         en: {
           menuHome: "Home",
@@ -372,7 +383,7 @@ footer a:hover {
 
     <footer>
       <form id="codeForm">
-        <label for="codeInput" data-text="footerInfoCode">Enter a 6-digit code:</label>
+        <label for="codeInput" data-text="footerInfo">Enter a 6-digit code:</label>
         <input
           type="text"
           id="codeInput"
@@ -384,7 +395,7 @@ footer a:hover {
         />
       </form>
 
-      <div class="toast" id="toast" data-text="footerInfoCodeToast"></div>
+      <div class="toast" id="toast"></div>
       <br />
       <a
         href="info.html"
@@ -396,7 +407,8 @@ footer a:hover {
 
     <!-- Selector país -->
     <select id="selectPais" aria-label="Select country language">
-      <option value="es">ES</option>
+      <option value="mx">MX</option>
+      <option value="ar">AR</option>
       <option value="en">EN</option>
       <option value="pt">PT</option>
       <option value="ja">JA</option>
