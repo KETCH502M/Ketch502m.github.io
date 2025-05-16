@@ -5,16 +5,16 @@ importScripts(
 );
 
 const CACHE = "pwabuilder-page";
-const offlineFallbackPage = "/static/es/offline.html"; // Ruta correcta para el offline.html
+const offlineFallbackPage = "/static/offline.html"; // Ruta correcta para el offline.html
 
 // Archivos que deseas precachear (agrega aquí más archivos como imágenes, estilos, etc.)
 const resourcesToCache = [
-    "/static/es/index.html",
+    "/static/index.html",
     offlineFallbackPage, // Asegúrate de que la ruta sea correcta
-    "/static/es/css/", // Si tienes un archivo de estilos
-    "/static/es/js/", // Si tienes un archivo de JavaScript
-    "/static/es/icons/icon-192x192.png", // Asegúrate de que estos iconos existan
-    "/static/es/icons/icon-512x512.png", // Asegúrate de que estos iconos existan
+    "/static/css/", // Si tienes un archivo de estilos
+    "/static/js/", // Si tienes un archivo de JavaScript
+    "/static/icons/icon-192x192.png", // Asegúrate de que estos iconos existan
+    "/static/icons/icon-512x512.png", // Asegúrate de que estos iconos existan
 ];
 
 self.addEventListener("message", event => {

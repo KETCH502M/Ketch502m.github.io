@@ -4,7 +4,7 @@
     "background_color": "#497889",
     "short_name": "Healtpix",
     "description": "Healtpix version app",
-    "start_url": "/static/es/",
+    "start_url": "/static/",
     "display": "standalone",
     "orientation": "portrait",
     "icons": [
@@ -19,7 +19,7 @@
             "type": "image/png"
         }
     ],
-    "id": "/static/es/",
+    "id": "/static/",
     "shortcuts": [
         {
             "name": "Descargas",
