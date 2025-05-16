@@ -7,7 +7,9 @@
 
     if (isStandalone) {
       // Si ya está instalada, oculta completamente el div
-      if (dwappDiv) dwappDiv.remove(), installButton.remove();
+      if (dwappDiv) 
+      dwappDiv.remove();
+      installButton.remove();
       return;
     }
 
