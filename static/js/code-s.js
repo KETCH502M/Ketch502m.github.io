@@ -13,63 +13,41 @@ document
   .addEventListener("submit", function (event) {
     event.preventDefault();
 
-    var code = document.getElementById("codeInput").value.replace(/\D/g, ""); // Elimina caracteres no numéricos
+    const toast = document.getElementById("toast");
+    const idioma = localStorage.getItem("paisSeleccionado") || "en";
+    const textos = textosPorPais[idioma] || textosPorPais.en;
 
-    // Verifica que el código tenga exactamente 6 dígitos
+    const code = document.getElementById("codeInput").value.replace(/\D/g, "");
+
+    const codes = {
+      202412: "/game/pacman",
+      111111: "/",
+      101010: "activador",
+      202403: "juegos",
+      202034: "afinador",
+    };
+
     if (code.length === 6) {
-      // Aquí puedes definir tus códigos y las URLs a las que redirigir
-      var codes = {
-        202412: "/game/pacman",
-        111111: "/",
-        101010: "activador",
-        202403: "juegos",
-        202034: "afinador",
-        // Agrega más códigos y URLs según tus necesidades
-      };
-
-      // Verifica si el código ingresado está en la lista
       if (codes[code]) {
-        var toast = document.getElementById("toast");
-        toast.innerText = "¡Muy bien!";
+        toast.innerText = textos.toastGood || "¡Muy bien!";
         toast.classList.add("show");
 
-        // Reproduce el sonido de éxito
-        var successSound = new Audio("/assets/audio/success.mp3");
-        successSound.play();
+        new Audio("/assets/audio/success.mp3").play();
 
-        setTimeout(function () {
-          toast.classList.remove("show");
-        }, 2000); // Oculta el mensaje después de 1 segundo
-
-        // Redirige después de mostrar el "Toast"
-        setTimeout(function () {
-          window.location.href = codes[code];
-        }, 2000); // Redirige después de 2 segundos
+        setTimeout(() => toast.classList.remove("show"), 2000);
+        setTimeout(() => (window.location.href = codes[code]), 2000);
       } else {
-        //2025changes.var toast >> const toast
-        const toast = document.getElementById("toast");
-        toast.innerText = "Código incorrecto";
+        toast.innerText = textos.toastBad || "Código incorrecto";
         toast.classList.add("show");
 
-        // Reproduce el sonido de error
-        var errorSound = new Audio("/assets/audio/error.mp3");
-        errorSound.play();
-
-        setTimeout(function () {
-          toast.classList.remove("show");
-        }, 2500); // Oculta el mensaje después de 2 segundos
+        new Audio("/assets/audio/error.mp3").play();
+        setTimeout(() => toast.classList.remove("show"), 2500);
       }
     } else {
-      var toast = document.getElementById("toast");
-      toast.innerText = "El código debe tener exactamente 6 dígitos";
+      toast.innerText = textos.toastLength || "El código debe tener exactamente 6 dígitos";
       toast.classList.add("show");
 
-      // Reproduce el sonido de error
-      var errorSound2 = new Audio("/assets/audio/error2.mp3");
-      errorSound2.play();
-
-      setTimeout(function () {
-        toast.classList.remove("show");
-      }, 2500); // Oculta el mensaje después de 2 segundos
+      new Audio("/assets/audio/error2.mp3").play();
+      setTimeout(() => toast.classList.remove("show"), 2500);
     }
   });

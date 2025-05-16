@@ -14,6 +14,9 @@
       textPwa: "¡Instala la version PWA!",
       footerInfo: "Información de la página",
       footerInfoCode: "Introduce un código de 6 dígitos",
+      toastGood: "¡Muy bien!",
+      toastBad: "Código incorrecto",
+      toastLength: "El código debe tener exactamente 6 dígitos",
     },
     en: {
       titleText: "HP - Home",
@@ -29,6 +32,9 @@
       textV2Web: "WEB V2 available",
       textPwa: "Install the PWA version!",
       footerInfoCode: "Enter a 6-digit code",
+      toastGood: "Well done!",
+      toastBad: "Incorrect code",
+      toastLength: "The code must be exactly 6 digits",
     },
     pt: {
       titleText: "HP - Inicio",
@@ -44,6 +50,9 @@
       textV2Web: "WEB V2 disponível!",
       textPwa: "Instale a versão PWA!",
       footerInfoCode: "Digite um código de 6 dígitos",
+      toastGood: "Muito bem!",
+      toastBad: "Código incorreto",
+      toastLength: "O código deve ter exatamente 6 dígitos",
     },
     ja: {
       titleText: "HP - Home",
@@ -59,6 +68,9 @@
       textPwa: "PWAバージョンをインストールしよう！",
       footerInfo: "ページ情報",
       footerInfoCode: "6桁のコードを入力してください",
+      toastGood: "よくできました！",
+      toastBad: "無効なコードです",
+      toastLength: "コードは6桁でなければなりません",
     },
   };
 
