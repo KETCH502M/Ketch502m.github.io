@@ -1,5 +1,13 @@
 const langList = {
   en: {
+  changesTitle: "Changelog",
+  change1: "New Minecraft versions were added in the downloads section.",
+  change2: "A small visual and functional improvement was made in the downloads section.",
+  change3: "Now when sharing links from the site on social media, a preview of the content is shown (Open Graph / Metadata).",
+  change4: "The English (en), Portuguese (pt), and Japanese (ja) versions have been temporarily disabled for update and maintenance tasks...",
+  change5: "A temporary directory (/dev/) was added to preview possible improvements (may be unstable).",
+  change6: "The web v2 is ready, and all versions—English (/en/), Portuguese (/pt/), and Japanese (/ja/)—might be merged.",
+  change7: "The new version includes a language selector for better accessibility.",
   helpTitle: "Guide: How to Download Your Version",
   step1Title: "Step 1: Go to the downloads section",
   step1Desc: "From the menu or the main button, enter the section where the list of available versions is.",
@@ -30,6 +38,14 @@ const langList = {
   textChanges: "Important page changes 2025"
 },
   es: {
+    changesTitle: "Registro de Cambios",
+    change1: "Se agregaron nuevas versiones de Minecraft en la sección de descargas.",
+    change2: "Se realizó una pequeña mejora visual y funcional en la sección de descargas.",
+    change3: "Ahora al compartir enlaces del sitio en redes sociales, se muestra una vista previa del contenido (Open Graph / Metadata).",
+    change4: "Se han desactivado temporalmente las versiones en inglés (en), portugués (pt) y japonés (ja) para tareas de actualización y mantenimiento...",
+    change5: "Se ha agregado temporalmente un directorio (/dev/) para visualizar las posibles mejoras (Pueden fallar).",
+    change6: "Está lista la v2 de la web, posiblemente se unirán todas las versiones, inglés (/en/), portugués (/pt/) y japonés (/ja/).",
+    change7: "La nueva versión cuenta con un selector de idioma, para una mejor accesibilidad.",
     helpTitle: "Guía: Cómo Descargar Tu Versión",
     step1Title: "Paso 1: Estar a la sección de descargas",
     step1Desc: "Desde el menú o el botón principal, entra a la sección donde está la lista de versiones disponibles.",
@@ -60,6 +76,14 @@ const langList = {
     textChanges: "Cambios importantes de la página 2025"
   },
   pt: {
+  changesTitle: "Registro de Alterações",
+  change1: "Novas versões do Minecraft foram adicionadas na seção de downloads.",
+  change2: "Uma pequena melhoria visual e funcional foi feita na seção de downloads.",
+  change3: "Agora, ao compartilhar links do site nas redes sociais, uma prévia do conteúdo é exibida (Open Graph / Metadata).",
+  change4: "As versões em inglês (en), português (pt) e japonês (ja) foram temporariamente desativadas para atualização e manutenção...",
+  change5: "Um diretório temporário (/dev/) foi adicionado para visualizar possíveis melhorias (podem falhar).",
+  change6: "A versão v2 do site está pronta, e todas as versões — inglês (/en/), português (/pt/) e japonês (/ja/) — podem ser unificadas.",
+  change7: "A nova versão possui um seletor de idioma para melhor acessibilidade.",
   helpTitle: "Guia: Como Baixar Sua Versão",
   step1Title: "Passo 1: Vá para a seção de downloads",
   step1Desc: "No menu ou no botão principal, entre na seção onde está a lista de versões disponíveis.",
@@ -90,6 +114,14 @@ const langList = {
   textChanges: "Mudanças importantes da página 2025"
 },
   ja: {
+    changesTitle: "変更履歴",
+  change1: "ダウンロードセクションに新しいMinecraftバージョンが追加されました。",
+  change2: "ダウンロードセクションに小さな視覚的・機能的な改善が加えられました。",
+  change3: "SNSでサイトのリンクを共有すると、コンテンツのプレビューが表示されるようになりました（Open Graph / メタデータ）。",
+  change4: "英語（en）、ポルトガル語（pt）、日本語（ja）バージョンは、更新とメンテナンスのため一時的に無効になっています...",
+  change5: "改善を確認するために一時的なディレクトリ（/dev/）が追加されました（不安定な場合があります）。",
+  change6: "Web v2 が準備完了。英語（/en/）、ポルトガル語（/pt/）、日本語（/ja/）のすべてのバージョンが統合される可能性があります。",
+  change7: "新しいバージョンには、より良いアクセシビリティのための言語セレクターが追加されました。",
     helpTitle: "ガイド: バージョンのダウンロード方法",
     step1Title: "ステップ1: ダウンロードセクションに行く",
     step1Desc: "メニューまたはメインボタンから、利用可能なバージョンのリストがあるセクションに入ります。",
