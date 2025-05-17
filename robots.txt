@@ -6,10 +6,8 @@ User-agent: FriendlyBot
 Disallow: /secret/
 
 User-agent: *
-Disallow: /assets/
 Disallow: /error/
 Disallow: /old/
-Disallow: /static/
 Disallow: /dev/
 Disallow: /game/
 Disallow: /screenshots/
