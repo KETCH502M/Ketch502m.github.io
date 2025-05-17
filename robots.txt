@@ -1,4 +1,16 @@
-User-agent: *
-Allow: /
+# Welcome, curious crawler. You've found the secret.
+# But there’s nothing to see here... or is there?
+# Hint: 418, I'm a teapot.
+# Robots have dreams too. This isn’t one of them.
+User-agent: FriendlyBot
+Disallow: /secret/
 
+User-agent: *
+Disallow: /assets/
+Disallow: /error/
+Disallow: /old/
+Disallow: /static/
+Disallow: /dev/
+Disallow: /game/
+Disallow: /screenshots/
 Sitemap: https://healtpix.tk/sitemap.txt
