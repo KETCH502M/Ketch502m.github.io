@@ -13,4 +13,4 @@ Disallow: /static/
 Disallow: /dev/
 Disallow: /game/
 Disallow: /screenshots/
-Sitemap: https://healtpix.tk/sitemap.txt
+Sitemap: https://healtpix.tk/sitemap.xml
