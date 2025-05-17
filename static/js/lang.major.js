@@ -83,16 +83,16 @@
       ja: "/",
     },
     menuDownloads: {
-      es: "./descargas",
-      en: "./descargas",
-      pt: "./descargas",
-      ja: "./descargas",
+      es: "./downloads",
+      en: "./downloads",
+      pt: "./downloads",
+      ja: "./downloads",
     },
     menuGames: {
-      es: "./juegos",
-      en: "./juegos",
-      pt: "./juegos",
-      ja: "./juegos",
+      es: "./games",
+      en: "./games",
+      pt: "./games",
+      ja: "./games",
     },
   };
 
