@@ -96,7 +96,7 @@
     },
   };
 
-  // Función para cambiar los textos según país
+  // Función para cambiar los textos según pais
   function cambiarTextos(pais) {
     const textos = textosPorPais[pais] || textosPorPais.en; // fallback en inglés
     document.querySelectorAll("[data-text]").forEach(el => {
