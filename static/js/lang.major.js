@@ -98,7 +98,7 @@
 
   // Función para cambiar los textos según pais
   function cambiarTextos(pais) {
-    const textos = textosPorPais[pais] || textosPorPais.es; // fallback en inglés
+    const textos = textosPorPais[pais] || textosPorPais.en; // fallback en inglés
     document.querySelectorAll("[data-text]").forEach(el => {
       const clave = el.getAttribute("data-text");
       if (clave && textos[clave]) {

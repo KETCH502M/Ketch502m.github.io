@@ -1,6 +1,6 @@
 // Función para cambiar los textos según país
 function cambiarTextos(pais) {
-  const textos = langList[pais] || langList.es;
+  const textos = langList[pais] || langList.en;
 
   document.querySelectorAll("[data-text]").forEach(el => {
     const key = el.getAttribute("data-text");
