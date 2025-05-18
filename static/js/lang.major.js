@@ -61,7 +61,7 @@
       menuGames: "ゲーム",
       countdownText: "クリスマスまでの時間：",
       daysText: "日",
-      hoursText: "時間",
+      hoursText: "時分",
       minutesText: "分",
       secondsText: "秒",
       textV2Web:"WEB V2が利用可能です！",

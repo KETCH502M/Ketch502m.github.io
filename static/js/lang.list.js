@@ -138,7 +138,7 @@ const langList = {
     textHelpFooter: "まだわからない場合は…もうお手伝いできません。",
     searchPlaceholder: "バージョンを検索...",
     textHelpLink: "やり方がわからない？",
-    menuB: "戻る",
+    menuB: "帰る",
     menuHome: "ホーム",
     menuGames: "ゲーム",
     textSearch: "検索",
