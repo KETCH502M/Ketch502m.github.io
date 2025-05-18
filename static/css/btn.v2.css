@@ -48,6 +48,7 @@
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }
 
+/*
 #selectPais {
         position: fixed;
         bottom: 63px;
@@ -59,4 +60,38 @@
         font-size: 1rem;
         background: white;
         color: black;
-      }
+      }*/
+      
+#selectPais {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+  position: fixed;
+  bottom: 3px;
+  right: 10px;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  background-color: #1e293b; /* mismo tono del footer (oscuro) */
+  color: #f8fafc; /* texto claro */
+  border: 1px solid #334155; /* sutil, casi invisible */
+  
+  padding: 8px 36px 8px 12px;
+  border-radius: 6px;
+  font-size: 17px;
+  font-weight: 500;
+  cursor: pointer;
+
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg fill="%23f8fafc" height="20" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 14px;
+  transition: all 0.2s ease-in-out;
+  max-width: 160px;
+}
+
+/* Enfocado */
+#selectPais:focus {
+  border-color: #3b82f6;
+  outline: none;
+  box-shadow: none;
+}
