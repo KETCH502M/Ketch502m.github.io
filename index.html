@@ -253,7 +253,7 @@
       <div class="ring"></div>
       <div class="ring"></div>
       <div class="ring"></div><br>
-      <p id="msgLoad" class="msgLoad">Loading v2...</p>
+      <p id="msgLoad"></p>
     </div>
     <script>
       document.addEventListener("DOMContentLoaded", function () {
@@ -262,19 +262,19 @@
           const loadingText = document.getElementById("msgLoad");
           switch (userLanguage.substring(0, 2)) {
             case "ja":
-              loadingText.textContent = "¡今後のアップデート!";
+              loadingText.textContent = "¡ちょっと待って!";
               break;
             case "es":
-              loadingText.textContent = "¡Cargando!";
+              loadingText.textContent = "¡Espera un momento!";
               break;
             case "pt":
-              loadingText.textContent = "¡Carregando! :/";
+              loadingText.textContent = "¡Espere um momento!";
               break;
             default:
-              loadingText.textContent = "¡Loading!";
+              loadingText.textContent = "¡Wait a moment!";
               break;
           }
-        }, 600);
+        }, 50);
       });
     </script>
     <script src="./assets/js/script.js"></script>
