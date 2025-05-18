@@ -80,7 +80,6 @@
         <audio id="successSound" src="/assets/audio/error2.mp3"></audio>
                 <!--JS-->
         <script src="./js/js.delay.js"></script>
-        <script src="./js/lang.major.js"></script>
                 <!--CSS-->
          <link rel="stylesheet" href="./css/s.search.css" />
         <link rel="stylesheet" href="./css/home.style.css" />
@@ -94,32 +93,32 @@
         <header>
             <div class="navigation">
                 <ul>
-                    <li class="list active">
-                        <a href="#" onclick="redirigirDespuesDeRetraso(this)">
+                    <!-- <li id="link-home" class="list active">
+                        <a href="#" onclick="redirigirDespuesDeRetraso()">
                             <span class="icon">
                                 <ion-icon name="home-outline"></ion-icon>
                             </span>
-                            <span class="text" data-text="menuHome">Inicio</span>
+                            <span class="text" data-text="menuHome"></span>
                         </a>
-                    </li>
-                    <li class="list">
-                        <a href="#" onclick="redirigirDespuesDeRetraso(this)">
+                    </li> -->
+                    <li class="list active">
+                        <a href="#" onclick="redirigirDespuesDeRetraso()">
                             <span class="icon"><ion-icon name="download-outline"></ion-icon>
                             </span>
-                            <span class="text" data-text="menuDownloads">Descargas</span>
+                            <span class="text" data-text="menuDownloads"></span>
                         </a>
                     </li>
                     <li id="wgam" class="list">
                         <a
                             href="#"
-                            onclick="redirigirDespuesDeRetraso(this)"
+                            onclick="redirigirDespuesDeRetraso()"
                         >
                             <span class="icon">
                                 <ion-icon
                                     name="game-controller-outline"
                                 ></ion-icon>
                             </span>
-                            <span class="text" data-text="menuGames">Juegos</span>
+                            <span class="text" data-text="menuGames"></span>
                         </a>
                     </li>
                     <div class="indicator"></div>
@@ -128,15 +127,15 @@
         </header>
         <script src="./js/js.movement.js"></script>
         <div class="countdown">
-            <p class="timeout" data-text="countdownText">Navidad en:</p>
+            <p class="timeout" data-text="countdownText"></p>
             <section>
                 <p>
-                    <span id="days"></span> <span data-text="daysText">dias</span>  <span id="hours"></span>
-                    <span data-text="hoursText">hours</span>
+                    <span id="days"></span> <span data-text="daysText"></span>  <span id="hours"></span>
+                    <span data-text="hoursText"></span>
                     <span id="minutes"></span> <span
-                    data-text="minutesText">minutes</span>
+                    data-text="minutesText"></span>
                     <span id="seconds"></span> <span
-                    data-text="secondsText">seconds</span>
+                    data-text="secondsText"></span>
                 </p>
             </section>
             <script src="./js/date_time.js"></script>
@@ -149,8 +148,9 @@
 </div>
         <footer>
             <form id="codeForm">
-                <label for="codeInput" data-text="footerInfoCode">Introduce un
-                    <span class="tooltip">código<span class="tooltiptext">¡Solo código numerico!</span></span> de 6 dígitos:</label>
+                <label for="codeInput" data-text="footerInfoCode">JavaScript is
+                required<span class="tooltip"><span class="tooltiptext">¡Solo código
+                numerico!</span></span></label>
                 <input type="text" id="codeInput" name="codeInput"
                 placeholder="000-000" maxlength="7" required title="Por favor,
                 ingresa un codigo de 6 dígitos."/>
@@ -159,14 +159,15 @@
             <div class="toast" id="toast"></div>
             <br>
             <a href="info.html" style="color: #7196c0; text-decoration: none;
-            font-weight: bold" data-text="footerInfo">Información de la página</a>
+            font-weight: bold" data-text="footerInfo"></a>
             <select id="selectPais" aria-label="Select country language">
-      <option value="es">ES</option>
       <option value="en">EN</option>
+      <option value="es">ES</option>
       <option value="pt">PT</option>
       <option value="ja">JA</option>
     </select>
         </footer>
+        <script src="./js/lang.major.js"></script>
         <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
         ></script>
         <script src="./js/code-s.js"></script>

@@ -7,7 +7,6 @@ document.addEventListener("DOMContentLoaded", () => {
         window.matchMedia("(display-mode: standalone)").matches ||
         window.navigator.standalone;
 
-
     if (isStandalone) {
         // Si ya está instalada, oculta completamente el div
         if (dwappDiv) {

@@ -6,7 +6,7 @@
       menuDownloads: "Descargas",
       menuGames: "Juegos",
       countdownText: "Tiempo para Navidad:",
-      daysTxt: "días",
+      daysText: "días",
       hoursText: "horas",
       minutesText: "minutos",
       secondsText: "segundos",

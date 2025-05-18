@@ -7,6 +7,9 @@
   box-sizing: border-box;
   font-family: sans-serif;
 }
+.mode-pwa #link-home {
+  display: none;
+}
 
 :root {
   --crl: #222327;
@@ -116,10 +119,10 @@ header {
   background: transparent;
   border-top-left-radius: 20px;
 }
-
+/*
 .navigation ul li:nth-child(1).active ~ .indicator {
   transform: translateX(calc(70px * 0));
-}
+}*/
 
 .navigation ul li:nth-child(2).active ~ .indicator {
   transform: translateX(calc(70px * 1));
@@ -128,7 +131,7 @@ header {
 .navigation ul li:nth-child(3).active ~ .indicator {
   transform: translateX(calc(70px * 2));
 }
-
+/*
 .navigation ul li:nth-child(4).active ~ .indicator {
   transform: translateX(calc(70px * 3));
 }
@@ -143,7 +146,7 @@ header {
 
 .navigation ul li:nth-child(5).active ~ .indicator {
   transform: translateX(calc(70px * 6));
-}
+}*/
 
 body {
   background: var(--crl);
