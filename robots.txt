@@ -1,7 +1,7 @@
 # Welcome, curious crawler. You've found the secret.
 # But there’s nothing to see here... or is there?
 # Hint: 418, I'm a teapot.
-# Robots have dreams too. This isn’t one of them.
+# Robots have dreams too. This isn’t one of them. Good job.
 User-agent: FriendlyBot
 Disallow: /secret/
 
