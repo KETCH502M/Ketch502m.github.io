@@ -1,65 +1,36 @@
-<!DOCTYPE html>
-<html lang="es">
+<!DOCTYPE html><html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>¿DEV?</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      display: grid;
-      place-items: center;
-      height: 100vh;
-      margin: 0;
-      background: #f2f2z2;
-    }
-    .login {
-      background: white;
-      padding: 2rem;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-    input {
-      width: 100%;
-      margin: 0.5rem 0;
-      padding: 0.5rem;
-      font-size: 1rem;
-    }
-    button {
-      padding: 0.5rem 1rem;
-      font-size: 1rem;
-      margin-top: 1rem;
-      cursor: pointer;
-    }
-  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login | Dev Area</title>
 </head>
 <body>
-  <div class="login">
-    <h2>Accede a unas integraciones futuras (pueden no funcionar)</h2>
-    <input type="password" id="password" placeholder="Contraseña">
-    <button onclick="iniciarSesion()">Veamos</button>
-    <p id="mensaje" style="color:red;"></p>
-  </div>
+  <h2>Área restringida</h2>
+  <form id="login-form">
+    <input type="password" id="password" placeholder="Contraseña" required />
+    <button type="submit">Entrar</button>
+  </form>
+  <div id="status"></div>  <script>
+    const form = document.getElementById("login-form");
+    const statusDiv = document.getElementById("status");
 
-  <script>
-  const passwordCorrecta = "dev";
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const password = document.getElementById("password").value;
 
-  function iniciarSesion() {
-    const passIngresada = document.getElementById("password").value;
-    const mensaje = document.getElementById("mensaje");
+      const res = await fetch("optionally-close-eel.ngrok-free.app/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ password })
+      });
 
-    if (passIngresada === passwordCorrecta) {
-      localStorage.setItem("autenticado", "true"); // Guarda estado
-      mensaje.style.color = "green";
-      mensaje.textContent = "Muy bien. Redirigiendo...";
-      setTimeout(() => {
-        window.location.href = "list.html"; // o tu página principal
-      }, 1500);
-    } else {
-      mensaje.style.color = "red";
-      mensaje.textContent = "Contraseña incorrecta. Otra vez?";
-    }
-  }
-</script>
-</body>
+      const data = await res.json();
+      if (data.success) {
+        statusDiv.textContent = "Acceso concedido ✅";
+        // Aquí podrías redirigir a otra sección o cargar contenido adicional
+      } else {
+        statusDiv.textContent = "Contraseña incorrecta ❌";
+      }
+    });
+  </script></body>
 </html>
