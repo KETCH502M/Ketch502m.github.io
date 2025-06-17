@@ -22,37 +22,15 @@
   <script>
     const form = document.getElementById("login-form");
     const statusDiv = document.getElementById("status");
+    const SERVER_URL = "https://optionally-close-eel.ngrok-free.app";
 
     async function loadProtectedPanel() {
+      const token = sessionStorage.getItem("authToken");
+      if (!token) return;
+
       try {
-        const panel = await fetch("https://optionally-close-eel.ngrok-free.app/panel.html", {
+        const res = await fetch(`${SERVER_URL}/panel.html`, {
           credentials: "include"
-        });
-
-        if (panel.ok) {
-          const html = await panel.text();
-          document.open();
-          document.write(html);
-          document.close();
-        } else {
-          console.log("No autorizado aún");
-        }
-      } catch (err) {
-        statusDiv.textContent = "⚠️ Error de conexión.";
-        console.error(err);
-      }
-    }
-
-    form.addEventListener("submit", async (e) => {
-      e.preventDefault();
-      const password = document.getElementById("password").value;
-
-      try {
-        const res = await fetch("https://optionally-close-eel.ngrok-free.app/login", {
-          method: "POST",
-          credentials: "include",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ password })
         });
 
         if (res.ok) {
@@ -61,10 +39,36 @@
           document.write(html);
           document.close();
         } else {
+          statusDiv.textContent = "⚠️ No autorizado o token expirado.";
+        }
+      } catch (err) {
+        statusDiv.textContent = "⚠️ Acceso anticipado no disponible.";
+      }
+    }
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const password = document.getElementById("password").value;
+
+      try {
+        const res = await fetch(`${SERVER_URL}/login`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ password }),
+          credentials: "include"
+        });
+
+        if (res.ok) {
+          const html = await res.text();
+          sessionStorage.setItem("authToken", "1"); // dummy, por si luego usas JWT
+          document.open();
+          document.write(html);
+          document.close();
+        } else {
           statusDiv.textContent = "❌ Contraseña incorrecta";
         }
       } catch (err) {
-        statusDiv.textContent = "⚠️ Error de conexión";
+        statusDiv.textContent = "⚠️ Acceso anticipado no disponible.";
       }
     });
 
