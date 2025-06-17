@@ -1,36 +1,74 @@
-<!DOCTYPE html><html lang="es">
+<!DOCTYPE html>
+<html lang="es">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Login | Dev Area</title>
+  <style>
+    body { font-family: sans-serif; padding: 2em; background: #f4f4f4; }
+    form { margin-top: 1em; }
+    input, button { padding: 0.5em; font-size: 1em; }
+    #status { margin-top: 1em; font-weight: bold; }
+  </style>
 </head>
 <body>
-  <h2>Área restringida</h2>
+  <h2>🔐 Área restringida</h2>
   <form id="login-form">
     <input type="password" id="password" placeholder="Contraseña" required />
     <button type="submit">Entrar</button>
   </form>
-  <div id="status"></div>  <script>
+  <div id="status"></div>
+
+  <script>
     const form = document.getElementById("login-form");
     const statusDiv = document.getElementById("status");
+
+    async function loadProtectedPanel() {
+      try {
+        const panel = await fetch("https://optionally-close-eel.ngrok-free.app/panel.html", {
+          credentials: "include"
+        });
+
+        if (panel.ok) {
+          const html = await panel.text();
+          document.open();
+          document.write(html);
+          document.close();
+        } else {
+          console.log("No autorizado aún");
+        }
+      } catch (err) {
+        statusDiv.textContent = "⚠️ Error de conexión.";
+        console.error(err);
+      }
+    }
 
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
       const password = document.getElementById("password").value;
 
-      const res = await fetch("optionally-close-eel.ngrok-free.app/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ password })
-      });
+      try {
+        const res = await fetch("https://optionally-close-eel.ngrok-free.app/login", {
+          method: "POST",
+          credentials: "include",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ password })
+        });
 
-      const data = await res.json();
-      if (data.success) {
-        statusDiv.textContent = "Acceso concedido ✅";
-        // Aquí podrías redirigir a otra sección o cargar contenido adicional
-      } else {
-        statusDiv.textContent = "Contraseña incorrecta ❌";
+        if (res.ok) {
+          const html = await res.text();
+          document.open();
+          document.write(html);
+          document.close();
+        } else {
+          statusDiv.textContent = "❌ Contraseña incorrecta";
+        }
+      } catch (err) {
+        statusDiv.textContent = "⚠️ Error de conexión";
       }
     });
-  </script></body>
+
+    window.onload = loadProtectedPanel;
+  </script>
+</body>
 </html>
