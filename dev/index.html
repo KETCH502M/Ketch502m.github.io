@@ -5,19 +5,79 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Login | Dev Area</title>
   <style>
-    body { font-family: sans-serif; padding: 2em; background: #f4f4f4; }
-    form { margin-top: 1em; }
-    input, button { padding: 0.5em; font-size: 1em; }
-    #status { margin-top: 1em; font-weight: bold; }
+    body {
+      font-family: "Segoe UI", sans-serif;
+      background: linear-gradient(to right, #f4f4f4, #e0e0e0);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      background: white;
+      padding: 2em;
+      border-radius: 1em;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      max-width: 400px;
+      width: 100%;
+      text-align: center;
+      animation: fadeIn 0.5s ease-out;
+    }
+
+    h2 {
+      margin-bottom: 1em;
+      color: #333;
+    }
+
+    input[type="password"], button {
+      width: 100%;
+      padding: 0.75em;
+      margin: 0.5em 0;
+      font-size: 1em;
+      border: 1px solid #ccc;
+      border-radius: 0.5em;
+      box-sizing: border-box;
+    }
+
+    button {
+      background: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background: #45a049;
+    }
+
+    #status {
+      margin-top: 1em;
+      font-weight: bold;
+      color: #d33;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
   </style>
 </head>
 <body>
-  <h2>🔐 Área restringida</h2>
-  <form id="login-form">
-    <input type="password" id="password" placeholder="Contraseña" required />
-    <button type="submit">Entrar</button>
-  </form>
-  <div id="status"></div>
+  <div class="container">
+    <h2>🔐 Área restringida</h2>
+    <form id="login-form">
+      <input type="password" id="password" placeholder="Contraseña" required />
+      <button type="submit">Entrar</button>
+    </form>
+    <div id="status"></div>
+  </div>
 
   <script>
     const form = document.getElementById("login-form");
@@ -42,7 +102,7 @@
           statusDiv.textContent = "⚠️ No autorizado o token expirado.";
         }
       } catch (err) {
-        statusDiv.textContent = "⚠️ Acceso anticipado no disponible.";
+        showUnavailable();
       }
     }
 
@@ -60,7 +120,7 @@
 
         if (res.ok) {
           const html = await res.text();
-          sessionStorage.setItem("authToken", "1"); // dummy, por si luego usas JWT
+          sessionStorage.setItem("authToken", "1");
           document.open();
           document.write(html);
           document.close();
@@ -68,9 +128,14 @@
           statusDiv.textContent = "❌ Contraseña incorrecta";
         }
       } catch (err) {
-        statusDiv.textContent = "⚠️ Acceso anticipado no disponible.";
+        showUnavailable();
       }
     });
+
+    function showUnavailable() {
+      document.querySelector("form").classList.add("hidden");
+      statusDiv.textContent = "🚫 Acceso anticipado no disponible.";
+    }
 
     window.onload = loadProtectedPanel;
   </script>
