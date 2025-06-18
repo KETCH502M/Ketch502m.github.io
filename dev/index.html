@@ -141,13 +141,6 @@
       statusDiv.textContent = "🚫 Acceso anticipado no disponible.";
     }
     
-    function detectAdBlock() {
-  const adTest = document.querySelector(".adsbox");
-  if (!adTest || adTest.offsetHeight === 0) {
-    document.getElementById("adblock-warning").classList.remove("hidden");
-  }
-}
-detectAdBlock();
     window.onload = loadProtectedPanel;
   </script>
 </body>
