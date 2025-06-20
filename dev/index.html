@@ -99,8 +99,7 @@
 
       try {
         const res = await fetch(`${SERVER_URL}/panel`, {
-          credentials: "include",
-          headers: { "Authorization": `Bearer ${token}` }
+          credentials: "include"
         });
 
         if (res.ok) {
@@ -109,6 +108,7 @@
           document.write(html);
           document.close();
         } else {
+          sessionStorage.removeItem("authToken");
           statusDiv.textContent = "⚠️ No autorizado o token expirado.";
         }
       } catch (err) {
@@ -128,10 +128,9 @@
           credentials: "include"
         });
 
-        const data = await res.json();
-
-        if (res.ok && data.success && data.token) {
-          sessionStorage.setItem("authToken", data.token);
+        if (res.ok) {
+          // El token viene en cookie, pero guardamos un flag para saber que hizo login
+          sessionStorage.setItem("authToken", "1");
           loadProtectedPanel();
         } else {
           statusDiv.textContent = "❌ Contraseña incorrecta.";
@@ -152,7 +151,6 @@
         showUnavailable();
         return;
       }
-
       loadProtectedPanel();
     };
   </script>
