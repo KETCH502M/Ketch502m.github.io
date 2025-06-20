@@ -80,9 +80,18 @@
   </div>
 
   <script>
+    const SERVER_URL = "https://optionally-close-eel.ngrok-free.app";
     const form = document.getElementById("login-form");
     const statusDiv = document.getElementById("status");
-    const SERVER_URL = "https://optionally-close-eel.ngrok-free.app";
+
+    async function servidorDisponible() {
+      try {
+        const res = await fetch(`${SERVER_URL}/ping`, { method: "GET" });
+        return res.ok;
+      } catch (e) {
+        return false;
+      }
+    }
 
     async function loadProtectedPanel() {
       const token = sessionStorage.getItem("authToken");
@@ -90,7 +99,8 @@
 
       try {
         const res = await fetch(`${SERVER_URL}/panel`, {
-          credentials: "include"
+          credentials: "include",
+          headers: { "Authorization": `Bearer ${token}` }
         });
 
         if (res.ok) {
@@ -118,14 +128,13 @@
           credentials: "include"
         });
 
-        if (res.ok) {
-          const html = await res.text();
-          sessionStorage.setItem("authToken", "1");
-          document.open();
-          document.write(html);
-          document.close();
+        const data = await res.json();
+
+        if (res.ok && data.success && data.token) {
+          sessionStorage.setItem("authToken", data.token);
+          loadProtectedPanel();
         } else {
-          statusDiv.textContent = "❌ Contraseña incorrecta";
+          statusDiv.textContent = "❌ Contraseña incorrecta.";
         }
       } catch (err) {
         showUnavailable();
@@ -133,11 +142,19 @@
     });
 
     function showUnavailable() {
-      document.querySelector("form").classList.add("hidden");
+      form.classList.add("hidden");
       statusDiv.textContent = "🚫 Acceso anticipado no disponible.";
     }
-    
-    window.onload = loadProtectedPanel;
+
+    window.onload = async () => {
+      const disponible = await servidorDisponible();
+      if (!disponible) {
+        showUnavailable();
+        return;
+      }
+
+      loadProtectedPanel();
+    };
   </script>
 </body>
 </html>
