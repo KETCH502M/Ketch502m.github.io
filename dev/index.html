@@ -86,9 +86,9 @@
 
     async function servidorDisponible() {
       try {
-        const res = await fetch(`${SERVER_URL}/ping`, { method: "GET" });
+        const res = await fetch(`${SERVER_URL}/ping`);
         return res.ok;
-      } catch (e) {
+      } catch {
         return false;
       }
     }
@@ -99,7 +99,10 @@
 
       try {
         const res = await fetch(`${SERVER_URL}/panel`, {
-          credentials: "include"
+          method: "GET",
+          headers: {
+            "Authorization": `Bearer ${token}`
+          }
         });
 
         if (res.ok) {
@@ -108,10 +111,9 @@
           document.write(html);
           document.close();
         } else {
-          sessionStorage.removeItem("authToken");
           statusDiv.textContent = "⚠️ No autorizado o token expirado.";
         }
-      } catch (err) {
+      } catch {
         showUnavailable();
       }
     }
@@ -124,18 +126,17 @@
         const res = await fetch(`${SERVER_URL}/login`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ password }),
-          credentials: "include"
+          body: JSON.stringify({ password })
         });
 
-        if (res.ok) {
-          // El token viene en cookie, pero guardamos un flag para saber que hizo login
-          sessionStorage.setItem("authToken", "1");
+        const data = await res.json();
+        if (res.ok && data.success) {
+          sessionStorage.setItem("authToken", data.token);
           loadProtectedPanel();
         } else {
           statusDiv.textContent = "❌ Contraseña incorrecta.";
         }
-      } catch (err) {
+      } catch {
         showUnavailable();
       }
     });
