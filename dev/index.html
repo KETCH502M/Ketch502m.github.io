@@ -13,6 +13,7 @@
       align-items: center;
       height: 100vh;
       margin: 0;
+      transition: background 0.3s, color 0.3s;
     }
 
     .container {
@@ -67,6 +68,61 @@
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
+
+    /* 🌙 Botón de modo oscuro */
+    #toggle-dark {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 44px;
+      height: 44px;
+      border: none;
+      border-radius: 50%;
+      font-size: 20px;
+      background-color: #333;
+      color: white;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.3s ease;
+    }
+
+    #toggle-dark:hover {
+      background-color: #555;
+    }
+
+    /* 🌒 Modo oscuro */
+    body.dark {
+      background: #121212;
+      color: #eee;
+    }
+
+    body.dark .container {
+      background: #1e1e1e;
+      box-shadow: 0 4px 12px rgba(255,255,255,0.05);
+    }
+
+    body.dark input,
+    body.dark button {
+      background-color: #2c2c2c;
+      color: #f5f5f5;
+      border-color: #555;
+    }
+
+    body.dark #status {
+      color: #ff9999;
+    }
+
+    body.dark #toggle-dark {
+      background-color: #ddd;
+      color: #111;
+    }
+
+    body.dark #toggle-dark:hover {
+      background-color: #ccc;
+    }
   </style>
 </head>
 <body>
@@ -79,10 +135,30 @@
     <div id="status"></div>
   </div>
 
+  <button id="toggle-dark" title="Cambiar tema">🌙</button>
+
   <script>
     const SERVER_URL = "https://optionally-close-eel.ngrok-free.app";
     const form = document.getElementById("login-form");
     const statusDiv = document.getElementById("status");
+    const darkBtn = document.getElementById("toggle-dark");
+
+    function actualizarIcono() {
+      darkBtn.textContent = document.body.classList.contains("dark") ? "☀️" : "🌙";
+    }
+
+    darkBtn.addEventListener("click", () => {
+      document.body.classList.toggle("dark");
+      localStorage.setItem("modoOscuro", document.body.classList.contains("dark"));
+      actualizarIcono();
+    });
+
+    window.addEventListener("DOMContentLoaded", () => {
+      if (localStorage.getItem("modoOscuro") === "true") {
+        document.body.classList.add("dark");
+        actualizarIcono();
+      }
+    });
 
     async function servidorDisponible() {
       try {
