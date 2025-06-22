@@ -81,19 +81,21 @@
     .hidden {
       display: none;
     }
+    
+    footer {
+      margin-top: 2rem;
+      text-align: center;
+    }
 
-    .dark-toggle {
-      position: fixed;
-      top: 1rem;
-      right: 1rem;
-      background: transparent;
+    .dark-toggle {padding: 0.5em 1em;
+      font-size: 1em;
       border: 2px solid var(--text-color);
+      background: transparent;
       color: var(--text-color);
-      padding: 0.4em 0.7em;
-      border-radius: 0.6em;
+      border-radius: 0.5em;
       cursor: pointer;
-      font-size: 1.1em;
-      transition: all 0.2s ease;
+      transition: all 0.3s ease;
+      
     }
 
     .dark-toggle:hover {
@@ -108,7 +110,6 @@
   </style>
 </head>
 <body>
-  <button class="dark-toggle" onclick="toggleDarkMode()">🌙</button>
 
   <div class="container">
     <h2>🔐 Acceso Anticipado</h2>
@@ -118,6 +119,9 @@
     </form>
     <div id="status"></div>
   </div>
+  <footer>
+    <button class="dark-toggle" onclick="toggleDarkMode()">🌙</button>
+  </footer>
 
   <script>
     const SERVER_URL = "https://optionally-close-eel.ngrok-free.app";
