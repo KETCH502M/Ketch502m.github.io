@@ -124,24 +124,15 @@
     const form = document.getElementById("login-form");
     const statusDiv = document.getElementById("status");
 
+    // Modo oscuro persistente
     function toggleDarkMode() {
       document.body.classList.toggle("dark");
       const theme = document.body.classList.contains("dark") ? "dark" : "light";
       localStorage.setItem("theme", theme);
     }
 
-    // Aplicar modo oscuro guardado
     if (localStorage.getItem("theme") === "dark") {
       document.body.classList.add("dark");
-    }
-
-    async function servidorDisponible() {
-      try {
-        const res = await fetch(`${SERVER_URL}/ping`);
-        return res.ok;
-      } catch {
-        return false;
-      }
     }
 
     async function loadProtectedPanel() {
@@ -162,7 +153,7 @@
           statusDiv.textContent = "⚠️ No autorizado o token expirado.";
         }
       } catch {
-        showUnavailable();
+        statusDiv.textContent = "⚠️ No se pudo cargar el panel.";
       }
     }
 
@@ -185,22 +176,12 @@
           statusDiv.textContent = "❌ Contraseña incorrecta.";
         }
       } catch {
-        showUnavailable();
+        statusDiv.textContent = "🚫 No se pudo contactar con el servidor.";
       }
     });
 
-    function showUnavailable() {
-      form.classList.add("hidden");
-      statusDiv.textContent = "🚫 Acceso anticipado no disponible.";
-    }
-
-    window.onload = async () => {
-      const disponible = await servidorDisponible();
-      if (!disponible) {
-        showUnavailable();
-        return;
-      }
-      loadProtectedPanel();
+    window.onload = () => {
+      loadProtectedPanel(); // sin ping
     };
   </script>
 </body>
