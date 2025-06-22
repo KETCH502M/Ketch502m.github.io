@@ -11,116 +11,179 @@
       --button-bg: #1e88e5;
       --button-hover: #1565c0;
       --status-color: #d33;
-    }body.dark {
-  --bg-color: #121212;
-  --text-color: #f5f5f5;
-  --card-bg: #1e1e1e;
-  --button-bg: #42a5f5;
-  --button-hover: #2196f3;
-  --status-color: #ef5350;
-}
+    }
+    body.dark {
+      --bg-color: #121212;
+      --text-color: #f5f5f5;
+      --card-bg: #1e1e1e;
+      --button-bg: #42a5f5;
+      --button-hover: #2196f3;
+      --status-color: #ef5350;
+    }
 
-body {
-  font-family: "Segoe UI", sans-serif;
-  background: var(--bg-color);
-  color: var(--text-color);
+    body {
+      font-family: "Segoe UI", sans-serif;
+      background: var(--bg-color);
+      color: var(--text-color);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    .container {
+      background: var(--card-bg);
+      padding: 2rem;
+      border-radius: 1rem;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      width: 100%;
+      max-width: 380px;
+      text-align: center;
+      animation: fadeIn 0.5s ease-out;
+    }
+
+    h2 {
+      margin-bottom: 1.5rem;
+    }
+
+    #pin-container {
   display: flex;
   justify-content: center;
-  align-items: center;
-  height: 100vh;
-  margin: 0;
-  transition: background 0.3s ease, color 0.3s ease;
+  gap: 0.6rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
 }
 
-.container {
-  background: var(--card-bg);
-  padding: 2rem;
-  border-radius: 1rem;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-  width: 100%;
-  max-width: 380px;
+.pin-input {
+  width: 3.2rem;
+  height: 3.2rem;
+  font-size: 1.7rem; /* >=16px para evitar zoom */
   text-align: center;
-  animation: fadeIn 0.5s ease-out;
-}
-
-h2 {
-  margin-bottom: 1.5rem;
-}
-
-input[type="tel"], button {
-  width: 100%;
-  padding: 0.75em;
-  margin: 0.5em 0;
-  font-size: 1em;
-  border: 1px solid #ccc;
-  border-radius: 0.5em;
-  box-sizing: border-box;
-}
-
-button {
-  background: var(--button-bg);
-  color: white;
-  border: none;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-button:hover {
-  background: var(--button-hover);
-}
-
-#status {
-  margin-top: 1em;
-  font-weight: bold;
-  color: var(--status-color);
-}
-
-footer {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
+  border: 2px solid #ccc;
+  border-radius: 0.6em;
   background: var(--card-bg);
-  padding: 0.8em;
-  text-align: center;
-  box-shadow: 0 -3px 10px rgba(0, 0, 0, 0.1);
-}
-
-.dark-toggle {
-  padding: 0.5em 1.2em;
-  font-size: 1em;
-  border: 2px solid var(--text-color);
-  background: transparent;
   color: var(--text-color);
-  border-radius: 0.5em;
-  cursor: pointer;
-  transition: all 0.3s ease;
+  transition: border-color 0.2s;
 }
 
-.dark-toggle:hover {
-  background: var(--text-color);
-  color: var(--bg-color);
+.pin-input:focus {
+  outline: none;
+  border-color: var(--button-bg);
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+@media (max-width: 360px) {
+  .pin-input {
+    width: 2.6rem;
+    height: 2.8rem;
+    font-size: 1.4rem;
+  }
+  .pin-input:disabled {
+  background: #eee;
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+  #pin-container {
+    gap: 0.4rem;
+  }
 }
 
+    button {
+      width: 100%;
+      padding: 0.75em;
+      font-size: 1em;
+      border: none;
+      border-radius: 0.5em;
+      background: var(--button-bg);
+      color: white;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background: var(--button-hover);
+    }
+
+    button:disabled {
+      background: #888;
+      cursor: not-allowed;
+    }
+
+    #status {
+      margin-top: 1em;
+      font-weight: bold;
+      color: var(--status-color);
+    }
+
+    footer {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background: var(--card-bg);
+      padding: 0.8em;
+      text-align: center;
+      box-shadow: 0 -3px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .dark-toggle {
+      padding: 0.5em 1.2em;
+      font-size: 1em;
+      border: 2px solid var(--text-color);
+      background: transparent;
+      color: var(--text-color);
+      border-radius: 0.5em;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .dark-toggle:hover {
+      background: var(--text-color);
+      color: var(--bg-color);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    @keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-8px); }
+  40%, 80% { transform: translateX(8px); }
+}
+
+.shake {
+  animation: shake 0.4s ease;
+}
   </style>
 </head>
-<body>  <div class="container">
+<body>
+  <div class="container">
     <h2>🔐 Acceso Anticipado</h2>
-    <form id="login-form">
-      <input type="tel" id="pin" placeholder="Ingresa PIN de 8 dígitos" pattern="\d{8}" maxlength="8" required />
-      <button type="submit">Entrar</button>
+    <form id="login-form" autocomplete="off">
+      <div id="pin-container">
+        <input type="text" inputmode="numeric" maxlength="1" class="pin-input" id="pin0" required />
+        <input type="text" inputmode="numeric" maxlength="1" class="pin-input" id="pin1" required />
+        <input type="text" inputmode="numeric" maxlength="1" class="pin-input" id="pin2" required />
+        <input type="text" inputmode="numeric" maxlength="1" class="pin-input" id="pin3" required />
+        
+      </div>
+      <button type="submit" id="login-button" disabled>Entrar</button>
+      <div id="status"></div>
     </form>
-    <div id="status"></div>
-  </div>  <footer>
+  </div>
+
+  <footer>
     <button class="dark-toggle" onclick="toggleDarkMode()">🌙</button>
-  </footer>  <script>
+  </footer>
+
+  <script>
     const SERVER_URL = "https://optionally-close-eel.ngrok-free.app";
+    const inputs = document.querySelectorAll(".pin-input");
     const form = document.getElementById("login-form");
     const statusDiv = document.getElementById("status");
+    const button = document.getElementById("login-button");
 
     function toggleDarkMode() {
       document.body.classList.toggle("dark");
@@ -130,6 +193,27 @@ footer {
 
     if (localStorage.getItem("theme") === "dark") {
       document.body.classList.add("dark");
+    }
+
+    // Autoavance
+    inputs.forEach((input, idx) => {
+      input.addEventListener("input", () => {
+        input.value = input.value.replace(/\D/, "");
+        if (input.value && idx < inputs.length - 1) {
+          inputs[idx + 1].focus();
+        }
+        validarPIN();
+      });
+      input.addEventListener("keydown", e => {
+        if (e.key === "Backspace" && !input.value && idx > 0) {
+          inputs[idx - 1].focus();
+        }
+      });
+    });
+
+    function validarPIN() {
+      const pin = Array.from(inputs).map(i => i.value).join("");
+      button.disabled = pin.length !== 4;
     }
 
     async function loadProtectedPanel() {
@@ -159,7 +243,7 @@ footer {
 
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
-      const pin = document.getElementById("pin").value;
+      const pin = Array.from(inputs).map(i => i.value).join("");
 
       try {
         const res = await fetch(`${SERVER_URL}/login`, {
@@ -168,7 +252,7 @@ footer {
             "Content-Type": "application/json",
             "ngrok-skip-browser-warning": "true"
           },
-          body: JSON.stringify({ pin })
+          body: JSON.stringify({ password: pin }) // usa 'password' como en tu server.js
         });
 
         const data = await res.json();
@@ -176,15 +260,43 @@ footer {
           sessionStorage.setItem("authToken", data.token);
           loadProtectedPanel();
         } else {
+          inputs.forEach(input => input.value = "");
+          inputs[0].focus();
+          validarPIN();
+          statusDiv.textContent = "PIN incorrecto.";
+          // Añadir efecto de 'shake'
+          const container = document.querySelector("#pin-container");
+          container.classList.add("shake");
+          setTimeout(() => container.classList.remove("shake"), 400);
           statusDiv.textContent = "PIN incorrecto.";
         }
-      } catch {
-        statusDiv.textContent = "No se pudo contactar con el servidor. Es posible que esté offline";
-      }
+      }  catch {
+  statusDiv.textContent = "No se pudo contactar con el servidor. Es posible que esté offline.";
+  button.disabled = true;
+  inputs.forEach(input => {
+    input.disabled = true;
+    input.classList.add("disabled");
+  });
+  setTimeout(() => {
+  button.disabled = false;
+  inputs.forEach(input => {
+    input.disabled = false;
+    input.value = "";
+  });
+  inputs[0].focus();
+  validarPIN();
+}, 5000); // espera 5 segundos
+}
     });
 
-    window.onload = () => {
-      loadProtectedPanel();
-    };
-  </script></body>
+    window.onload = () =>
+    inputs[0].focus();
+    loadProtectedPanel();
+    document.addEventListener("touchstart", (e) => {
+  if (!e.target.classList.contains("pin-input")) {
+    document.activeElement.blur();
+  }
+});
+  </script>
+</body>
 </html>
