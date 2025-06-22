@@ -141,7 +141,10 @@
 
       try {
         const res = await fetch(`${SERVER_URL}/panel`, {
-          headers: { "Authorization": `Bearer ${token}` }
+          headers: {
+            "Authorization": `Bearer ${token}`,
+            "ngrok-skip-browser-warning": "true"
+          }
         });
 
         if (res.ok) {
@@ -164,7 +167,10 @@
       try {
         const res = await fetch(`${SERVER_URL}/login`, {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
+          headers: {
+            "Content-Type": "application/json",
+            "ngrok-skip-browser-warning": "true"
+          },
           body: JSON.stringify({ password })
         });
 
