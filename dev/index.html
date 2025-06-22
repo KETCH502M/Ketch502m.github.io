@@ -50,7 +50,7 @@
       margin-bottom: 1em;
     }
 
-    input[type="password"], button {
+    input[type="tel"], button {
       width: 100%;
       padding: 0.75em;
       margin: 0.5em 0;
@@ -77,31 +77,33 @@
       font-weight: bold;
       color: var(--status-color);
     }
-
-    .hidden {
-      display: none;
-    }
-    
     footer {
-      margin-top: 2rem;
-      text-align: center;
-    }
+  position: fixed;
+  margin-top: 2rem;
+  bottom: 0;
+  left: 900;
+  width: 100%;
+  background: var(--card-bg);
+  padding: 0.5em;
+  text-align: center;
+  box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.1);
+}
 
-    .dark-toggle {padding: 0.5em 1em;
-      font-size: 1em;
-      border: 2px solid var(--text-color);
-      background: transparent;
-      color: var(--text-color);
-      border-radius: 0.5em;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      
-    }
+.dark-toggle {
+  padding: 0.5em 1em;
+  font-size: 1em;
+  border: 2px solid var(--text-color);
+  background: transparent;
+  color: var(--text-color);
+  border-radius: 0.5em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
 
-    .dark-toggle:hover {
-      background: var(--text-color);
-      color: var(--bg-color);
-    }
+.dark-toggle:hover {
+  background: var(--text-color);
+  color: var(--bg-color);
+}
 
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(20px); }
@@ -112,13 +114,14 @@
 <body>
 
   <div class="container">
-    <h2>🔐 Acceso Anticipado</h2>
+    <h2>🔐 Acceso Anticipado 🔐</h2>
     <form id="login-form">
-      <input type="password" id="password" placeholder="Contraseña" required />
-      <button type="submit">Entrar</button>
+      <input type="tel" id="pin" placeholder="Ingresa PIN de 8 dígitos" pattern="\d{8}" maxlength="8" required />
     </form>
+      <button type="submit">Entrar</button>
     <div id="status"></div>
   </div>
+
   <footer>
     <button class="dark-toggle" onclick="toggleDarkMode()">🌙</button>
   </footer>
@@ -166,7 +169,7 @@
 
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
-      const password = document.getElementById("password").value;
+      const pin = document.getElementById("pin").value;
 
       try {
         const res = await fetch(`${SERVER_URL}/login`, {
@@ -175,7 +178,7 @@
             "Content-Type": "application/json",
             "ngrok-skip-browser-warning": "true"
           },
-          body: JSON.stringify({ password })
+          body: JSON.stringify({ pin })
         });
 
         const data = await res.json();
@@ -183,7 +186,7 @@
           sessionStorage.setItem("authToken", data.token);
           loadProtectedPanel();
         } else {
-          statusDiv.textContent = "❌ Contraseña incorrecta.";
+          statusDiv.textContent = "❌ PIN incorrecto.";
         }
       } catch {
         statusDiv.textContent = "🚫 No se pudo contactar con el servidor.";
@@ -191,7 +194,7 @@
     });
 
     window.onload = () => {
-      loadProtectedPanel(); // sin ping
+      loadProtectedPanel();
     };
   </script>
 </body>
