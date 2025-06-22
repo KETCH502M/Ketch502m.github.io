@@ -160,7 +160,7 @@
 </head>
 <body>
   <div class="container">
-    <h2>🔐 Acceso Anticipado</h2>
+    <h2>🔐 Acceso a DEV</h2>
     <form id="login-form" autocomplete="off">
       <div id="pin-container">
         <input type="text" inputmode="numeric" maxlength="1" class="pin-input" id="pin0" required />
@@ -234,7 +234,7 @@
           document.write(html);
           document.close();
         } else {
-          statusDiv.textContent = "No autorizado o token expirado.";
+          statusDiv.textContent = "Ocurrió un error, vuelve a ingresar el PIN.";
         }
       } catch {
         statusDiv.textContent = "No se pudo cargar el panel. Intenta recargar la página.";
@@ -268,10 +268,18 @@
           const container = document.querySelector("#pin-container");
           container.classList.add("shake");
           setTimeout(() => container.classList.remove("shake"), 400);
-          statusDiv.textContent = "PIN incorrecto.";
         }
       }  catch {
-  statusDiv.textContent = "No se pudo contactar con el servidor. Es posible que esté offline.";
+        inputs.forEach(input => input.value = "");
+          inputs[0].focus();
+          validarPIN();
+          // Añadir efecto de 'shake'
+          const container = document.querySelector("#pin-container");
+          setTimeout(() => {
+          container.classList.add("shake");
+          setTimeout(() => container.classList.remove("shake"), 400);
+          }, 1000);
+  statusDiv.textContent = "No se pudo establecer conexión con el servidor. OFFLINE.";
   button.disabled = true;
   inputs.forEach(input => {
     input.disabled = true;
@@ -289,14 +297,15 @@
 }
     });
 
-    window.onload = () =>
-    inputs[0].focus();
+    window.onload = () => {
     loadProtectedPanel();
-    document.addEventListener("touchstart", (e) => {
-  if (!e.target.classList.contains("pin-input")) {
-    document.activeElement.blur();
+    inputs[0].focus();
+    /*document.addEventListener("touchstart", (e) => {
+if (!e.target.classList.contains("pin-input")) {
+  document.activeElement.blur();
   }
-});
+    });*/
+    };
   </script>
 </body>
 </html>
