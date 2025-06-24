@@ -170,7 +170,7 @@
         <input type="text" inputmode="numeric" maxlength="1" class="pin-input" id="pin3" required />
         
       </div>
-      <button type="submit" id="login-button" disabled>Entrar</button>
+      <button type="submit" id="login-button" disabled>Acceder</button>
       <div id="status"></div>
     </form>
   </div>
@@ -320,10 +320,10 @@ form.addEventListener("submit", async (e) => {
 
     const data = await res.json();
     if (res.ok && data.success && data.token) {
-      sessionStorage.setItem("authToken", data.token);
-      localStorage.removeItem("remainingAttempts");
-      loadProtectedPanel();
-    } else {
+  sessionStorage.setItem("authToken", data.token);
+  localStorage.removeItem("remainingAttempts");
+  loadProtectedPanel(); // Sin validarToken()
+} else {
       const mensaje = data.message || "PIN incorrecto.";
       statusDiv.textContent = mensaje;
 
