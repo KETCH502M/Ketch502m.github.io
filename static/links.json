@@ -1,50 +1,62 @@
 [
-        {
+  {
     "nombre": "Minecraft 1.21.80",
-    "enlace": "https://www.mediafire.com/file/irkwe3qwrhfzoed/MCPE_1.21.80.apk/file"
+    "enlace": "https://www.mediafire.com/file/irkwe3qwrhfzoed/MCPE_1.21.80.apk/file",
+    "categoria": "minecraft"
   },
-      {
+  {
     "nombre": "Minecraft 1.21.72",
-    "enlace": "https://www.mediafire.com/file/1tiuxrbyeifsj68/MCPE_1.21.70/file"
+    "enlace": "https://www.mediafire.com/file/1tiuxrbyeifsj68/MCPE_1.21.70/file",
+    "categoria": "minecraft"
   },
-    {
+  {
     "nombre": "Minecraft 1.21.70",
-    "enlace": "https://www.mediafire.com/file/1tiuxrbyeifsj68/MCPE_1.21.70/file"
+    "enlace": "https://www.mediafire.com/file/1tiuxrbyeifsj68/MCPE_1.21.70/file",
+    "categoria": "minecraft"
   },
   {
     "nombre": "Minecraft 1.20.32",
-    "enlace": "https://www.mediafire.com/file/wxbvpasvynxqnm1/MCPE_1.20.32.apk/file"
+    "enlace": "https://www.mediafire.com/file/wxbvpasvynxqnm1/MCPE_1.20.32.apk/file",
+    "categoria": "minecraft"
   },
   {
     "nombre": "Minecraft 1.20.15",
-    "enlace": "https://www.mediafire.com/file/q91mhw7nevv5dkq/MCPE_1.20.15.apk/file"
+    "enlace": "https://www.mediafire.com/file/q91mhw7nevv5dkq/MCPE_1.20.15.apk/file",
+    "categoria": "minecraft"
   },
   {
     "nombre": "Minecraft 1.20.12",
-    "enlace": "https://www.mediafire.com/file/7t0iemav3efmt0g/MCPE_1.20.12.apk/file"
+    "enlace": "https://www.mediafire.com/file/7t0iemav3efmt0g/MCPE_1.20.12.apk/file",
+    "categoria": "minecraft"
   },
   {
     "nombre": "Minecraft 1.19.71",
-    "enlace": "https://www.mediafire.com/file/iqvi9le0xre3wzf/MCPE_1.19.71.apk/file"
+    "enlace": "https://www.mediafire.com/file/iqvi9le0xre3wzf/MCPE_1.19.71.apk/file",
+    "categoria": "minecraft"
   },
   {
     "nombre": "Minecraft 1.19.70",
-    "enlace": "https://www.mediafire.com/file/1fzgm231mk5vk3z/MCPE_1.19.70.apk/file"
+    "enlace": "https://www.mediafire.com/file/1fzgm231mk5vk3z/MCPE_1.19.70.apk/file",
+    "categoria": "minecraft"
   },
   {
     "nombre": "Minecraft 1.19.51",
-    "enlace": "https://www.mediafire.com/file/506l8cufu8a0y5o/MCPE_1.19.51.apk/file"
+    "enlace": "https://www.mediafire.com/file/506l8cufu8a0y5o/MCPE_1.19.51.apk/file",
+    "categoria": "minecraft"
   },
   {
     "nombre": "Minecraft 1.19.50",
-    "enlace": "https://www.mediafire.com/file/mxyz6hcyym329ic/MCPE_1.19.50.apk/file"
+    "enlace": "https://www.mediafire.com/file/mxyz6hcyym329ic/MCPE_1.19.50.apk/file",
+    "categoria": "minecraft"
   },
-      {
+  {
     "nombre": "Minecraft 1.16.0",
-    "enlace": "https://www.mediafire.com/file/ndzn2t9hxuf1jdh/MCPE_1.16.apk/file"
+    "enlace": "https://www.mediafire.com/file/ndzn2t9hxuf1jdh/MCPE_1.16.apk/file",
+    "categoria": "minecraft"
   },
   {
     "nombre": "Minecraft 1.14.30",
-    "enlace": "https://github.com/Ketch502x/Data-app/raw/c772b03d1a0c6a7354df093b19acfbceb0ce8f98/MCPE%201.14.30.apk"
+    "enlace": "https://github.com/Ketch502x/Data-app/raw/c772b03d1a0c6a7354df093b19acfbceb0ce8f98/MCPE%201.14.30.apk",
+    "categoria": "minecraft"
   }
 ]

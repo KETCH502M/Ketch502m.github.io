@@ -1,0 +1,43 @@
+/* Estilo base de la lista de resultados */
+#resultsList {
+  list-style: none;
+  padding: 0;
+  margin: 16px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Estilo para enlaces como botones */
+#resultsList li a {
+  display: block;
+  width: 100%;
+  padding: 16px 12px;
+  font-size: 1.1em;
+  line-height: 1.3;
+  background: linear-gradient(135deg, #4da8f7 0%, #1f78c1 100%);
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+  touch-action: manipulation;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#resultsList li a:hover,
+#resultsList li a:focus,
+#resultsList li a:active {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  background: linear-gradient(135deg, #3b90d0 0%, #176199 100%);
+}
+
+/* Grid a partir de pantallas medianas */
+@media (min-width: 600px) {
+  #resultsList {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 12px;
+  }
+}

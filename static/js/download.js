@@ -24,17 +24,17 @@ function ChangeTxt() {
 setInterval(ChangeTxt, 5000);*/
 
 const textosCambiantesPorIdioma = {
-  es: [
-    "¡1.21.80 disponible!",
-    "¡Última versión!",
-    "Una pequeña lista de versiones.",
-    "Selecciona tu versión favorita."
-  ],
   en: [
     "1.21.80 is now available!",
     "Latest version!",
     "A small list of versions.",
     "Pick your favorite version."
+  ],
+  es: [
+    "¡1.21.80 disponible!",
+    "¡Última versión!",
+    "Una pequeña lista de versiones.",
+    "Selecciona tu versión favorita."
   ],
   pt: [
     "1.21.80 disponível!",
@@ -50,8 +50,8 @@ const textosCambiantesPorIdioma = {
   ]
 };
 
-const idioma = localStorage.getItem("paisSeleccionado") || "es";
-let textosCambiantes = textosCambiantesPorIdioma[idioma] || textosCambiantesPorIdioma["es"];
+const idioma = localStorage.getItem("paisSeleccionado") || "en";
+let textosCambiantes = textosCambiantesPorIdioma[idioma] || textosCambiantesPorIdioma["en"];
 
 let indiceActual = 0;
 
@@ -64,4 +64,4 @@ function ChangeTxt() {
 }
 
 ChangeTxt(); // Muestra el primero al cargar
-setInterval(ChangeTxt, 5000); // Cambia cada 5 segundos
+setInterval(ChangeTxt, 4000); // Cambia cada 5 segundos
