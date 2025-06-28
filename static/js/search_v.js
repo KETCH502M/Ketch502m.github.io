@@ -37,7 +37,7 @@ async function cargarGDyMods() {
     return await response.json();
   } catch {
     // Si falla, ocultar las opciones GD y Mods
-    document.querySelectorAll('#categorySelector option[value="gd"], option[value="mods"]').forEach(opt => {
+    document.querySelectorAll('#categorySelector option[value="gd"], option[value="otros"]').forEach(opt => {
       opt.disabled = true;
       opt.hidden = true;
     });
@@ -83,8 +83,14 @@ function handleSearch() {
   const searchInput = document.getElementById('searchInput');
   const categoria = document.getElementById('categorySelector').value;
 
-  if (document.activeElement.id === 'categorySelector') {
+  // Ocultar el input si se selecciona GD u Otros
+  if (categoria === 'gd' || categoria === 'otros') {
+    searchInput.classList.add('hidden-search');
+    searchInput.disabled = true;
     searchInput.value = "";
+  } else {
+    searchInput.classList.remove('hidden-search');
+    searchInput.disabled = false;
   }
 
   const texto = searchInput.value.trim();

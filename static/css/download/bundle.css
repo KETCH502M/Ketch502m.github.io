@@ -152,11 +152,27 @@ header {
 }
 
 #searchInput {
-  padding: 10px;
+  padding: 12px 16px;
   width: 100%;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  border: 1px solid #555;
+  border-radius: 10px;
   font-size: 16px;
+  background-color: #1e1e1e;
+  color: #00ffff;
+  box-shadow: 0 4px 10px rgba(0, 255, 255, 0.05);
+  transition: all 0.3s ease;
+}
+
+#searchInput::placeholder {
+  color: #888;
+  opacity: 0.6;
+  font-style: italic;
+}
+
+#searchInput:focus {
+  border-color: #00ffff;
+  outline: none;
+  box-shadow: 0 0 8px rgba(0, 255, 255, 0.3);
 }
 
 /* --------------------------------------------------
@@ -289,24 +305,32 @@ header {
     gap: 12px;
   }
 }
-/* === Estilo del selector de categoría === */
+/* === Estilo mejorado del selector de categoría === */
 .search-container select {
-  padding: 10px;
-  margin-bottom: 10px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
+  padding: 10px 14px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  border: 1px solid #555;
   font-size: 16px;
   width: 100%;
   max-width: 400px;
-  background-color: #ffffff;
-  color: #333;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  transition: border 0.3s ease;
+  background-color: #1e1e1e;
+  color: #00ffff;
+  box-shadow: 0 4px 10px rgba(0, 255, 255, 0.05);
+  transition: all 0.3s ease;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,<svg fill='%2300ffff' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 18px;
 }
 
 .search-container select:focus {
-  border-color: #3498db;
+  border-color: #00ffff;
   outline: none;
+  box-shadow: 0 0 8px rgba(0, 255, 255, 0.3);
 }
 
 /* === Estilo de los enlaces de descarga === */
@@ -381,6 +405,17 @@ header {
 
 .box-download a {
   animation: fadeSlideIn 0.6s ease forwards;
+}
+
+/*------------------INPUT SEARCH HIDDEN------------------*/
+.hidden-search {
+  opacity: 0;
+  pointer-events: none;
+  transform: scaleY(0);
+  transition: all 0.3s ease;
+  height: 0;
+  margin: 0;
+  padding: 0;
 }
 
 /* --------------------------------------------------
