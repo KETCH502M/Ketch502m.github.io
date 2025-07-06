@@ -20,22 +20,26 @@ async function pedirPermisoNotificaciones() {
       userVisibleOnly: true,
       applicationServerKey: urlBase64ToUint8Array("BJtsaR8hLQiAM7x3xt6X4QKxxy3bRhuP9XP5TxCVVHZWfUyuNRUfPnR4TplXckcX3abBz5zPDxbyp-Sii9jRXPA")
     });
+const respuesta = await fetch("https://optionally-close-eel.ngrok-free.app/api/push/subscribe", {
+  method: "POST",
+  headers: { 
+    "ngrok-skip-browser-warning": "true",
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify(suscripcion)
+});
 
-    const respuesta = await fetch("https://optionally-close-eel.ngrok-free.app/api/push/subscribe", {
-      method: "POST",
-      headers: { 
-      "ngrok-skip-browser-warning": "true",
-      "Content-Type": "application/json"
-      },
-      body: JSON.stringify(suscripcion)
-    });
+console.log("📤 Enviando suscripción:", suscripcion);
 
-    if (respuesta.ok) {
-    } else {
-      toast.innerText = "❌ Error interno al configurar";
-      toast.classList.add("show");
-      setTimeout(() => toast.classList.remove("show"), 1500);
-    }
+if (respuesta.ok) {
+  console.log("✅ Suscripción enviada correctamente");
+} else {
+  console.warn("⚠️ Falló la suscripción, status:", respuesta.status);
+  toast.innerText = "❌ Error interno al configurar";
+  toast.classList.add("show");
+  setTimeout(() => toast.classList.remove("show"), 1500);
+}
+    
 
   } catch (err) {
     console.error("❌ Error en el proceso de suscripción:", err);
