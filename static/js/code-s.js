@@ -19,13 +19,14 @@ document
 
     const code = document.getElementById("codeInput").value.replace(/\D/g, "");
 
-    const codes = {
+   /* const codes = {
       202412: "/game/pacman",
       111111: "/",
       101010: "activador",
       202403: "juegos",
       202034: "afinador",
-    };
+    };*/
+    const codes = {};
 
     if (code.length === 6) {
       if (codes[code]) {

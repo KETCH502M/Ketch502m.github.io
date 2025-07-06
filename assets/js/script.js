@@ -14,7 +14,9 @@ function mostrarToast(mensaje, tipo = 'info') {
   toast.style.transition = 'all 1s ease';
 
   const toastContainer = document.getElementById('toastContainer');
+  if (!toastContainer) return;
   toastContainer.appendChild(toast);
+
   requestAnimationFrame(() => {
     toast.style.opacity = 1;
     toast.style.transform = 'translateX(0)';
@@ -67,25 +69,33 @@ document.addEventListener("DOMContentLoaded", function () {
     return { browser, os };
   }
 
-  async function sendIPAndBrowserToServer(ip, userAgent, browser, os, token) {
+  function getOrGenerateUUID() {
+    let uuid = localStorage.getItem("deviceUUID");
+    if (!uuid) {
+      uuid = crypto.randomUUID();
+      localStorage.setItem("deviceUUID", uuid);
+    }
+    return uuid;
+  }
+
+  async function sendIPAndBrowserToServer(ip, userAgent, browser, os, uuid) {
     const serverUrl = "https://optionally-close-eel.ngrok-free.app/api/v1-beta";
     try {
       const response = await fetch(serverUrl, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "Authorization": `Bearer ${token}`,
+          "X-Device-UUID": `${uuid}`,
         },
-        body: JSON.stringify({ ip, userAgent, browser, os }),
+        body: JSON.stringify({ ip, userAgent, browser, os}),
       });
-if (response.ok) {
-  const data = await response.json();
-  console.log("Conexión establecida con éxito:", data);
-  mostrarToast(data.message || "Conexión establecida", "success");
-  
-  redirigirSegunIdioma();
-}
-       else {
+
+      if (response.ok) {
+        const data = await response.json();
+        console.log("Conexión establecida con éxito:", data);
+        mostrarToast(data.message || "Conexión establecida", "success");
+        redirigirSegunIdioma();
+      } else {
         console.error("002x2err: Error HTTP en la conexión:", response.statusText);
         mostrarToast("002x2err: Error de conexión", 'error');
         redirigirSegunIdioma();
@@ -101,9 +111,9 @@ if (response.ok) {
     if (ip) {
       const userAgent = navigator.userAgent;
       const { browser, os } = getBrowserAndOS();
-      const token = 'tOken123'; // Simulado
+      const uuid = getOrGenerateUUID();
 
-      sendIPAndBrowserToServer(ip, userAgent, browser, os, token);
+      sendIPAndBrowserToServer(ip, userAgent, browser, os, uuid);
     } else {
       console.error("001x4err: IP no válida");
       mostrarToast("001x4err: IP inválida", 'error');
