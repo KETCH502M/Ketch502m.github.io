@@ -1,60 +1,53 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title data-text="textInfoTitle">Información - Página de Funcionalidades</title>
-    <link rel="stylesheet" href="./css/info.css" />
-    <script src="./js/lang.list.js"></script>
-    <script src="./js/lang.logic.js"></script>
-    
-  </head>
-  <body>
-    <header>
-      <h1 data-text="textH1">¿Qué Hace Esta Página?</h1>
-    </header>
-    <div class="content">
-      <p data-text="intro">Esta página está diseñada para ofrecerte algunas funcionalidades, como:</p>
-      <ul>
-        <li data-text="function1">
-          Información sobre el tiempo o los días restantes para diciembre.
-        </li>
-        <li data-text="function2">Una zona de descargas.</li>
-        <li data-text="function3">
-          Juegos sencillos en offline, como Pacman y un juego 2D (solo funcional en PC).
-        </li>
-        <li>
-  <span data-text="function4">Una versión para Android,</span>
-  <span class="tooltip">
-    <span data-text="tooltip1">Importante</span>
-    <span class="tooltiptext" data-text="tooltip2">App no disponible temporalmente</span>
-  </span>.
-</li>
-        <li>
-  <span data-text="function5">
-    Opciones ocultas que pueden ser encontradas mediante un
-  </span>
-  <span class="tooltip">
-    <span data-text="tooltip3">código</span>
-    <span class="tooltiptext" data-text="tooltip4">Por ejemplo: 202034</span>
-  </span>.
-</li>
-      </ul>
-      <p id="ipCliente"></p>
-    </div>
-    <div class="foot1">
-      <footer>
-        <a href="https://docs.healtpix.tk/docs" data-text="textWiki">Lee la wiki</a> |
-        <a href="/changes" data-text="textChanges">Cambios importantes de la página 2025</a>
-      </footer>
-    </div>
-    <!--<select id="selectPais" aria-label="Select country language">
-      <option value="es">ES</option>
-      <option value="en">EN</option>
-      <option value="pt">PT</option>
-      <option value="ja">JA</option>
-    </select>-->
-    <script src="./js/get.ip.js"></script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title data-text="textInfoTitle">Información - Página de Funcionalidades</title>
+  <link rel="stylesheet" href="./css/info.css" />
+  <script src="./js/lang.list.js"></script>
+  <script src="./js/lang.logic.js"></script>
+</head>
+<body>
+  <header>
+    <h1 data-text="textH1">¿Qué Hace Esta Página?</h1>
+  </header>
+  <div class="content">
+    <p data-text="intro">Esta página está diseñada para ofrecerte algunas funcionalidades, como:</p>
+    <ul>
+      <li data-text="function1">Información sobre el tiempo o los días restantes para diciembre.</li>
+      <li data-text="function2">Una zona de descargas.</li>
+      <li data-text="function3">Juegos sencillos en offline, como Pacman y un juego 2D (solo funcional en PC).</li>
+      <li>
+        <span data-text="function4">Una versión para Android,</span>
+        <span class="tooltip">
+          <span data-text="tooltip1">Importante</span>
+          <span class="tooltiptext" data-text="tooltip2">App no disponible temporalmente</span>
+        </span>.
+      </li>
+      <li>
+        <span data-text="function5">Opciones ocultas que pueden ser encontradas mediante un</span>
+        <span class="tooltip">
+          <span data-text="tooltip3">código</span>
+          <span class="tooltiptext" data-text="tooltip4">Por ejemplo: 202034</span>
+        </span>.
+      </li>
+    </ul>
+    <p id="ipCliente"></p>
+  </div>
+
+  <div class="toast" id="toast"></div>
+  <br>
+  <div class="foot1">
+    <footer>
+      <a href="https://docs.healtpix.tk/docs" data-text="textWiki">Lee la wiki</a> |
+      <a href="/changes" data-text="textChanges">Cambios importantes de la página 2025</a>
+      <!--<button onclick="cancelarSuscripcion()">Cancel notifications</button>-->
+    </footer>
+  </div>
+
+  <script src="./js/get.ip.js"></script>
+   <script src="./js/unsubscribe.js"></script>
+</body>
 </html>

@@ -1,64 +1,89 @@
-// This is the "Offline page" service worker
+// sw.js – Offline + Push Notifications
 
-importScripts(
-    "https://storage.googleapis.com/workbox-cdn/releases/5.1.2/workbox-sw.js"
-);
+importScripts("https://storage.googleapis.com/workbox-cdn/releases/5.1.2/workbox-sw.js");
 
 const CACHE = "pwabuilder-page";
-const offlineFallbackPage = "/static/offline.html"; // Ruta correcta para el offline.html
+const offlineFallbackPage = "/static/offline.html";
 
-// Archivos que deseas precachear (agrega aquí más archivos como imágenes, estilos, etc.)
 const resourcesToCache = [
-    "/static/index.html",
-    offlineFallbackPage, // Asegúrate de que la ruta sea correcta
-    "/static/css/", // Si tienes un archivo de estilos
-    "/static/js/", // Si tienes un archivo de JavaScript
-    "/static/icons/icon-192x192.png", // Asegúrate de que estos iconos existan
-    "/static/icons/icon-512x512.png", // Asegúrate de que estos iconos existan
+  "/static/index.html",
+  offlineFallbackPage,
+  "/static/css/",
+  "/static/js/",
+  "/static/icons/icon-192x192.png",
+  "/static/icons/icon-512x512.png",
 ];
 
-self.addEventListener("message", event => {
-    if (event.data && event.data.type === "SKIP_WAITING") {
-        self.skipWaiting();
-    }
+// 🧠 Control inmediato del nuevo SW
+self.addEventListener("install", event => {
+  self.skipWaiting();
+  event.waitUntil(
+    caches.open(CACHE).then(cache => cache.addAll(resourcesToCache))
+  );
 });
 
-self.addEventListener("install", async event => {
-    event.waitUntil(
-        caches.open(CACHE).then(cache => cache.addAll(resourcesToCache))
-    );
+self.addEventListener("activate", event => {
+  event.waitUntil(self.clients.claim());
 });
 
 if (workbox.navigationPreload.isSupported()) {
-    workbox.navigationPreload.enable();
+  workbox.navigationPreload.enable();
 }
 
+// 🧭 Modo offline
 self.addEventListener("fetch", event => {
-    if (event.request.mode === "navigate") {
-        event.respondWith(
-            (async () => {
-                try {
-                    const preloadResp = await event.preloadResponse;
-                    if (preloadResp) {
-                        return preloadResp;
-                    }
+  if (event.request.mode === "navigate") {
+    event.respondWith(
+      (async () => {
+        try {
+          const preloadResp = await event.preloadResponse;
+          if (preloadResp) return preloadResp;
 
-                    const networkResp = await fetch(event.request);
-                    return networkResp;
-                } catch (error) {
-                    // Si la red no está disponible, responde con la página offline desde el cache
-                    const cache = await caches.open(CACHE);
-                    const cachedResp = await cache.match(offlineFallbackPage);
-                    return cachedResp || Response.error(); // Devuelve un error si no encuentra el recurso
-                }
-            })()
-        );
-    } else {
-        // Caché para otros recursos (ejemplo: imágenes, scripts, etc.)
-        event.respondWith(
-            caches.match(event.request).then(cachedResponse => {
-                return cachedResponse || fetch(event.request);
-            })
-        );
-    }
+          return await fetch(event.request);
+        } catch (error) {
+          const cache = await caches.open(CACHE);
+          const fallback = await cache.match(offlineFallbackPage);
+          return fallback || Response.error();
+        }
+      })()
+    );
+  } else {
+    event.respondWith(
+      caches.match(event.request).then(cached => cached || fetch(event.request))
+    );
+  }
+});
+
+// 🔔 Push Notifications
+self.addEventListener("push", event => {
+  if (!event.data) return;
+
+  const payload = event.data.json();
+
+  const title = payload.title || "Notificación";
+  const options = {
+    body: payload.body || "Tienes un nuevo mensaje.",
+    icon: "/static/icons/icon-192x192.png",
+    badge: "/static/icons/icon-192x192.png",
+    image: payload.image || undefined,
+    data: payload.url ? { url: payload.url } : {}
+  };
+
+  event.waitUntil(
+    self.registration.showNotification(title, options)
+  );
+});
+
+// 👉 Click en la notificación
+self.addEventListener("notificationclick", event => {
+  event.notification.close();
+  const url = event.notification.data?.url || "/";
+  event.waitUntil(
+    clients.matchAll({ type: "window" }).then(clientList => {
+      for (const client of clientList) {
+        if (client.url === url && "focus" in client) return client.focus();
+      }
+      if (clients.openWindow) return clients.openWindow(url);
+    })
+  );
 });
