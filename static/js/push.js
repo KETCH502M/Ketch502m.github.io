@@ -24,8 +24,8 @@ async function pedirPermisoNotificaciones() {
     const respuesta = await fetch("https://optionally-close-eel.ngrok-free.app/api/push/subscribe", {
       method: "POST",
       headers: { 
-      "Content-Type": "application/json",
-      "ngrok-skip-browser-warning": "true"
+      "ngrok-skip-browser-warning": "true",
+      "Content-Type": "application/json"
       },
       body: JSON.stringify(suscripcion)
     });
