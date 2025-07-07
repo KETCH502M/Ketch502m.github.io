@@ -1,12 +1,10 @@
-// sw.js – Offline + Push Notifications
-
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/5.1.2/workbox-sw.js");
 
-const CACHE = "pwabuilder-page";
+// Incrementa versión en cada despliegue
+const CACHE = "pwabuilder-page-v2";
 const offlineFallbackPage = "/static/offline.html";
 
 const resourcesToCache = [
-  "/static/index.html",
   offlineFallbackPage,
   "/static/css/",
   "/static/js/",
@@ -14,23 +12,36 @@ const resourcesToCache = [
   "/static/icons/icon-512x512.png",
 ];
 
-// 🧠 Control inmediato del nuevo SW
+// 🔄 Instalar y cachear recursos inmediatamente
 self.addEventListener("install", event => {
+  console.log("🛠 Instalando nuevo SW...");
   self.skipWaiting();
   event.waitUntil(
     caches.open(CACHE).then(cache => cache.addAll(resourcesToCache))
   );
 });
 
+// 👑 Tomar control inmediato
 self.addEventListener("activate", event => {
-  event.waitUntil(self.clients.claim());
+  console.log("⚡ SW activado, controlando clientes...");
+  event.waitUntil(
+    (async () => {
+      // Limpieza de caches antiguos
+      const keys = await caches.keys();
+      await Promise.all(keys.map(key => {
+        if (key !== CACHE) return caches.delete(key);
+      }));
+      await self.clients.claim();
+    })()
+  );
 });
 
+// 🚀 Preload si es soportado
 if (workbox.navigationPreload.isSupported()) {
   workbox.navigationPreload.enable();
 }
 
-// 🧭 Modo offline
+// 🌐 Modo offline para navegación
 self.addEventListener("fetch", event => {
   if (event.request.mode === "navigate") {
     event.respondWith(
@@ -48,6 +59,7 @@ self.addEventListener("fetch", event => {
       })()
     );
   } else {
+    // Cache First para otros recursos
     event.respondWith(
       caches.match(event.request).then(cached => cached || fetch(event.request))
     );
@@ -59,7 +71,6 @@ self.addEventListener("push", event => {
   if (!event.data) return;
 
   const payload = event.data.json();
-
   const title = payload.title || "Notificación";
   const options = {
     body: payload.body || "Tienes un nuevo mensaje.",
