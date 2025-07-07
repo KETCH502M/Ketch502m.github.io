@@ -45,7 +45,7 @@ window.addEventListener("load", async () => {
   console.log("🚀 Página cargada, iniciando SW...");
   if ("serviceWorker" in navigator) {
     try {
-      const reg = await navigator.serviceWorker.register("sw.js");
+      const reg = await navigator.serviceWorker.register("/sw.js");
       console.log("✅ SW registrado correctamente");
       pedirPermisoNotificaciones();
     } catch (e) {
