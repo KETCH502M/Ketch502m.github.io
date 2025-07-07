@@ -1,4 +1,5 @@
 async function pedirPermisoNotificaciones() {
+  const toast = document.getElementById("toast");
   if (!('Notification' in window)) {
     toast.innerText = "🚫 Navegador no soporta notificaciones";
     toast.classList.add("show");
@@ -55,6 +56,9 @@ window.addEventListener("load", async () => {
   if ("serviceWorker" in navigator) {
     try {
       await navigator.serviceWorker.register("sw.js");
+      /*toast.innerText = "✅ SW registrado correctamente";
+      toast.classList.add("show");
+  setTimeout(() => toast.classList.remove("show"), 1500);*/
       console.log("✅ SW registrado correctamente");
       pedirPermisoNotificaciones();
     } catch (e) {
