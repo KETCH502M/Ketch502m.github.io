@@ -20,6 +20,7 @@ async function pedirPermisoNotificaciones() {
       userVisibleOnly: true,
       applicationServerKey: urlBase64ToUint8Array("BJtsaR8hLQiAM7x3xt6X4QKxxy3bRhuP9XP5TxCVVHZWfUyuNRUfPnR4TplXckcX3abBz5zPDxbyp-Sii9jRXPA")
     });
+    console.log("intentando hacer fetch");
 const respuesta = await fetch("https://optionally-close-eel.ngrok-free.app/api/push/subscribe", {
   method: "POST",
   headers: { 
