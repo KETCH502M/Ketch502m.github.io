@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prueba Fetch POST/GET</title>
+  <style>
+    body { font-family: sans-serif; padding: 2rem; background: #f4f4f4; }
+    input, textarea, button { display: block; margin: 1rem 0; width: 100%; padding: 0.5rem; }
+    .log { white-space: pre-wrap; background: #fff; padding: 1rem; border: 1px solid #ccc; }
+  </style>
+</head>
+<body>
+  <h1>Fetch API Test</h1>
+
+  <h3>GET</h3>
+  <button onclick="hacerGET()">Hacer GET</button>
+
+  <h3>POST</h3>
+  <input type="text" id="nombre" placeholder="Nombre">
+  <textarea id="mensaje" placeholder="Mensaje"></textarea>
+  <button onclick="hacerPOST()">Hacer POST</button>
+
+  <div class="log" id="log">Esperando acciones...</div>
+
+  <script>
+    const log = document.getElementById('log');
+
+    async function hacerGET() {
+      try {
+        const res = await fetch('https://optionally-close-eel.ngrok-free.app/api/test');
+        const data = await res.json();
+        log.textContent = '✅ GET:\n' + JSON.stringify(data, null, 2);
+      } catch (e) {
+        log.textContent = '❌ Error GET:\n' + e;
+      }
+    }
+
+    async function hacerPOST() {
+      const nombre = document.getElementById('nombre').value;
+      const mensaje = document.getElementById('mensaje').value;
+      try {
+        const res = await fetch('https://optionally-close-eel.ngrok-free.app/api/test', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ nombre, mensaje })
+        });
+        const data = await res.json();
+        log.textContent = '✅ POST:\n' + JSON.stringify(data, null, 2);
+      } catch (e) {
+        log.textContent = '❌ Error POST:\n' + e;
+      }
+    }
+  </script>
+</body>
+</html>
