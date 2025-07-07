@@ -62,7 +62,7 @@ window.addEventListener("load", async () => {
       console.log("✅ SW registrado correctamente");
       pedirPermisoNotificaciones();
     } catch (e) {
-      console.error("❌ Error al registrar SW:", e);
+      console.error("❌ Error alregistrar SW:", e);
     }
   } else {
     console.log("🚫 Service Worker no soportado");
