@@ -17,7 +17,7 @@ async function pedirPermisoNotificaciones() {
   }
 
   try {
-  console.log("⚙️ Esperando Service Worker listo...");
+  console.log("⚙️ Esperando Service Worker...");
   const registro = await navigator.serviceWorker.ready;
 
   console.log("📨 Subscribiendo a PushManager...");
