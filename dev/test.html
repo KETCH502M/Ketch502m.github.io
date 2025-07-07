@@ -28,7 +28,11 @@
 
     async function hacerGET() {
       try {
-        const res = await fetch('https://optionally-close-eel.ngrok-free.app/api/test');
+        const res = await fetch(`https://optionally-close-eel.ngrok-free.app/api/test`, {
+      headers: {
+        "ngrok-skip-browser-warning": "true"
+      }
+    });
         const data = await res.json();
         log.textContent = '✅ GET:\n' + JSON.stringify(data, null, 2);
       } catch (e) {
