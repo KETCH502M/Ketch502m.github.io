@@ -6,7 +6,6 @@ const CACHE = "pwabuilder-page";
 const offlineFallbackPage = "/static/offline.html";
 
 const resourcesToCache = [
-  "/static/index.html",
   offlineFallbackPage,
   "/static/css/",
   "/static/js/",
