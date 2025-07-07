@@ -17,34 +17,21 @@ async function pedirPermisoNotificaciones() {
   }
 
   try {
-    console.log("⚙️ Esperando Service Worker listo...");
-    const registro = await navigator.serviceWorker.ready;
+  console.log("⚙️ Esperando Service Worker listo...");
+  const registro = await navigator.serviceWorker.ready;
 
-    console.log("📨 Subscribiendo a PushManager...");
-    const suscripcion = await registro.pushManager.subscribe({
-      userVisibleOnly: true,
-      applicationServerKey: urlBase64ToUint8Array("BJtsaR8hLQiAM7x3xt6X4QKxxy3bRhuP9XP5TxCVVHZWfUyuNRUfPnR4TplXckcX3abBz5zPDxbyp-Sii9jRXPA")
-    });
+  console.log("📨 Subscribiendo a PushManager...");
+  const suscripcion = await registro.pushManager.subscribe({
+    userVisibleOnly: true,
+    applicationServerKey: urlBase64ToUint8Array("BJtsaR8hLQiAM7x3xt6X4QKxxy3bRhuP9XP5TxCVVHZWfUyuNRUfPnR4TplXckcX3abBz5zPDxbyp-Sii9jRXPA")
+  });
 
-    console.log("📤 Enviando suscripción al servidor...");
-    const respuesta = await fetch("https://optionally-close-eel.ngrok-free.app/api/push/subscribe", {
-      method: "POST",
-      headers: {
-        "ngrok-skip-browser-warning": "true",
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(suscripcion)
-    });
+  console.log("📤 Enviando suscripción al servidor...");
+  // ...
 
-    if (respuesta.ok) {
-      console.log("✅ Suscripción enviada correctamente");
-    } else {
-      console.warn("⚠️ Falló la suscripción, status:", respuesta.status);
-    }
-
-  } catch (err) {
-    console.error("❌ Error general:", err);
-  }
+} catch (err) {
+  console.error("❌ Error en pushManager.subscribe:", err);
+} 
 }
 
 function urlBase64ToUint8Array(base64) {
