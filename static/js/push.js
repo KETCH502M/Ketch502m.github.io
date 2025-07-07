@@ -1,4 +1,3 @@
-console.log("✅ push.js cargado"!);
 async function pedirPermisoNotificaciones() {
   if (!('Notification' in window)) {
     toast.innerText = "🚫 Navegador no soporta notificaciones";
