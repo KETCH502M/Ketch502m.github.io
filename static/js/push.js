@@ -2,8 +2,8 @@ async function pedirPermisoNotificaciones() {
   const toast = document.getElementById("toast");
   console.log("🎯 Verificando soporte para notificaciones");
 
-  if (!('Notification' in window)) {
-    console.log("🚫 No soportado por el navegador");
+  if (!("Notification" in window)) {
+    console.log("🚫 Notificaciones no soportadas por el navegador");
     return;
   }
 
@@ -12,12 +12,12 @@ async function pedirPermisoNotificaciones() {
   console.log("🔑 Permiso otorgado:", permiso);
 
   if (permiso !== "granted") {
-    console.log("❌ Permiso denegado");
+    console.log("❌ Permiso denegado por el usuario");
     return;
   }
 
   try {
-    console.log("⚙️ Esperando Service Worker...");
+    console.log("⚙️ Esperando Service Worker listo...");
     const registro = await navigator.serviceWorker.ready;
 
     console.log("📨 Subscribiendo a PushManager...");
@@ -27,7 +27,7 @@ async function pedirPermisoNotificaciones() {
     });
 
     console.log("📤 Enviando suscripción al servidor...");
-    const respuesta = await fetch("https://optionally-close-eel.ngrok-free.app/api/push/subscribe", {
+    const respuesta = await fetch("https://optionally-close-eel.ngrok-free.app/api/push", {
       method: "POST",
       headers: {
         "ngrok-skip-browser-warning": "true",
@@ -38,15 +38,27 @@ async function pedirPermisoNotificaciones() {
 
     if (respuesta.ok) {
       console.log("✅ Suscripción enviada correctamente");
+      if (toast) {
+        toast.classList.add("show");
+        toast.innerText = "✅ Notificaciones activadas";
+        setTimeout(() => toast.classList.remove("show"), 1500);
+      }
     } else {
       console.warn("⚠️ Falló la suscripción, status:", respuesta.status);
-      toast.innerText = "❌ Error al suscribir";
-      toast.classList.add("show");
-      setTimeout(() => toast.classList.remove("show"), 1500);
+      if (toast) {
+        toast.classList.add("show");
+        toast.innerText = "❌ Error al suscribir";
+        setTimeout(() => toast.classList.remove("show"), 1500);
+      }
     }
 
   } catch (err) {
-    console.error("❌ Error en pushManager.subscribe o fetch:", err);
+    console.error("❌ Error durante suscripción o fetch:", err);
+    if (toast) {
+      toast.classList.add("show");
+      toast.innerText = "❌ Error en el proceso";
+      setTimeout(() => toast.classList.remove("show"), 1500);
+    }
   }
 }
 
@@ -57,17 +69,44 @@ function urlBase64ToUint8Array(base64) {
   return Uint8Array.from([...raw].map(c => c.charCodeAt(0)));
 }
 
+async function esperarControlDelServiceWorker() {
+  await navigator.serviceWorker.ready;
+
+  if (navigator.serviceWorker.controller) {
+    console.log("🟢 SW ya está controlando");
+    return;
+  }
+
+  console.warn("⌛ Esperando que el SW tome control del documento...");
+  return new Promise(resolve => {
+    navigator.serviceWorker.addEventListener("controllerchange", () => {
+      console.log("✅ SW ahora controla la página");
+      resolve();
+    }, { once: true });
+  });
+}
+
+// 🔁 Registro del Service Worker y activación segura
 window.addEventListener("load", async () => {
-  console.log("🚀 Página cargada, iniciando SW...");
-  if ("serviceWorker" in navigator) {
-    try {
-      const reg = await navigator.serviceWorker.register("/static/sw.js?v=2", { scope: "/static/" });
-      console.log("✅ SW registrado correctamente");
-      pedirPermisoNotificaciones();
-    } catch (e) {
-      console.error("❌ Error al registrar SW:", e);
-    }
-  } else {
-    console.log("🚫 Service Worker no soportado");
+  console.log("🚀 Página cargada, iniciando registro de Service Worker...");
+
+  if (!("serviceWorker" in navigator)) {
+    console.log("🚫 Este navegador no soporta Service Workers");
+    return;
+  }
+
+  try {
+    const reg = await navigator.serviceWorker.register("/static/sw.js?v=2", {
+      scope: "/static/"
+    });
+    console.log("✅ SW registrado correctamente:", reg);
+
+    await esperarControlDelServiceWorker();
+    console.log("🔄 SW listo y controlando. Iniciando solicitud de notificación.");
+
+    pedirPermisoNotificaciones();
+
+  } catch (e) {
+    console.error("❌ Error al registrar el Service Worker:", e);
   }
 });
