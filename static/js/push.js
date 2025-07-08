@@ -27,7 +27,7 @@ async function pedirPermisoNotificaciones() {
     });
 
     console.log("📤 Enviando suscripción al servidor...");
-    const respuesta = await fetch("https://optionally-close-eel.ngrok-free.app/api/push", {
+    const respuesta = await fetch("https://api-test-mve5.onrender.com/api/push/subscribe", {
       method: "POST",
       headers: {
         "ngrok-skip-browser-warning": "true",
