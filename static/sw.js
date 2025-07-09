@@ -16,10 +16,14 @@ self.addEventListener("push", event => {
   const title = payload.title || "Notificación";
   const options = {
     body: payload.body || "Tienes un nuevo mensaje.",
-    icon: `${BASE}/icons/icon-192x192.png`,
+    icon: payload.icon || `${BASE}/icons/icon-192x192.png`,
     badge: `${BASE}/icons/icon-192x192.png`,
     image: payload.image || undefined,
-    data: payload.url ? { url: payload.url } : {}
+    requireInteraction: payload.requireInteraction || false,
+    silent: payload.silent || false,
+    data: {
+      url: payload.url || "/"
+    }
   };
 
   event.waitUntil(
