@@ -96,7 +96,7 @@ window.addEventListener("load", async () => {
   }
 
   try {
-    const reg = await navigator.serviceWorker.register("/static/sw.js?v=2", {
+    const reg = await navigator.serviceWorker.register("/static/sw.js?v=3", {
       scope: "/static/"
     });
     console.log("✅ SW registrado correctamente:", reg);

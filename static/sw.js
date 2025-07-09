@@ -1,71 +1,7 @@
-importScripts("https://storage.googleapis.com/workbox-cdn/releases/5.1.2/workbox-sw.js");
-
 // 🌐 Base del sitio
 const BASE = "/static";
-const CACHE = "pwabuilder-page-v2";
-const offlineFallbackPage = `${BASE}/offline.html`;
 
-const resourcesToCache = [
-  offlineFallbackPage,
-  `${BASE}/css/`,
-  `${BASE}/js/`,
-  `${BASE}/icons/icon-192x192.png`,
-  `${BASE}/icons/icon-512x512.png`,
-];
-
-// 🔄 Instalar y cachear recursos inmediatamente
-self.addEventListener("install", event => {
-  console.log("🛠 Instalando nuevo SW...");
-  self.skipWaiting();
-  event.waitUntil(
-    caches.open(CACHE).then(cache => cache.addAll(resourcesToCache))
-  );
-});
-
-// 👑 Tomar control inmediato
-self.addEventListener("activate", event => {
-  console.log("⚡ SW activado, controlando clientes...");
-  event.waitUntil(
-    (async () => {
-      const keys = await caches.keys();
-      await Promise.all(keys.map(key => {
-        if (key !== CACHE) return caches.delete(key);
-      }));
-      await self.clients.claim();
-    })()
-  );
-});
-
-// 🚀 Preload si es soportado
-if (workbox.navigationPreload.isSupported()) {
-  workbox.navigationPreload.enable();
-}
-
-// 🌐 Modo offline para navegación
-self.addEventListener("fetch", event => {
-  if (event.request.mode === "navigate") {
-    event.respondWith(
-      (async () => {
-        try {
-          const preloadResp = await event.preloadResponse;
-          if (preloadResp) return preloadResp;
-
-          return await fetch(event.request);
-        } catch (error) {
-          const cache = await caches.open(CACHE);
-          const fallback = await cache.match(offlineFallbackPage);
-          return fallback || Response.error();
-        }
-      })()
-    );
-  } else {
-    event.respondWith(
-      caches.match(event.request).then(cached => cached || fetch(event.request))
-    );
-  }
-});
-
-// 🔔 Push Notifications
+// 🔔 Notificaciones push
 self.addEventListener("push", event => {
   if (!event.data) return;
 
