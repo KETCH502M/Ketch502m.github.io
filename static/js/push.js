@@ -1,32 +1,19 @@
 async function pedirPermisoNotificaciones() {
   const toast = document.getElementById("toast");
-  console.log("🎯 Verificando soporte para notificaciones");
 
-  if (!("Notification" in window)) {
-    console.log("🚫 Notificaciones no soportadas por el navegador");
-    return;
-  }
+  if (!("Notification" in window)) return;
 
-  console.log("🔒 Solicitando permiso...");
   const permiso = await Notification.requestPermission();
-  console.log("🔑 Permiso otorgado:", permiso);
-
-  if (permiso !== "granted") {
-    console.log("❌ Permiso denegado por el usuario");
-    return;
-  }
+  if (permiso !== "granted") return;
 
   try {
-    console.log("⚙️ Esperando Service Worker listo...");
     const registro = await navigator.serviceWorker.ready;
 
-    console.log("📨 Subscribiendo a PushManager...");
     const suscripcion = await registro.pushManager.subscribe({
       userVisibleOnly: true,
       applicationServerKey: urlBase64ToUint8Array("BJtsaR8hLQiAM7x3xt6X4QKxxy3bRhuP9XP5TxCVVHZWfUyuNRUfPnR4TplXckcX3abBz5zPDxbyp-Sii9jRXPA")
     });
 
-    console.log("📤 Enviando suscripción al servidor...");
     const respuesta = await fetch("https://api-test-mve5.onrender.com/api/push/subscribe", {
       method: "POST",
       headers: {
@@ -37,14 +24,12 @@ async function pedirPermisoNotificaciones() {
     });
 
     if (respuesta.ok) {
-      console.log("✅ Suscripción enviada correctamente");
       if (toast) {
         toast.classList.add("show");
         toast.innerText = "✅ Notificaciones activadas";
         setTimeout(() => toast.classList.remove("show"), 1500);
       }
     } else {
-      console.warn("⚠️ Falló la suscripción, status:", respuesta.status);
       if (toast) {
         toast.classList.add("show");
         toast.innerText = "❌ Error al suscribir";
@@ -72,41 +57,52 @@ function urlBase64ToUint8Array(base64) {
 async function esperarControlDelServiceWorker() {
   await navigator.serviceWorker.ready;
 
-  if (navigator.serviceWorker.controller) {
-    console.log("🟢 SW ya está controlando");
-    return;
-  }
+  if (navigator.serviceWorker.controller) return;
 
-  console.warn("⌛ Esperando que el SW tome control del documento...");
   return new Promise(resolve => {
-    navigator.serviceWorker.addEventListener("controllerchange", () => {
-      console.log("✅ SW ahora controla la página");
-      resolve();
-    }, { once: true });
+    navigator.serviceWorker.addEventListener("controllerchange", () => resolve(), { once: true });
   });
 }
 
-// 🔁 Registro del Service Worker y activación segura
 window.addEventListener("load", async () => {
-  console.log("🚀 Página cargada, iniciando registro de Service Worker...");
-
-  if (!("serviceWorker" in navigator)) {
-    console.log("🚫 Este navegador no soporta Service Workers");
-    return;
-  }
+  if (!("serviceWorker" in navigator)) return;
 
   try {
     const reg = await navigator.serviceWorker.register("/static/sw.js", {
       scope: "/static/"
     });
-    console.log("✅ SW registrado correctamente:", reg);
 
     await esperarControlDelServiceWorker();
-    console.log("🔄 SW listo y controlando. Iniciando solicitud de notificación.");
-
-    pedirPermisoNotificaciones();
+    
 
   } catch (e) {
     console.error("❌ Error al registrar el Service Worker:", e);
   }
+});
+
+window.addEventListener("load", () => {
+  const popup = document.getElementById("popupNoti");
+  const btnYes = document.getElementById("btnNotifyYes");
+  const btnNo = document.getElementById("btnNotifyNo");
+
+  // Mostrar solo si el navegador lo permite, no está concedido y no fue rechazado manualmente
+  if (
+    "Notification" in window &&
+    Notification.permission === "default" &&
+    !localStorage.getItem("notiRechazada")
+  ) {
+    setTimeout(() => {
+      popup.style.display = "flex";
+    }, 1000); // espera 1.5 segundos antes de mostrar
+  }
+
+  btnYes?.addEventListener("click", () => {
+    popup.style.display = "none";
+    pedirPermisoNotificaciones(); // función ya existente
+  });
+
+  btnNo?.addEventListener("click", () => {
+    popup.style.display = "none";
+    localStorage.setItem("notiRechazada", "1");
+  });
 });

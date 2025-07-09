@@ -155,6 +155,15 @@
     </select>
     <a href="/dev/" class="boton-flotante" id="draggable-btn">DEV</a>
         </footer>
+        <div id="popupNoti" class="popup-noti-overlay" style="display: none;">
+  <div class="popup-noti">
+    <p style="margin-bottom: 15px;">🔔 ¿Deseas recibir notificaciones cuando haya nuevas actualizaciones?</p>
+    <div class="popup-noti-buttons">
+      <button id="btnNotifyYes">Sí, activar</button>
+      <button id="btnNotifyNo">No, gracias</button>
+    </div>
+  </div>
+</div>
         <script src="/static/js/lang.major.js"></script>
         <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
         ></script>
@@ -164,7 +173,5 @@
         <script src="/static/js/push.js"></script>
        <script src="https://cdn.jsdelivr.net/npm/eruda"></script>
        <script>eruda.init();</script>
-       <script src="https://unpkg.com/vconsole@latest/dist/vconsole.min.js"></script>
-<script>new VConsole();</script>
     </body>
 </html>
