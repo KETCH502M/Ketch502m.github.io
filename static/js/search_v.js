@@ -1,5 +1,5 @@
-const MC_URL = 'https://optionally-close-eel.ngrok-free.app/api/v1/links';
-const VLINKS_URL = 'https://optionally-close-eel.ngrok-free.app/api/v1/vlinks';
+const MC_URL = 'https://api-test-mve5.onrender.com/api/v1/links';
+const VLINKS_URL = 'https://api-test-mve5.onrender.com/v1/vlinks';
 
 // Carga local como respaldo solo para Minecraft
 async function cargarMinecraftLocal() {
