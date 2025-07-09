@@ -221,7 +221,7 @@
     }
     async function consultarIntentos() {
       try {
-        const res = await fetch(`${SERVER_URL}/api/v1/login-attempts`, {
+        const res = await fetch(`${SERVER_URL}/api/login-attempts`, {
           headers: { "ngrok-skip-browser-warning": "true" }
         });
         const data = await res.json();
@@ -263,7 +263,7 @@
       if (isBlocked()) return;
       const pin = Array.from(inputs).map(i => i.value).join("");
       try {
-        const res = await fetch(`${SERVER_URL}/api/v1/login`, {
+        const res = await fetch(`${SERVER_URL}/api/login`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
