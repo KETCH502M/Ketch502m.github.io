@@ -1,15 +1,16 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/5.1.2/workbox-sw.js");
 
-// Incrementa versión en cada despliegue
+// 🌐 Base del sitio
+const BASE = "/static";
 const CACHE = "pwabuilder-page-v2";
-const offlineFallbackPage = "/static/offline.html";
+const offlineFallbackPage = `${BASE}/offline.html`;
 
 const resourcesToCache = [
   offlineFallbackPage,
-  "/static/css/",
-  "/static/js/",
-  "/static/icons/icon-192x192.png",
-  "/static/icons/icon-512x512.png",
+  `${BASE}/css/`,
+  `${BASE}/js/`,
+  `${BASE}/icons/icon-192x192.png`,
+  `${BASE}/icons/icon-512x512.png`,
 ];
 
 // 🔄 Instalar y cachear recursos inmediatamente
@@ -26,7 +27,6 @@ self.addEventListener("activate", event => {
   console.log("⚡ SW activado, controlando clientes...");
   event.waitUntil(
     (async () => {
-      // Limpieza de caches antiguos
       const keys = await caches.keys();
       await Promise.all(keys.map(key => {
         if (key !== CACHE) return caches.delete(key);
@@ -59,7 +59,6 @@ self.addEventListener("fetch", event => {
       })()
     );
   } else {
-    // Cache First para otros recursos
     event.respondWith(
       caches.match(event.request).then(cached => cached || fetch(event.request))
     );
@@ -70,12 +69,19 @@ self.addEventListener("fetch", event => {
 self.addEventListener("push", event => {
   if (!event.data) return;
 
-  const payload = event.data.json();
+  let payload = {};
+  try {
+    payload = event.data.json();
+  } catch (e) {
+    console.warn("📦 Push recibido pero el JSON es inválido:", e);
+    return;
+  }
+
   const title = payload.title || "Notificación";
   const options = {
     body: payload.body || "Tienes un nuevo mensaje.",
-    icon: "/static/icons/icon-192x192.png",
-    badge: "/static/icons/icon-192x192.png",
+    icon: `${BASE}/icons/icon-192x192.png`,
+    badge: `${BASE}/icons/icon-192x192.png`,
     image: payload.image || undefined,
     data: payload.url ? { url: payload.url } : {}
   };
