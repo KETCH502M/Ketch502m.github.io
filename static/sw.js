@@ -9,7 +9,7 @@ self.addEventListener("push", event => {
   try {
     payload = event.data.json();
   } catch (e) {
-    console.warn("📦 Push recibido pero el JSON es inválido:", e);
+    console.warn("Push recibido pero el JSON es inválido:", e);
     return;
   }
 
