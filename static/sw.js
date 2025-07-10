@@ -1,5 +1,6 @@
 // 🌐 Base del sitio
 const BASE = "/static";
+const DEFAULT_ICON = `${BASE}/icons/icon-192x192.png`; // Ícono y badge fijos
 
 // 🔔 Notificaciones push
 self.addEventListener("push", event => {
@@ -9,16 +10,16 @@ self.addEventListener("push", event => {
   try {
     payload = event.data.json();
   } catch (e) {
-    console.warn("Push recibido pero el JSON es inválido:", e);
+    console.warn("Push JSON inválido:", e);
     return;
   }
 
   const title = payload.title || "Notificación";
   const options = {
     body: payload.body || "Tienes un nuevo mensaje.",
-    icon: payload.icon || `${BASE}/icons/icon-192x192.png`,
-    badge: `${BASE}/icons/icon-192x192.png`,
-    image: payload.image || undefined,
+    icon: DEFAULT_ICON,                         // Ícono fijo
+    badge: DEFAULT_ICON,                        // Badge fijo
+    image: payload.image || undefined,          // Imagen opcional del payload
     requireInteraction: payload.requireInteraction || false,
     silent: payload.silent || false,
     data: {
@@ -40,7 +41,7 @@ self.addEventListener("notificationclick", event => {
       for (const client of clientList) {
         if (client.url === url && "focus" in client) return client.focus();
       }
-      if (clients.openWindow) return clients.openWindow(url);
+      return clients.openWindow(url);
     })
   );
 });
