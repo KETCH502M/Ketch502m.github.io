@@ -1,9 +1,8 @@
 // 🌐 Base del sitio
 const BASE = "/static";
-const DEFAULT_ICON = `${BASE}/icons/icon-192x192.png`; // Ícono y badge fijos
+const DEFAULT_ICON = `${BASE}/icons/icon-192x192.png`;
 
-// 🔔 Notificaciones push
-self.addEventListener("push", event => {
+self.addEventListener("push", async event => {
   if (!event.data) return;
 
   let payload = {};
@@ -14,12 +13,18 @@ self.addEventListener("push", event => {
     return;
   }
 
+  // 🔄 Enviar el payload a la página principal
+  const clientsList = await clients.matchAll({ includeUncontrolled: true });
+  for (const client of clientsList) {
+    client.postMessage({ tipo: "push-payload", payload });
+  }
+
   const title = payload.title || "Notificación";
   const options = {
     body: payload.body || "Tienes un nuevo mensaje.",
-    icon: DEFAULT_ICON,                         // Ícono fijo
-    badge: DEFAULT_ICON,                        // Badge fijo
-    image: payload.image || undefined,          // Imagen opcional del payload
+    icon: DEFAULT_ICON,
+    badge: DEFAULT_ICON,
+    image: payload.image || undefined,
     requireInteraction: payload.requireInteraction || false,
     silent: payload.silent || false,
     data: {

@@ -1,6 +1,6 @@
 # HUMANO :)
 # ------------------------------
-# Website: www.healtpix.tk
+# Website: www.healtpix.com
 # Last update: 2024-04-27
 
 # Grupo de todo esto
@@ -12,7 +12,7 @@ Content Manager: HARP LOADER X
 
 # Contacto
 # ------------------------------
-Email: <none>
+Email: admin@healtpix.com
 Twitter: @HARP LOADER X
 
 # Otras cositas

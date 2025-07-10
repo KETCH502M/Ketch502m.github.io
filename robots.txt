@@ -11,4 +11,4 @@ Disallow: /old/
 Disallow: /dev/
 Disallow: /game/
 Disallow: /screenshots/
-Sitemap: https://healtpix.tk/sitemap.xml
+Sitemap: https://healtpix.com/sitemap.xml

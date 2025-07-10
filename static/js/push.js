@@ -106,3 +106,9 @@ window.addEventListener("load", () => {
     localStorage.setItem("notiRechazada", "1");
   });
 });
+
+navigator.serviceWorker.addEventListener("message", event => {
+  if (event.data?.tipo === "push-payload") {
+    console.log("📦 Push Payload recibido del SW:", event.data.payload);
+  }
+});
