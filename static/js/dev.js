@@ -10,7 +10,7 @@ function entrarDev() {
   }).catch(() => {
     alert("No se pudo conectar con el entorno DEV.");
   });
-}
+};
   const btn = document.getElementById("draggable-btn");
 
   let isDragging = false;
