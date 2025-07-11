@@ -70,7 +70,6 @@ window.addEventListener("load", async () => {
     const reg = await navigator.serviceWorker.register("/static/sw.js", {
       scope: "/static/"
     });
-    pedirPermisoNotificaciones();
     await esperarControlDelServiceWorker();
     
 
