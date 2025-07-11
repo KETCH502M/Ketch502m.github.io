@@ -14,10 +14,9 @@ async function pedirPermisoNotificaciones() {
       applicationServerKey: urlBase64ToUint8Array("BJtsaR8hLQiAM7x3xt6X4QKxxy3bRhuP9XP5TxCVVHZWfUyuNRUfPnR4TplXckcX3abBz5zPDxbyp-Sii9jRXPA")
     });
 
-    const respuesta = await fetch("https://api-test-mve5.onrender.com/api/push/subscribe", {
+    const respuesta = await fetch("https://api.healtpix.com/api/push/subscribe", {
       method: "POST",
       headers: {
-        "ngrok-skip-browser-warning": "true",
         "Content-Type": "application/json"
       },
       body: JSON.stringify(suscripcion)
@@ -71,7 +70,7 @@ window.addEventListener("load", async () => {
     const reg = await navigator.serviceWorker.register("/static/sw.js", {
       scope: "/static/"
     });
-
+    pedirPermisoNotificaciones();
     await esperarControlDelServiceWorker();
     
 

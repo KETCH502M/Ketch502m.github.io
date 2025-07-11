@@ -1,5 +1,5 @@
-const MC_URL = 'https://api-test-mve5.onrender.com/api/links';
-const VLINKS_URL = 'https://api-test-mve5.onrender.com/api/vlinks';
+const MC_URL = 'https://api.healtpix.com/api/links';
+const VLINKS_URL = 'https://api.healtpix.com/api/vlinks';
 
 // Carga local como respaldo solo para Minecraft
 async function cargarMinecraftLocal() {

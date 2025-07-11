@@ -1,4 +1,4 @@
-function entrarDev() {
+function enterDev() {
   fetch('https://dev.healtpix.com/ping', {
     method: 'GET',
     headers: {

@@ -79,7 +79,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   async function sendIPAndBrowserToServer(ip, userAgent, browser, os, uuid) {
-    const serverUrl = "https://api-test-mve5.onrender.com/api/v1-beta";
+    const serverUrl = "https://api.healtpix.com/api/v1-beta";
     try {
       const response = await fetch(serverUrl, {
         method: "POST",
