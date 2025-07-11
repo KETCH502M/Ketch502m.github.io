@@ -1,5 +1,5 @@
 function entrarDev() {
-  fetch('https://dev.healtpix.com/dev', {
+  fetch('https://dev.healtpix.com/ping', {
     method: 'GET',
     headers: {
       'ngrok-skip-browser-warning': 'true'
