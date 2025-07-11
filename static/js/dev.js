@@ -1,3 +1,16 @@
+function entrarDev() {
+  fetch('https://dev.healtpix.com/dev', {
+    method: 'GET',
+    headers: {
+      'ngrok-skip-browser-warning': 'true'
+    }
+  }).then(() => {
+    // Luego de que pase por proxy (y ngrok ya lo "conozca"), redirigimos
+    location.href = 'https://dev.healtpix.com/';
+  }).catch(() => {
+    alert("No se pudo conectar con el entorno DEV.");
+  });
+}
   const btn = document.getElementById("draggable-btn");
 
   let isDragging = false;
@@ -47,16 +60,3 @@
     isDragging = false;
   });
   
-function entrarDev() {
-  fetch('https://dev.healtpix.com/dev', {
-    method: 'GET',
-    headers: {
-      'ngrok-skip-browser-warning': 'true'
-    }
-  }).then(() => {
-    // Luego de que pase por proxy (y ngrok ya lo "conozca"), redirigimos
-    location.href = 'https://dev.healtpix.com/';
-  }).catch(() => {
-    alert("No se pudo conectar con el entorno DEV.");
-  });
-}
