@@ -1,17 +1,9 @@
-function enterDev() {
-  fetch('https://dev.healtpix.com/ping', {
-    method: 'GET',
-    headers: {
-      'ngrok-skip-browser-warning': 'true'
-    }
-  }).then(() => {
-    // Luego de que pase por proxy (y ngrok ya lo "conozca"), redirigimos
-    location.href = 'https://dev.healtpix.com/';
-  }).catch(() => {
-    alert("No se pudo conectar con el entorno DEV.");
-  });
-};
-  const btn = document.getElementById("draggable-btn");
+navigator.serviceWorker.addEventListener("message", event => {
+  if (event.data?.tipo === "push-payload") {
+    console.log("📦 Payload recibido del SW:", event.data.payload);
+  }
+});
+const btn = document.getElementById("draggable-btn");
 
   let isDragging = false;
   let offsetX = 0;

@@ -9,28 +9,32 @@ self.addEventListener("push", async event => {
   try {
     payload = event.data.json();
   } catch (e) {
-    console.warn("Push JSON inválido:", e);
+    console.warn("❌ Push JSON inválido:", e);
     return;
   }
 
-  // 🔄 Enviar el payload a la página principal
+  // 📤 Enviar a la página si está abierta
   const clientsList = await clients.matchAll({ includeUncontrolled: true });
   for (const client of clientsList) {
     client.postMessage({ tipo: "push-payload", payload });
   }
 
   const title = payload.title || "Notificación";
+  const image = typeof payload.image === "string" ? payload.image : undefined;
+
   const options = {
     body: payload.body || "Tienes un nuevo mensaje.",
     icon: DEFAULT_ICON,
     badge: DEFAULT_ICON,
-    image: payload.image || undefined,
-    requireInteraction: payload.requireInteraction || false,
-    silent: payload.silent || false,
+    requireInteraction: !!payload.requireInteraction,
+    silent: !!payload.silent,
     data: {
       url: payload.url || "/"
     }
   };
+
+  // Solo agregar si es válida
+  if (image) options.image = image;
 
   event.waitUntil(
     self.registration.showNotification(title, options)
