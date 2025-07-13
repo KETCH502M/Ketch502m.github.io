@@ -99,3 +99,28 @@ window.onload = function () {
     }
   }
 };
+
+async function verificarEstadoAPI() {
+  const statusDiv = document.getElementById("api-status");
+  const text = statusDiv.querySelector(".status-text");
+
+  try {
+    const response = await fetch("https://api.healtpix.com/ping", {
+      method: "GET",
+      cache: "no-store"
+    });
+
+    if (response.ok) {
+      statusDiv.classList.add("api-up");
+      text.textContent = "ON";
+    } else {
+      throw new Error("Respuesta no válida");
+    }
+  } catch (error) {
+    statusDiv.classList.add("api-down");
+    text.textContent = "OFF";
+  }
+}
+
+verificarEstadoAPI();
+setInterval(verificarEstadoAPI, 60000); // cada 60 segundos

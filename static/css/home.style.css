@@ -327,3 +327,31 @@ body {
     color: #008b8b;
   }
 }
+
+.api-status {
+  margin-top: 12px;
+  text-align: center;
+  font-size: 0.9em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  color: #ccc;
+}
+
+.status-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: gray;
+  box-shadow: 0 0 4px rgba(0,0,0,0.3);
+  transition: background-color 0.3s;
+}
+
+.api-up .status-dot {
+  background-color: #2ecc71; /* Verde */
+}
+
+.api-down .status-dot {
+  background-color: #e74c3c; /* Rojo */
+}

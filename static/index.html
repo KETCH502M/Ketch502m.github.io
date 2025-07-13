@@ -61,10 +61,6 @@
 }
 </script>
         <meta name="theme-color" content="#24ecff" />
-                <!--AUDIO-->
-        <audio id="successSound" src="/assets/audio/success.mp3"></audio>
-        <audio id="successSound" src="/assets/audio/error.mp3"></audio>
-        <audio id="successSound" src="/assets/audio/error2.mp3"></audio>
                 <!--JS-->
         <script src="/static/js/js.delay.js"></script>
                 <!--CSS-->
@@ -74,9 +70,9 @@
         <link rel="stylesheet" href="/static/css/es-s.css" />
         <link rel="stylesheet" href="/static/css/btn.v2.css" />
         <title data-text="titleText">HP - Inicio</title>
-        <div id="overlay" class="overlay"></div>
   </head>
     <body>
+      <div id="overlay" class="overlay"></div>
         <header>
             <div class="navigation">
                 <ul>
@@ -125,6 +121,10 @@
                     data-text="secondsText"></span>
                 </p>
             </section>
+            <div id="api-status" class="api-status">
+    <span class="status-dot"></span>
+    <span class="status-text" data-text="apiStatus"></span>
+  </div>
             <script src="/static/js/date_time.js"></script>
         </div>
         <br>
@@ -138,7 +138,7 @@
                 <label for="codeInput" data-text="footerInfoCode">JavaScript is
                 required<span class="tooltip"><span class="tooltiptext">¡Solo código
                 numerico!</span></span></label>
-                <input type="text" id="codeInput" name="codeInput"
+                <input type="tel" id="codeInput" name="codeInput"
                 placeholder="000-000" maxlength="7" required title="Por favor,
                 ingresa un codigo de 6 dígitos."/>
             </form>
@@ -165,7 +165,7 @@
   </div>
 </div>
         <script src="/static/js/lang.major.js"></script>
-        <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+        <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm"
         ></script>
         <script src="/static/js/code-s.js"></script>
         <script src="/static/js/hide.pwa.js"></script>
