@@ -99,28 +99,34 @@ window.onload = function () {
     }
   }
 };
-
 async function verificarEstadoAPI() {
   const statusDiv = document.getElementById("api-status");
+  const dot = statusDiv.querySelector(".status-dot");
   const text = statusDiv.querySelector(".status-text");
 
-  try {
-    const response = await fetch("https://api.healtpix.com/ping", {
-      method: "GET",
-      cache: "no-store"
-    });
+  // Eliminar todas las clases de estado anteriores
+  dot.classList.remove("ping-good", "ping-warn", "ping-slow", "ping-down");
 
-    if (response.ok) {
-      statusDiv.classList.add("api-up");
-      text.textContent = "ON";
-    } else {
-      throw new Error("Respuesta no válida");
-    }
-  } catch (error) {
-    statusDiv.classList.add("api-down");
-    text.textContent = "OFF";
+  const inicio = performance.now();
+
+  try {
+    const res = await fetch("https://api.healtpix.com/ping", { cache: "no-store" });
+    const fin = performance.now();
+    const ping = Math.round(fin - inicio);
+
+    if (!res.ok) throw new Error();
+
+    // Determinar clase de ping
+    let clase = "ping-down";
+    if (ping < 150) clase = "ping-good";
+    else if (ping < 300) clase = "ping-warn";
+    else if (ping < 600) clase = "ping-slow";
+
+    dot.classList.add(clase);
+  } catch {
+    dot.classList.add("ping-down");
   }
 }
 
 verificarEstadoAPI();
-setInterval(verificarEstadoAPI, 60000); // cada 60 segundos
+setInterval(verificarEstadoAPI, 7000);

@@ -329,14 +329,13 @@ body {
 }
 
 .api-status {
-  margin-top: 12px;
-  text-align: center;
-  font-size: 0.9em;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
+  font-size: 0.95em;
   color: #ccc;
+  margin-top: 10px;
 }
 
 .status-dot {
@@ -344,14 +343,37 @@ body {
   height: 12px;
   border-radius: 50%;
   background-color: gray;
-  box-shadow: 0 0 4px rgba(0,0,0,0.3);
-  transition: background-color 0.3s;
+  animation: pulse 2s infinite ease-in-out;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+  transition:
+    background-color 0.8s ease-in-out,
+    box-shadow 0.8s ease-in-out,
+    transform 0.4s ease-in-out,
+    opacity 0.4s ease-in-out;
 }
 
-.api-up .status-dot {
-  background-color: #2ecc71; /* Verde */
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.15); opacity: 0.6; }
+  100% { transform: scale(1); opacity: 1; }
 }
 
-.api-down .status-dot {
-  background-color: #e74c3c; /* Rojo */
+.ping-good {
+  background-color: #2ecc71;
+  box-shadow: 0 0 12px #2ecc71;
+}
+
+.ping-warn {
+  background-color: #f1c40f;
+  box-shadow: 0 0 12px #f1c40f;
+}
+
+.ping-slow {
+  background-color: #e67e22;
+  box-shadow: 0 0 12px #e67e22;
+}
+
+.ping-down {
+  background-color: #e74c3c;
+  box-shadow: 0 0 12px #e74c3c;
 }
