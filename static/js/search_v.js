@@ -14,11 +14,7 @@ async function cargarMinecraftLocal() {
 
 async function cargarMinecraft() {
   try {
-    const response = await fetch(MC_URL, {
-      headers: {
-        "ngrok-skip-browser-warning": "true"
-      }
-    });
+    const response = await fetch(MC_URL);
     if (!response.ok) throw new Error();
     return await response.json();
   } catch {
@@ -28,11 +24,7 @@ async function cargarMinecraft() {
 
 async function cargarGDyMods() {
   try {
-    const response = await fetch(VLINKS_URL, {
-      headers: {
-        "ngrok-skip-browser-warning": "true"
-      }
-    });
+    const response = await fetch(VLINKS_URL);
     if (!response.ok) throw new Error();
     return await response.json();
   } catch {

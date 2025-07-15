@@ -1,176 +1,180 @@
 <!doctype html>
-<html lang="en">
-  <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="robots" content="noindex" />
-     <!-- Primary Meta Tags -->
-        <meta name="description" content="Descarga versiones de Minecraft, juega
-        mini juegos en línea y cuenta los días para Navidad con nuestro contador
-        especial. Página simple y ligera." />
-        <meta name="keywords" content="juegos, descargas, mc, mcpe, apps,
-        minecraft, healtpix">
-        <meta name="author" content="Ketch502M">
-        <meta name="robots" content="index, follow">
-        <link rel="canonical" href="https://www.healtpix.com/" />
-        <link rel="manifest" href="/static/manifest.json" />
-        <link rel="icon" href="/static/icons/icon-192x192.png" type="image/png" />
-        <!-- Google tag (gtag.js) -->
-        <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": "Healtpix",
-  "url": "https://www.healtpix.com/",
-  "description": "Descarga versiones de Minecraft, juega mini juegos en línea y cuenta los días para Navidad con nuestro contador especial. Página simple y ligera.",
-  "inLanguage": "es",
-  "publisher": {
-    "@type": "Organization",
-    "name": "Healtpix"
-  },
-  "hasPart": [
-    {
-      "@type": "WebApplication",
-      "name": "Contador Navideño",
-      "url": "https://www.healtpix.com/",
-      "applicationCategory": "Utility",
-      "operatingSystem": "All",
-      "browserRequirements": "Requires JavaScript"
-    },
-    {
-      "@type": "SoftwareApplication",
-      "name": "Versiones de Minecraft",
-      "applicationCategory": "GameApplication",
-      "operatingSystem": "Windows, Android",
-      "downloadUrl": "https://www.healtpix.com/static/downloads/",
-      "offers": {
-        "@type": "Offer",
-        "price": "0.00",
-        "priceCurrency": "USD"
-      }
-    },
-    {
-      "@type": "VideoGame",
-      "name": "Juegos en Línea",
-      "url": "https://www.healtpix.com/static/games/",
-      "gamePlatform": "Web Browser",
-      "genre": "Arcade",
-      "description": "Juega títulos clásicos como Pacman."
-    }
-  ]
-}
-</script>
-        <meta name="theme-color" content="#24ecff" />
-                <!--JS-->
-        <script src="/static/js/js.delay.js"></script>
-                <!--CSS-->
-         <link rel="stylesheet" href="/static/css/s.search.css" />
-        <link rel="stylesheet" href="/static/css/home.style.css" />
-        <link rel="stylesheet" href="/static/css/all.min.css" />
-        <link rel="stylesheet" href="/static/css/es-s.css" />
-        <link rel="stylesheet" href="/static/css/btn.v2.css" />
-        <title data-text="titleText">HP - Inicio</title>
-  </head>
-    <body>
-      <div id="overlay" class="overlay"></div>
-        <header>
-            <div class="navigation">
-                <ul>
-                    <!-- <li id="link-home" class="list active">
-                        <a href="#" onclick="redirigirDespuesDeRetraso()">
-                            <span class="icon">
-                                <ion-icon name="home-outline"></ion-icon>
-                            </span>
-                            <span class="text" data-text="menuHome"></span>
-                        </a>
-                    </li> -->
-                    <li class="list active">
-                        <a href="#" onclick="redirigirDespuesDeRetraso(this)">
-                            <span class="icon"><ion-icon name="download-outline"></ion-icon>
-                            </span>
-                            <span class="text" data-text="menuDownloads"></span>
-                        </a>
-                    </li>
-                    <li id="wgam" class="list">
-                        <a
-                            href="#"
-                            onclick="redirigirDespuesDeRetraso(this)"
-                        >
-                            <span class="icon">
-                                <ion-icon
-                                    name="game-controller-outline"
-                                ></ion-icon>
-                            </span>
-                            <span class="text" data-text="menuGames"></span>
-                        </a>
-                    </li>
-                    <div class="indicator"></div>
-                </ul>
-            </div>
-        </header>
-        <script src="/static/js/js.movement.js"></script>
-        <div class="countdown">
-            <p class="timeout" data-text="countdownText"></p>
-            <section>
-                <p>
-                    <span id="days"></span> <span data-text="daysText"></span>  <span id="hours"></span>
-                    <span data-text="hoursText"></span>
-                    <span id="minutes"></span> <span
-                    data-text="minutesText"></span>
-                    <span id="seconds"></span> <span
-                    data-text="secondsText"></span>
-                </p>
-                <div id="api-status" class="api-status">
-    <span class="status-dot"></span>
-    <span class="status-text" data-text="apiStatus"></span>
-  </div>
-            </section>
-        </div>
-        <br>
-      <div id="dwapp" class="dwapp" style="display: none;">
-  <button id="pwa-inst" style="display: none;" data-text="textPwa">¡Instala
-  la versión PWA!</button>
-</div>
-        <footer>
-            <form id="codeForm">
-                <label for="codeInput" data-text="footerInfoCode">JavaScript is
-                required<span class="tooltip"><span class="tooltiptext">¡Solo código
-                numerico!</span></span></label>
-                <input type="tel" id="codeInput" name="codeInput"
-                placeholder="000-000" maxlength="7" required title="Por favor,
-                ingresa un codigo de 6 dígitos."/>
-            </form>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex" />
+  <meta name="description" content="Descarga versiones de Minecraft, juega mini juegos en línea y cuenta los días para Navidad con nuestro contador especial. Página simple y ligera." />
+  <meta name="keywords" content="juegos, descargas, mc, mcpe, apps, minecraft, healtpix" />
+  <meta name="author" content="Ketch502M" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#24ecff" />
+  <link rel="canonical" href="https://www.healtpix.com/" />
+  <link rel="manifest" href="/static/manifest.json" />
+  <link rel="icon" href="/static/icons/icon-192x192.png" type="image/png" />
 
-            <div class="toast" id="toast"></div>
-            <br>
-            <a href="info" style="color: #7196c0; text-decoration: none;
-            font-weight: bold" data-text="footerInfo"></a>
-            <select id="selectPais" aria-label="Select country language">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Healtpix",
+    "url": "https://www.healtpix.com/",
+    "description": "Descarga versiones de Minecraft, juega mini juegos en línea y cuenta los días para Navidad con nuestro contador especial. Página simple y ligera.",
+    "inLanguage": "es",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Healtpix"
+    },
+    "hasPart": [
+      {
+        "@type": "WebApplication",
+        "name": "Contador Navideño",
+        "url": "https://www.healtpix.com/",
+        "applicationCategory": "Utility",
+        "operatingSystem": "All",
+        "browserRequirements": "Requires JavaScript"
+      },
+      {
+        "@type": "SoftwareApplication",
+        "name": "Versiones de Minecraft",
+        "applicationCategory": "GameApplication",
+        "operatingSystem": "Windows, Android",
+        "downloadUrl": "https://www.healtpix.com/static/downloads/",
+        "offers": {
+          "@type": "Offer",
+          "price": "0.00",
+          "priceCurrency": "USD"
+        }
+      },
+      {
+        "@type": "VideoGame",
+        "name": "Juegos en Línea",
+        "url": "https://www.healtpix.com/static/games/",
+        "gamePlatform": "Web Browser",
+        "genre": "Arcade",
+        "description": "Juega títulos clásicos como Pacman."
+      }
+    ]
+  }
+  </script>
+
+
+  <link rel="stylesheet" href="/static/css/home.style.css" />
+  <link rel="stylesheet" href="/static/css/s.search.css" />
+  <link rel="stylesheet" href="/static/css/es-s.css" />
+  <link rel="stylesheet" href="/static/css/all.min.css" />
+  <link rel="stylesheet" href="/static/css/btn.v2.css" />
+
+
+  <title data-text="titleText">HP - Inicio</title>
+</head>
+
+<body>
+  <div id="overlay" class="overlay"></div>
+
+
+  <header>
+    <nav class="navigation">
+      <ul>
+                <li class="list active">
+          <a href="#">
+            <span class="icon"><ion-icon name="download-outline"></ion-icon></span>
+            <span class="text" data-text="menuHome"></span>
+          </a>
+        </li>
+        <li class="list ">
+          <a href="#" onclick="redirigirDespuesDeRetraso(this)">
+            <span class="icon"><ion-icon name="download-outline"></ion-icon></span>
+            <span class="text" data-text="menuDownloads"></span>
+          </a>
+        </li>
+        <li id="wgam" class="list">
+          <a href="#" onclick="redirigirDespuesDeRetraso(this)">
+            <span class="icon"><ion-icon name="game-controller-outline"></ion-icon></span>
+            <span class="text" data-text="menuGames"></span>
+          </a>
+        </li>
+        <div class="indicator"></div>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="countdown">
+    <p class="timeout" data-text="countdownText"></p>
+    <section>
+      <p>
+        <span id="days"></span> <span data-text="daysText"></span>
+        <span id="hours"></span> <span data-text="hoursText"></span>
+        <span id="minutes"></span> <span data-text="minutesText"></span>
+        <span id="seconds"></span> <span data-text="secondsText"></span>
+      </p>
+      <div id="api-status" class="api-status">
+        <span class="status-dot"></span>
+        <span class="status-text" data-text="apiStatus"></span>
+      </div>
+    </section>
+  </div>
+
+  <br>
+  <div id="dwapp" class="dwapp" style="display: none;">
+    <button id="pwa-inst" style="display: none;" data-text="textPwa"></button>
+  </div>
+
+  <footer>
+    <form id="codeForm">
+      <label for="codeInput" data-text="footerInfoCode">
+        JavaScript is required
+        <span class="tooltip">
+          <span class="tooltiptext">¡Solo código numérico!</span>
+        </span>
+      </label>
+      <input
+        type="tel"
+        id="codeInput"
+        name="codeInput"
+        placeholder="000-000"
+        maxlength="7"
+        required
+        title="Por favor, ingresa un código de 6 dígitos." />
+    </form>
+
+    <div class="toast" id="toast"></div>
+    <br>
+    <a href="info" style="color: #7196c0; text-decoration: none; font-weight: bold;" data-text="footerInfo"></a>
+
+    <select id="selectPais" aria-label="Select country language">
       <option value="en">🇺🇸</option>
       <option value="es">🇪🇸</option>
       <option value="pt">🇧🇷</option>
       <option value="ja">🇯🇵</option>
     </select>
+
     <a href="https://dev.healtpix.com" class="boton-flotante" id="draggable-btn">DEV</a>
-        </footer>
-        <div id="popupNoti" class="popup-noti-overlay" style="display: none;">
-  <div class="popup-noti">
-    <p style="margin-bottom: 15px;">🔔 ¿Deseas recibir notificaciones cuando haya nuevas actualizaciones?</p>
-    <div class="popup-noti-buttons">
-      <button id="btnNotifyYes">Sí, activar</button>
-      <button id="btnNotifyNo">No, gracias</button>
+  </footer>
+
+
+  <div id="popupNoti" class="popup-noti-overlay" style="display: none;">
+    <div class="popup-noti">
+      <p style="margin-bottom: 15px;">🔔 ¿Deseas recibir notificaciones cuando hayan nuevas versiones?</p>
+      <div class="popup-noti-buttons">
+        <button id="btnNotifyYes">Sí, ta bien</button>
+        <button id="btnNotifyNo">No, tankiu</button>
+      </div>
     </div>
   </div>
-</div>
- <script src="/static/js/date_time.js"></script>
-        <script src="/static/js/lang.major.js"></script>
-        <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm"
-        ></script>
-        <script src="/static/js/code-s.js"></script>
-        <script src="/static/js/hide.pwa.js"></script>
-        <script src="/static/js/dev.js"></script>
-        <script src="/static/js/push.js"></script>
-       <script src="https://cdn.jsdelivr.net/npm/eruda"></script>
-       <script>eruda.init();</script>
-    </body>
+
+
+  <script src="/static/js/js.delay.js"></script>
+  <script src="/static/js/js.movement.js"></script>
+  <script src="/static/js/date_time.js"></script>
+  <script src="/static/js/lang.major.js"></script>
+  <script src="/static/js/code-s.js"></script>
+  <script src="/static/js/hide.pwa.js"></script>
+  <script src="/static/js/dev.js"></script>
+  <script src="/static/js/push.js"></script>
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm"></script>
+  <!--
+  <script src="https://cdn.jsdelivr.net/npm/eruda"></script>
+  <script>eruda.init();</script>-->
+</body>
 </html>

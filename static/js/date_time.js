@@ -99,6 +99,7 @@ window.onload = function () {
     }
   }
 };
+
 async function verificarEstadoAPI() {
   const statusDiv = document.getElementById("api-status");
   const text = statusDiv.querySelector(".status-text");
