@@ -52,3 +52,25 @@ const btn = document.getElementById("draggable-btn");
     isDragging = false;
   });
   
+  (async () => {
+  const btn = document.getElementById("draggable-btn");
+  btn.style.display = "none"; // Ocultar inicialmente
+
+  try {
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 3000); // 3 segundos
+
+    const res = await fetch("https://dev.healtpix.com/ping", {
+      method: "GET",
+      signal: controller.signal,
+    });
+
+    clearTimeout(timeout);
+
+    if (res.ok) {
+      btn.style.display = "block"; // Mostrar si responde correctamente
+    }
+  } catch (error) {
+    console.warn("🔌 DEV no disponible:", error.message || error);
+  }
+})();
