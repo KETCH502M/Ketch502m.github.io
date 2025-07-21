@@ -6,7 +6,7 @@ Bienvenido al **REPO DE HEALTPIX**, puedes ver las actualizaciones minimas pero 
 
 ## 🌐 Sitio Web >
 
-Puedes visitar la página en: [www.healtpix.tk](https://www.healtpix.tk/)
+Puedes visitar la página en: [www.healtpix.com](https://www.healtpix.com/)
 
 ## 🚀 Características
 
