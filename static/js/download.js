@@ -25,25 +25,25 @@ setInterval(ChangeTxt, 5000);*/
 
 const textosCambiantesPorIdioma = {
   en: [
-    "1.21.80 is now available!",
+    "1.21.94 is now available!",
     "Latest version!",
     "A small list of versions.",
     "Pick your favorite version."
   ],
   es: [
-    "¡1.21.80 disponible!",
+    "¡1.21.94 disponible!",
     "¡Última versión!",
     "Una pequeña lista de versiones.",
     "Selecciona tu versión favorita."
   ],
   pt: [
-    "1.21.80 disponível!",
+    "1.21.94 disponível!",
     "Última versão!",
     "Uma pequena lista de versões.",
     "Escolha sua versão favorita."
   ],
   ja: [
-    "1.21.80が利用可能！",
+    "1.21.94が利用可能！",
     "最新バージョン！",
     "バージョンの小さなリスト。",
     "お気に入りのバージョンを選んでください。"

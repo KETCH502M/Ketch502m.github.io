@@ -28,8 +28,8 @@ async function cargarGDyMods() {
     if (!response.ok) throw new Error();
     return await response.json();
   } catch {
-    // Si falla, ocultar las opciones GD y Mods
-    document.querySelectorAll('#categorySelector option[value="gd"], option[value="otros"]').forEach(opt => {
+    // Si falla, ocultar manualmente GD y Mods
+    document.querySelectorAll('#categorySelector option[value="gd"], option[value="otros"], option[value="test"]').forEach(opt => {
       opt.disabled = true;
       opt.hidden = true;
     });
@@ -56,17 +56,17 @@ function mostrarArchivos(resultados) {
     link.href = archivo.enlace;
     link.target = '_blank';
     link.rel = 'noopener noreferrer';
-    link.innerHTML = `<strong>${archivo.nombre}</strong><span>Descargar</span>`;
+    link.innerHTML = `<strong>${archivo.nombre}</strong><span>Download</span>`;
 
     item.appendChild(link);
     fileList.appendChild(item);
   });
 }
 
-function filtrarArchivos(consulta, categoria = 'minecraft') {
+function filtrarArchivos(consulta, categoria) {
   return archivos.filter(archivo => {
     const coincideTexto = archivo.nombre.toLowerCase().includes(consulta.toLowerCase());
-    const coincideCategoria = categoria === 'all' || archivo.categoria === categoria;
+    const coincideCategoria = archivo.categoria === categoria;
     return coincideTexto && coincideCategoria;
   });
 }
@@ -75,8 +75,8 @@ function handleSearch() {
   const searchInput = document.getElementById('searchInput');
   const categoria = document.getElementById('categorySelector').value;
 
-  // Ocultar el input si se selecciona GD u Otros
-  if (categoria === 'gd' || categoria === 'otros') {
+  // Ocultar el input si la categoría no admite búsqueda
+  if (categoria === 'gd' || categoria === 'otros' || categoria === 'test') {
     searchInput.classList.add('hidden-search');
     searchInput.disabled = true;
     searchInput.value = "";
@@ -101,8 +101,9 @@ async function cargarDatos() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  document.getElementById('categorySelector').value = 'minecraft'; // preseleccionado
+  document.getElementById('categorySelector').value = 'minecraft'; // por defecto
   cargarDatos();
 });
+
 document.getElementById('searchInput').addEventListener('input', handleSearch);
 document.getElementById('categorySelector').addEventListener('change', handleSearch);
